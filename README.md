@@ -1,6 +1,6 @@
 # express-useragent
 
-  A tiny ExpressJS user-agent middleware exposing user-agent details to your application and views.
+  A simple ExpressJS user-agent middleware exposing user-agent details to your application and views.
 
 ## Installation
 
