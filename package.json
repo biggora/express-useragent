@@ -1,0 +1,30 @@
+{
+  "name": "express-useragent",
+  "description": "Express user-agent middleware",
+  "version": "0.0.1",
+  "homepage": "https://github.com/biggora/express-useragent/",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/biggora/express-useragent.git"
+  },
+  "author": "Aleksej Gordejev <aleksej@gordejev.lv> (https://github.com/biggora/)",
+  "keywords": [
+    "useragent",
+    "connect",
+    "express",
+    "middleware"
+  ],
+  "main": "./index.js",
+  "directories": {
+    "lib": "lib",
+    "tests": "tests"
+  },
+  "engines": {
+    "node": ">=0.5"
+  },
+  "dependencies": {},
+  "devDependencies": {
+      "connect": "1.7.1",
+      "express": "2.0.0"
+  }
+}
