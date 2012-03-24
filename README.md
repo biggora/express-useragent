@@ -8,7 +8,7 @@
 
 ## Usage overview
 
-### 
+###
 
 ```js
 var http = require('http')
@@ -17,10 +17,10 @@ var http = require('http')
 var srv = http.createServer(function (req, res) {
   var source = req.headers['user-agent'],
   ua = useragent.parse(source);
-
-  res.writeHead(200, {'Content-Type': 'application/json'});
-  res.end(ua);
+  res.writeHead(200, {'Content-Type': 'text/plain'});
+  res.end(JSON.stringify(ua));
 });
+
 srv.listen(3000);
 ```
 
