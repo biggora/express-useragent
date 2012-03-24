@@ -24,7 +24,7 @@ var srv = http.createServer(function (req, res) {
 srv.listen(3000);
 ```
 
-### Example for Express
+### for Express
 
 ```js
 var express = require('express')
