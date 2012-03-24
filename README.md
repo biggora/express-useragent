@@ -54,6 +54,11 @@ module provides details such as the following:
 
 ```
 
+## Author
+
+Aleksej Gordejev (aleksej@gordejev.lv).
+
+
 ## License
 
 (The MIT License)
