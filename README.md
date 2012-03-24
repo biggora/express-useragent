@@ -8,7 +8,7 @@
 
 ## Usage overview
 
-###
+### Simple
 
 ```js
 var http = require('http')
