@@ -1,8 +1,11 @@
-# express-useragent
+# Middleware exposing user-agent for [ExpressJS](http://expressjs.com/)
 
-  A simple ExpressJS user-agent middleware exposing user-agent details to your application and views.
+express-useragent is a simple ExpressJS user-agent middleware exposing user-agent details to your application and views.
 
 ## Installation
+
+Installation is done using the Node Package Manager (npm). If you don't have npm installed on your system you can download it from [npmjs.org](http://npmjs.org/)
+To install express-useragent:
 
     $ npm install -g express-useragent
 
@@ -53,6 +56,15 @@ module provides details such as the following:
 }
 
 ```
+
+## Accessing the User-Agent
+
+If you are using `express` or `connect`, then `express-useragent`
+provides an easy way to access the user-agent as:
+
+- `req.useragent` from your app server
+- `useragent` helper accessible from your `express` views.
+
 
 ## Author
 
