@@ -1,6 +1,6 @@
 /**
  *
- * @revision    $Id: express.js 2012-03-24 16:21:10 Aleksey $
+ * @revision    $Id: http.js 2012-03-24 16:21:10 Aleksey $
  * @created     2012-03-24 16:21:10
  * @category    Express Helpers
  * @package     express-useragent
@@ -12,18 +12,19 @@
  *
  */
 
-var Express = require('express')
-  , App = Express.createServer()
+var Http = require('http')
   , Useragent = require('./../lib/express-useragent');
 
-
-App.use(Useragent.express());
-
-App.get('/', function(req, res){
-    res.send(req.useragent);
+var App = Http.createServer(function (req, res) {
+  var source = req.headers['user-agent'],
+  ua = Useragent.parse(source);
+  res.writeHead(200, {'Content-Type': 'text/plain'});
+  res.end(JSON.stringify(ua));
 });
 
 // To test it try http://localhost:3000/
 
 App.listen(3000);
 console.log('App started on port 3000');
+
+
