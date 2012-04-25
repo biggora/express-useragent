@@ -1,0 +1,511 @@
+/**
+ * @author Raivo Laanemets <raivo@infdot.com>
+ */
+
+var ua = require('../lib/express-useragent');
+
+exports['iPad 2'] = function(test) {
+
+    var s = 'Mozilla/5.0 (iPad; CPU OS 5_0 like Mac OS X) AppleWebKit/534.46'
+        +' (KHTML, like Gecko) Version/5.1 Mobile/9A334 Safari/7534.48.3';
+
+    var a = ua.parse(s);
+
+    test.ok(a.isMobile, 'Mobile'); // XXX neither mobile neither desktop
+    test.ok(a.isiPad, 'iPad');
+    test.ok(!a.isiPod, 'iPod');
+    test.ok(!a.isiPhone, 'iPhone');
+    test.ok(!a.isAndroid, 'Android');
+    test.ok(!a.isBlackberry, 'Blackberry');
+    test.ok(!a.isOpera, 'Opera');
+    test.ok(!a.isIE, 'IE');
+    test.ok(a.isSafari, 'Safari');
+    test.ok(!a.isFirefox, 'Firefox');
+    test.ok(!a.isWebkit, 'Webkit');
+    test.ok(!a.isChrome, 'Chrome');
+    test.ok(!a.isKonqueror, 'Konqueror');
+    test.ok(!a.isDesktop, 'Desktop'); // XXX neither mobile neither desktop
+    test.ok(!a.isWindows, 'Windows');
+    test.ok(!a.isLinux, 'Linux');
+    test.ok(!a.isMac, 'Mac');
+    test.equal(a.Version, '5.1');
+
+    test.done();
+};
+
+exports['Linux Iceweasel'] = function(test) {
+
+    var s = 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.1.16)'
+        + ' Gecko/20111108 Iceweasel/3.5.16 (like Firefox/3.5.16)';
+
+    var a = ua.parse(s);
+
+    test.ok(!a.isMobile, 'Mobile');
+    test.ok(!a.isiPad, 'iPad');
+    test.ok(!a.isiPod, 'iPod');
+    test.ok(!a.isiPhone, 'iPhone');
+    test.ok(!a.isAndroid, 'Android');
+    test.ok(!a.isBlackberry, 'Blackberry');
+    test.ok(!a.isOpera, 'Opera');
+    test.ok(!a.isIE, 'IE');
+    test.ok(!a.isSafari, 'Safari');
+    test.ok(a.isFirefox, 'Firefox');
+    test.ok(!a.isWebkit, 'Webkit');
+    test.ok(!a.isChrome, 'Chrome');
+    test.ok(!a.isKonqueror, 'Konqueror');
+    test.ok(a.isDesktop, 'Desktop');
+    test.ok(!a.isWindows, 'Windows');
+    test.ok(a.isLinux, 'Linux');
+    test.ok(!a.isMac, 'Mac');
+    test.equal(a.Version, '3.5.16');
+
+    test.done();
+};
+
+exports['Linux Firefox 11'] = function(test) {
+
+    var s = 'Mozilla/5.0 (X11; Linux i686; rv:11.0) Gecko/20100101 Firefox/11.0';
+
+    var a = ua.parse(s);
+
+    test.ok(!a.isMobile, 'Mobile');
+    test.ok(!a.isiPad, 'iPad');
+    test.ok(!a.isiPod, 'iPod');
+    test.ok(!a.isiPhone, 'iPhone');
+    test.ok(!a.isAndroid, 'Android');
+    test.ok(!a.isBlackberry, 'Blackberry');
+    test.ok(!a.isOpera, 'Opera');
+    test.ok(!a.isIE, 'IE');
+    test.ok(!a.isSafari, 'Safari');
+    test.ok(a.isFirefox, 'Firefox');
+    test.ok(!a.isWebkit, 'Webkit');
+    test.ok(!a.isChrome, 'Chrome');
+    test.ok(!a.isKonqueror, 'Konqueror');
+    test.ok(a.isDesktop, 'Desktop');
+    test.ok(!a.isWindows, 'Windows');
+    test.ok(a.isLinux, 'Linux');
+    test.ok(!a.isMac, 'Mac');
+    test.equal(a.Version, '11.0');
+
+    test.done();
+};
+
+exports['Linux Chrome 17'] = function(test) {
+
+    var s = 'Mozilla/5.0 (X11; Linux i686) AppleWebKit/535.11 (KHTML, like Gecko)'
+        + ' Chrome/17.0.963.56 Safari/535.11';
+
+    var a = ua.parse(s);
+
+    test.ok(!a.isMobile, 'Mobile');
+    test.ok(!a.isiPad, 'iPad');
+    test.ok(!a.isiPod, 'iPod');
+    test.ok(!a.isiPhone, 'iPhone');
+    test.ok(!a.isAndroid, 'Android');
+    test.ok(!a.isBlackberry, 'Blackberry');
+    test.ok(!a.isOpera, 'Opera');
+    test.ok(!a.isIE, 'IE');
+    test.ok(!a.isSafari, 'Safari');
+    test.ok(!a.isFirefox, 'Firefox');
+    test.ok(!a.isWebkit, 'Webkit');
+    test.ok(a.isChrome, 'Chrome');
+    test.ok(!a.isKonqueror, 'Konqueror');
+    test.ok(a.isDesktop, 'Desktop');
+    test.ok(!a.isWindows, 'Windows');
+    test.ok(a.isLinux, 'Linux');
+    test.ok(!a.isMac, 'Mac');
+    test.equal(a.Version, '17.0.963.56');
+
+    test.done();
+};
+
+exports['Linux Ephiphany'] = function(test) {
+
+    var s = 'Mozilla/5.0 (X11; U; Linux i686; en-us) AppleWebKit/531.2+ (KHTML, like Gecko)'
+        + ' Version/5.0 Safari/531.2+ Debian/squeeze (2.30.6-1) Epiphany/2.30.6';
+
+    var a = ua.parse(s);
+
+    test.ok(!a.isMobile, 'Mobile');
+    test.ok(!a.isiPad, 'iPad');
+    test.ok(!a.isiPod, 'iPod');
+    test.ok(!a.isiPhone, 'iPhone');
+    test.ok(!a.isAndroid, 'Android');
+    test.ok(!a.isBlackberry, 'Blackberry');
+    test.ok(!a.isOpera, 'Opera');
+    test.ok(!a.isIE, 'IE');
+    test.ok(a.isSafari, 'Safari'); // XXX not really safari?
+    test.ok(!a.isFirefox, 'Firefox');
+    test.ok(!a.isWebkit, 'Webkit');
+    test.ok(!a.isChrome, 'Chrome');
+    test.ok(!a.isKonqueror, 'Konqueror');
+    test.ok(a.isDesktop, 'Desktop');
+    test.ok(!a.isWindows, 'Windows');
+    test.ok(a.isLinux, 'Linux');
+    test.ok(!a.isMac, 'Mac');
+    test.equal(a.Version, '5.0'); // XXX not really the correct version?
+
+    test.done();
+};
+
+exports['Windows XP IE 5.5'] = function(test) {
+
+    var s = 'Mozilla/4.0 (compatible; MSIE 5.5; Windows NT 5.1)';
+
+    var a = ua.parse(s);
+
+    test.ok(!a.isMobile, 'Mobile');
+    test.ok(!a.isiPad, 'iPad');
+    test.ok(!a.isiPod, 'iPod');
+    test.ok(!a.isiPhone, 'iPhone');
+    test.ok(!a.isAndroid, 'Android');
+    test.ok(!a.isBlackberry, 'Blackberry');
+    test.ok(!a.isOpera, 'Opera');
+    test.ok(a.isIE, 'IE');
+    test.ok(!a.isSafari, 'Safari');
+    test.ok(!a.isFirefox, 'Firefox');
+    test.ok(!a.isWebkit, 'Webkit');
+    test.ok(!a.isChrome, 'Chrome');
+    test.ok(!a.isKonqueror, 'Konqueror');
+    test.ok(a.isDesktop, 'Desktop');
+    test.ok(a.isWindows, 'Windows');
+    test.ok(!a.isLinux, 'Linux');
+    test.ok(!a.isMac, 'Mac');
+    test.equal(a.Version, '5.5');
+
+    test.done();
+};
+
+exports['Windows XP IE 6.0'] = function(test) {
+
+    var s = 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)';
+
+    var a = ua.parse(s);
+
+    test.ok(!a.isMobile, 'Mobile');
+    test.ok(!a.isiPad, 'iPad');
+    test.ok(!a.isiPod, 'iPod');
+    test.ok(!a.isiPhone, 'iPhone');
+    test.ok(!a.isAndroid, 'Android');
+    test.ok(!a.isBlackberry, 'Blackberry');
+    test.ok(!a.isOpera, 'Opera');
+    test.ok(a.isIE, 'IE');
+    test.ok(!a.isSafari, 'Safari');
+    test.ok(!a.isFirefox, 'Firefox');
+    test.ok(!a.isWebkit, 'Webkit');
+    test.ok(!a.isChrome, 'Chrome');
+    test.ok(!a.isKonqueror, 'Konqueror');
+    test.ok(a.isDesktop, 'Desktop');
+    test.ok(a.isWindows, 'Windows');
+    test.ok(!a.isLinux, 'Linux');
+    test.ok(!a.isMac, 'Mac');
+    test.equal(a.Version, '6.0');
+
+    test.done();
+};
+
+exports['Windows XP IE 7.0'] = function(test) {
+
+    var s = 'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1)';
+
+    var a = ua.parse(s);
+
+    test.ok(!a.isMobile, 'Mobile');
+    test.ok(!a.isiPad, 'iPad');
+    test.ok(!a.isiPod, 'iPod');
+    test.ok(!a.isiPhone, 'iPhone');
+    test.ok(!a.isAndroid, 'Android');
+    test.ok(!a.isBlackberry, 'Blackberry');
+    test.ok(!a.isOpera, 'Opera');
+    test.ok(a.isIE, 'IE');
+    test.ok(!a.isSafari, 'Safari');
+    test.ok(!a.isFirefox, 'Firefox');
+    test.ok(!a.isWebkit, 'Webkit');
+    test.ok(!a.isChrome, 'Chrome');
+    test.ok(!a.isKonqueror, 'Konqueror');
+    test.ok(a.isDesktop, 'Desktop');
+    test.ok(a.isWindows, 'Windows');
+    test.ok(!a.isLinux, 'Linux');
+    test.ok(!a.isMac, 'Mac');
+    test.equal(a.Version, '7.0');
+
+    test.done();
+};
+
+exports['Windows XP Opera'] = function(test) {
+
+    var s = 'Opera/9.80 (Windows NT 5.1; U; en) Presto/2.10.229 Version/11.62';
+
+    var a = ua.parse(s);
+
+    test.ok(!a.isMobile, 'Mobile');
+    test.ok(!a.isiPad, 'iPad');
+    test.ok(!a.isiPod, 'iPod');
+    test.ok(!a.isiPhone, 'iPhone');
+    test.ok(!a.isAndroid, 'Android');
+    test.ok(!a.isBlackberry, 'Blackberry');
+    test.ok(a.isOpera, 'Opera');
+    test.ok(!a.isIE, 'IE');
+    test.ok(!a.isSafari, 'Safari');
+    test.ok(!a.isFirefox, 'Firefox');
+    test.ok(!a.isWebkit, 'Webkit');
+    test.ok(!a.isChrome, 'Chrome');
+    test.ok(!a.isKonqueror, 'Konqueror');
+    test.ok(a.isDesktop, 'Desktop');
+    test.ok(a.isWindows, 'Windows');
+    test.ok(!a.isLinux, 'Linux');
+    test.ok(!a.isMac, 'Mac');
+    test.equal(a.Version, '11.62');
+
+    test.done();
+};
+
+exports['Windows XP Safari'] = function(test) {
+
+    var s = 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/534.51.22 (KHTML, like Gecko)'
+    + ' Version/5.1.1 Safari/534.51.22';
+
+    var a = ua.parse(s);
+
+    test.ok(!a.isMobile, 'Mobile');
+    test.ok(!a.isiPad, 'iPad');
+    test.ok(!a.isiPod, 'iPod');
+    test.ok(!a.isiPhone, 'iPhone');
+    test.ok(!a.isAndroid, 'Android');
+    test.ok(!a.isBlackberry, 'Blackberry');
+    test.ok(!a.isOpera, 'Opera');
+    test.ok(!a.isIE, 'IE');
+    test.ok(a.isSafari, 'Safari');
+    test.ok(!a.isFirefox, 'Firefox');
+    test.ok(!a.isWebkit, 'Webkit');
+    test.ok(!a.isChrome, 'Chrome');
+    test.ok(!a.isKonqueror, 'Konqueror');
+    test.ok(a.isDesktop, 'Desktop');
+    test.ok(a.isWindows, 'Windows');
+    test.ok(!a.isLinux, 'Linux');
+    test.ok(!a.isMac, 'Mac');
+    test.equal(a.Version, '5.1.1');
+
+    test.done();
+};
+
+exports['Windows XP Chrome'] = function(test) {
+
+    var s = 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/535.19'
+        + ' (KHTML, like Gecko) Chrome/18.0.1025.162 Safari/535.19';
+
+    var a = ua.parse(s);
+
+    test.ok(!a.isMobile, 'Mobile');
+    test.ok(!a.isiPad, 'iPad');
+    test.ok(!a.isiPod, 'iPod');
+    test.ok(!a.isiPhone, 'iPhone');
+    test.ok(!a.isAndroid, 'Android');
+    test.ok(!a.isBlackberry, 'Blackberry');
+    test.ok(!a.isOpera, 'Opera');
+    test.ok(!a.isIE, 'IE');
+    test.ok(!a.isSafari, 'Safari');
+    test.ok(!a.isFirefox, 'Firefox');
+    test.ok(!a.isWebkit, 'Webkit');
+    test.ok(a.isChrome, 'Chrome');
+    test.ok(!a.isKonqueror, 'Konqueror');
+    test.ok(a.isDesktop, 'Desktop');
+    test.ok(a.isWindows, 'Windows');
+    test.ok(!a.isLinux, 'Linux');
+    test.ok(!a.isMac, 'Mac');
+    test.equal(a.Version, '18.0.1025.162');
+
+    test.done();
+};
+
+//
+
+exports['OS X Safari'] = function(test) {
+
+    var s = 'Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_5_8; en-us)'
+        + ' AppleWebKit/530.19.2 (KHTML, like Gecko) Version/4.0.2 Safari/530.19';
+
+    var a = ua.parse(s);
+
+    test.ok(!a.isMobile, 'Mobile');
+    test.ok(!a.isiPad, 'iPad');
+    test.ok(!a.isiPod, 'iPod');
+    test.ok(!a.isiPhone, 'iPhone');
+    test.ok(!a.isAndroid, 'Android');
+    test.ok(!a.isBlackberry, 'Blackberry');
+    test.ok(!a.isOpera, 'Opera');
+    test.ok(!a.isIE, 'IE');
+    test.ok(a.isSafari, 'Safari');
+    test.ok(!a.isFirefox, 'Firefox');
+    test.ok(!a.isWebkit, 'Webkit');
+    test.ok(!a.isChrome, 'Chrome');
+    test.ok(!a.isKonqueror, 'Konqueror');
+    test.ok(a.isDesktop, 'Desktop'); // XXX it actually is desktop?
+    test.ok(!a.isWindows, 'Windows');
+    test.ok(!a.isLinux, 'Linux');
+    test.ok(a.isMac, 'Mac');
+    test.equal(a.Version, '4.0.2');
+
+    test.done();
+};
+
+// Source:
+// http://www.gtrifonov.com/2011/04/15/google-android-user-agent-strings-2/
+
+exports['Android Samsung'] = function(test) {
+
+    var s = 'Mozilla/5.0 (Linux; U; Android 2.2; en-ca; SGH-T959D Build/FROYO) AppleWebKit/533.1'
+        + ' (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1';
+
+    var a = ua.parse(s);
+
+    test.ok(a.isMobile, 'Mobile'); // XXX not mobile?
+    test.ok(!a.isiPad, 'iPad');
+    test.ok(!a.isiPod, 'iPod');
+    test.ok(!a.isiPhone, 'iPhone');
+    test.ok(a.isAndroid, 'Android'); // XXX actually is android
+    test.ok(!a.isBlackberry, 'Blackberry');
+    test.ok(!a.isOpera, 'Opera');
+    test.ok(!a.isIE, 'IE');
+    test.ok(a.isSafari, 'Safari'); // XXX Safari?
+    test.ok(!a.isFirefox, 'Firefox');
+    test.ok(!a.isWebkit, 'Webkit');
+    test.ok(!a.isChrome, 'Chrome');
+    test.ok(!a.isKonqueror, 'Konqueror');
+    test.ok(!a.isDesktop, 'Desktop'); // XXX desktop?
+    test.ok(!a.isWindows, 'Windows');
+    test.ok(a.isLinux, 'Linux');
+    test.ok(!a.isMac, 'Mac');
+    test.equal(a.Version, '4.0');
+
+    test.done();
+};
+
+// Source:
+// Chrome UA Spoofer
+
+exports['Android Xoom'] = function(test) {
+
+    var s = 'Mozilla/5.0 (Linux; U; Android 3.0; en-us; Xoom Build/HRI39) AppleWebKit/534.13'
+        + ' (KHTML, like Gecko) Version/4.0 Safari/534.13';
+
+    var a = ua.parse(s);
+
+    test.ok(a.isMobile, 'Mobile'); // XXX not mobile?
+    test.ok(!a.isiPad, 'iPad');
+    test.ok(!a.isiPod, 'iPod');
+    test.ok(!a.isiPhone, 'iPhone');
+    test.ok(a.isAndroid, 'Android'); // XXX actually is android
+    test.ok(!a.isBlackberry, 'Blackberry');
+    test.ok(!a.isOpera, 'Opera');
+    test.ok(!a.isIE, 'IE');
+    test.ok(a.isSafari, 'Safari'); // XXX Safari?
+    test.ok(!a.isFirefox, 'Firefox');
+    test.ok(!a.isWebkit, 'Webkit');
+    test.ok(!a.isChrome, 'Chrome');
+    test.ok(!a.isKonqueror, 'Konqueror');
+    test.ok(!a.isDesktop, 'Desktop'); // XXX desktop?
+    test.ok(!a.isWindows, 'Windows');
+    test.ok(a.isLinux, 'Linux');
+    test.ok(!a.isMac, 'Mac');
+    test.equal(a.Version, '4.0');
+
+    test.done();
+};
+
+// Source
+// Chrome UA Spoofer
+
+exports['iPhone 4'] = function(test) {
+
+    var s = 'Mozilla/5.0 (iPhone; U; CPU iPhone OS 4_3_2 like Mac OS X; en-us) AppleWebKit/533.17.9'
+        + ' (KHTML, like Gecko) Version/5.0.2 Mobile/8H7 Safari/6533.18.5';
+
+    var a = ua.parse(s);
+
+    test.ok(a.isMobile, 'Mobile'); // XXX actually mobile device?
+    test.ok(!a.isiPad, 'iPad');
+    test.ok(!a.isiPod, 'iPod');
+    test.ok(a.isiPhone, 'iPhone');
+    test.ok(!a.isAndroid, 'Android');
+    test.ok(!a.isBlackberry, 'Blackberry');
+    test.ok(!a.isOpera, 'Opera');
+    test.ok(!a.isIE, 'IE');
+    test.ok(a.isSafari, 'Safari');
+    test.ok(!a.isFirefox, 'Firefox');
+    test.ok(!a.isWebkit, 'Webkit');
+    test.ok(!a.isChrome, 'Chrome');
+    test.ok(!a.isKonqueror, 'Konqueror');
+    test.ok(!a.isDesktop, 'Desktop');
+    test.ok(!a.isWindows, 'Windows');
+    test.ok(!a.isLinux, 'Linux');
+    test.ok(!a.isMac, 'Mac');
+    test.equal(a.Version, '5.0.2');
+
+    test.done();
+};
+
+// Source:
+// http://java.net/jira/browse/USER_AGENT_UTILS-6
+
+exports['Bada OS browser'] = function(test) {
+
+    var s = 'Mozilla/5.0 (SAMSUNG; SAMSUNG-GT-S8500/S8500NEJE5; U; Bada/1.0; fr-fr) AppleWebKit/533.1'
+        + ' (KHTML, like Gecko) Dolfin/2.0 Mobile WVGA SMM-MMS/1.2.0 NexPlayer/3.0 profile/MIDP-2.1 configuration/CLDC-1.1 OPN-B';
+
+    var a = ua.parse(s);
+
+    // XXX doesn't match anything
+
+    test.ok(a.isMobile, 'Mobile'); // XXX not a mobile device?
+    test.ok(!a.isiPad, 'iPad');
+    test.ok(!a.isiPod, 'iPod');
+    test.ok(!a.isiPhone, 'iPhone');
+    test.ok(!a.isAndroid, 'Android');
+    test.ok(!a.isBlackberry, 'Blackberry');
+    test.ok(!a.isOpera, 'Opera');
+    test.ok(!a.isIE, 'IE');
+    test.ok(!a.isSafari, 'Safari');
+    test.ok(!a.isFirefox, 'Firefox');
+    test.ok(!a.isWebkit, 'Webkit');
+    test.ok(!a.isChrome, 'Chrome');
+    test.ok(!a.isKonqueror, 'Konqueror');
+    test.ok(!a.isDesktop, 'Desktop');
+    test.ok(!a.isWindows, 'Windows');
+    test.ok(!a.isLinux, 'Linux');
+    test.ok(!a.isMac, 'Mac');
+    test.equal(a.Version, undefined);
+
+    test.done();
+};
+
+
+exports['America Online Browser'] = function(test) {
+
+    var s = 'Mozilla/4.0 (compatible; MSIE 7.0;'
+        + ' America Online Browser 1.1; Windows NT 5.1; (R1 1.5); .NET CLR 2.0.50727; InfoPath.1)';
+
+    var a = ua.parse(s);
+
+
+    test.ok(!a.isMobile, 'Mobile');
+    test.ok(!a.isiPad, 'iPad');
+    test.ok(!a.isiPod, 'iPod');
+    test.ok(!a.isiPhone, 'iPhone');
+    test.ok(!a.isAndroid, 'Android');
+    test.ok(!a.isBlackberry, 'Blackberry');
+    test.ok(!a.isOpera, 'Opera');
+    test.ok(a.isIE, 'IE');
+    test.ok(!a.isSafari, 'Safari');
+    test.ok(!a.isFirefox, 'Firefox');
+    test.ok(!a.isWebkit, 'Webkit');
+    test.ok(!a.isChrome, 'Chrome');
+    test.ok(!a.isKonqueror, 'Konqueror');
+    test.ok(a.isDesktop, 'Desktop');
+    test.ok(a.isWindows, 'Windows');
+    test.ok(!a.isLinux, 'Linux');
+    test.ok(!a.isMac, 'Mac');
+    test.equal(a.Version, '7.0');
+
+    test.done();
+};
