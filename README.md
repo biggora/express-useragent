@@ -1,3 +1,4 @@
+[![build status](https://secure.travis-ci.org/biggora/express-useragent.png)](http://travis-ci.org/biggora/express-useragent)
 # Middleware exposing user-agent for [ExpressJS](http://expressjs.com/)
 
 express-useragent is a simple ExpressJS user-agent middleware exposing user-agent details to your application and views.
