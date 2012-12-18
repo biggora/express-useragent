@@ -28,7 +28,7 @@ var srv = http.createServer(function (req, res) {
 srv.listen(3000);
 ```
 
-### for Express
+### for [ExpressJS](http://expressjs.com/)
 
 ```js
 var express = require('express')
@@ -41,6 +41,11 @@ app.get('/', function(req, res){
 });
 app.listen(3000);
 ```
+
+### for [CompoundJS](http://compoundjs.com)
+
+    $ compound install https://github.com/biggora/express-useragent.git
+
 
 module provides details such as the following:
 
