@@ -46,6 +46,19 @@ app.listen(3000);
 
     $ compound install https://github.com/biggora/express-useragent.git
 
+#### or manual setup in project config/environment.js
+
+```js
+var useragent = require('express-useragent');
+
+app.configure(function () {
+
+   // init useragent
+   app.use(useragent.express());
+
+   app.use(app.router);
+});
+```
 
 module provides details such as the following:
 
