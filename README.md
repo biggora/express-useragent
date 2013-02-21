@@ -28,6 +28,22 @@ var srv = http.createServer(function (req, res) {
 srv.listen(3000);
 ```
 
+### for [TrinteJS](http://www.trintejs.com/)
+
+is permanently included
+
+#### manual setup in project config/middleware.js
+
+```js
+var useragent = require('express-useragent');
+
+module.exports = function (app, express) {
+    app.configure(function () {
+        app.use(useragent.express());
+    });
+};
+```
+
 ### for [ExpressJS](http://expressjs.com/)
 
 ```js
@@ -92,11 +108,17 @@ The following projects use express-useragent.
 If you are using express-useragent in a project, app, or module, get on the list below
 by getting in touch or submitting a pull request with changes to the README.
 
+### Recommend extension
+
+- [TrinteJS](http://www.trintejs.com/) - Javascrpt MVC Framework for Node.JS
+- [CaminteJS](http://www.camintejs.com/) - Cross-db ORM for NodeJS
+
 ### Startups & Apps
 
 - [TViMama](http://tvimama.com/)
 - [GorkaTV](https://gorkatv.com/)
-
+- [TrinteJS](http://www.trintejs.com/)
+- [CaminteJS](http://www.camintejs.com/)
 
 ## Author
 
