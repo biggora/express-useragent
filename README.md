@@ -108,7 +108,7 @@ The following projects use express-useragent.
 If you are using express-useragent in a project, app, or module, get on the list below
 by getting in touch or submitting a pull request with changes to the README.
 
-### Recommend extension
+### Recommend extensions
 
 - [TrinteJS](http://www.trintejs.com/) - Javascrpt MVC Framework for Node.JS
 - [CaminteJS](http://www.camintejs.com/) - Cross-db ORM for NodeJS
