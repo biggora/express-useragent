@@ -12,6 +12,7 @@
     "useragent",
     "connect",
     "express",
+    "trinte",
     "railway",
     "compound",
     "middleware"
