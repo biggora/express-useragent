@@ -110,8 +110,12 @@ by getting in touch or submitting a pull request with changes to the README.
 
 ### Recommend extensions
 
-- [TrinteJS](http://www.trintejs.com/) - Javascrpt MVC Framework for Node.JS
-- [CaminteJS](http://www.camintejs.com/) - Cross-db ORM for NodeJS
+- [Bootstrap Fancy File Plugin](http://biggora.github.io/bootstrap-fancyfile/)
+- [Bootstrap Ajax Typeahead Plugin](https://github.com/biggora/bootstrap-ajax-typeahead)
+- [TrinteJS - Javascrpt MVC Framework for Node.JS](http://www.trintejs.com/)
+- [CaminteJS - Cross-db ORM for NodeJS](http://www.camintejs.com/)
+- [MongoDB Session Storage for ExpressJS](https://github.com/biggora/express-mongodb)
+- [2CO NodeJS adapter for 2checkout API payment gateway](https://github.com/biggora/2co)
 
 ### Startups & Apps
 
