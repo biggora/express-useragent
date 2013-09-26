@@ -82,6 +82,7 @@ module provides details such as the following:
 {
   "isMobile":false,
   "isDesktop":true,
+  "isBot":false,
   .....
   "Browser":"Chrome",
   "Version":"17.0.963.79",

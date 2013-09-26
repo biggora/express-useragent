@@ -1,7 +1,7 @@
 {
   "name": "express-useragent",
   "description": "ExpressJS user-agent middleware",
-  "version": "0.0.7-1",
+  "version": "0.0.8",
   "homepage": "https://github.com/biggora/express-useragent/",
   "repository": {
     "type": "git",

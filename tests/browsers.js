@@ -11,7 +11,7 @@ exports['iPad 2'] = function(test) {
 
     var a = ua.parse(s);
 
-    test.ok(a.isMobile, 'Mobile'); // XXX neither mobile neither desktop
+    test.ok(a.isMobile, 'Mobile');
     test.ok(a.isiPad, 'iPad');
     test.ok(!a.isiPod, 'iPod');
     test.ok(!a.isiPhone, 'iPhone');
@@ -24,10 +24,10 @@ exports['iPad 2'] = function(test) {
     test.ok(!a.isWebkit, 'Webkit');
     test.ok(!a.isChrome, 'Chrome');
     test.ok(!a.isKonqueror, 'Konqueror');
-    test.ok(!a.isDesktop, 'Desktop'); // XXX neither mobile neither desktop
+    test.ok(!a.isDesktop, 'Desktop');
     test.ok(!a.isWindows, 'Windows');
     test.ok(!a.isLinux, 'Linux');
-    test.ok(!a.isMac, 'Mac');
+    test.ok(a.isMac, 'Mac');
     test.equal(a.Version, '5.1');
 
     test.done();
@@ -119,7 +119,7 @@ exports['Linux Chrome 17'] = function(test) {
     test.done();
 };
 
-exports['Linux Ephiphany'] = function(test) {
+exports['Linux Ephiphany 2.30'] = function(test) {
 
     var s = 'Mozilla/5.0 (X11; U; Linux i686; en-us) AppleWebKit/531.2+ (KHTML, like Gecko)'
         + ' Version/5.0 Safari/531.2+ Debian/squeeze (2.30.6-1) Epiphany/2.30.6';
@@ -134,7 +134,8 @@ exports['Linux Ephiphany'] = function(test) {
     test.ok(!a.isBlackberry, 'Blackberry');
     test.ok(!a.isOpera, 'Opera');
     test.ok(!a.isIE, 'IE');
-    test.ok(a.isSafari, 'Safari'); // XXX not really safari?
+    test.ok(!a.isSafari, 'Safari'); 
+    test.ok(a.isEpiphany, 'Epiphany');
     test.ok(!a.isFirefox, 'Firefox');
     test.ok(!a.isWebkit, 'Webkit');
     test.ok(!a.isChrome, 'Chrome');
@@ -143,7 +144,65 @@ exports['Linux Ephiphany'] = function(test) {
     test.ok(!a.isWindows, 'Windows');
     test.ok(a.isLinux, 'Linux');
     test.ok(!a.isMac, 'Mac');
-    test.equal(a.Version, '5.0'); // XXX not really the correct version?
+    test.equal(a.Version, '2.30.6'); 
+
+    test.done();
+};
+
+exports['Windows 8 Chrome 28'] = function(test) {
+
+    var s = 'Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.95 Safari/537.36';
+
+    var a = ua.parse(s);
+
+    test.ok(!a.isMobile, 'Mobile');
+    test.ok(!a.isiPad, 'iPad');
+    test.ok(!a.isiPod, 'iPod');
+    test.ok(!a.isiPhone, 'iPhone');
+    test.ok(!a.isAndroid, 'Android');
+    test.ok(!a.isBlackberry, 'Blackberry');
+    test.ok(!a.isOpera, 'Opera');
+    test.ok(!a.isIE, 'IE');
+    test.ok(!a.isSafari, 'Safari');
+    test.ok(!a.isFirefox, 'Firefox');
+    test.ok(!a.isWebkit, 'Webkit');
+    test.ok(a.isChrome, 'Chrome');
+    test.ok(!a.isKonqueror, 'Konqueror');
+    test.ok(a.isDesktop, 'Desktop');
+    test.ok(a.isWindows, 'Windows');
+    test.ok(!a.isLinux, 'Linux');
+    test.ok(!a.isMac, 'Mac');
+    test.equal(a.Version, '28.0.1500.95');
+    test.equal(a.OS, 'Windows 8');
+
+    test.done();
+};
+
+exports['Windows 7 Firefox 23'] = function(test) {
+
+    var s = 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:23.0) Gecko/20100101 Firefox/23.0';
+
+    var a = ua.parse(s);
+
+    test.ok(!a.isMobile, 'Mobile');
+    test.ok(!a.isiPad, 'iPad');
+    test.ok(!a.isiPod, 'iPod');
+    test.ok(!a.isiPhone, 'iPhone');
+    test.ok(!a.isAndroid, 'Android');
+    test.ok(!a.isBlackberry, 'Blackberry');
+    test.ok(!a.isOpera, 'Opera');
+    test.ok(!a.isIE, 'IE');
+    test.ok(!a.isSafari, 'Safari');
+    test.ok(a.isFirefox, 'Firefox');
+    test.ok(!a.isWebkit, 'Webkit');
+    test.ok(!a.isChrome, 'Chrome');
+    test.ok(!a.isKonqueror, 'Konqueror');
+    test.ok(a.isDesktop, 'Desktop');
+    test.ok(a.isWindows, 'Windows');
+    test.ok(!a.isLinux, 'Linux');
+    test.ok(!a.isMac, 'Mac');
+    test.equal(a.Version, '23.0');
+    test.equal(a.OS, 'Windows 7');
 
     test.done();
 };
@@ -318,9 +377,38 @@ exports['Windows XP Chrome'] = function(test) {
     test.done();
 };
 
-//
 
-exports['OS X Safari'] = function(test) {
+exports['OS X OmniWeb 622'] = function(test) {
+
+    var s = 'Mozilla/5.0 (Macintosh; U; Intel Mac OS X; en-US) AppleWebKit/528.16'
+        + '(KHTML, like Gecko, Safari/528.16) OmniWeb/v622.8.0.112941';
+
+    var a = ua.parse(s);
+
+    test.ok(!a.isMobile, 'Mobile');
+    test.ok(!a.isiPad, 'iPad');
+    test.ok(!a.isiPod, 'iPod');
+    test.ok(!a.isiPhone, 'iPhone');
+    test.ok(!a.isAndroid, 'Android');
+    test.ok(!a.isBlackberry, 'Blackberry');
+    test.ok(!a.isOpera, 'Opera');
+    test.ok(!a.isIE, 'IE');
+    test.ok(!a.isSafari, 'Safari');
+    test.ok(a.isOmniWeb, 'OmniWeb');
+    test.ok(!a.isFirefox, 'Firefox');
+    test.ok(!a.isWebkit, 'Webkit');
+    test.ok(!a.isChrome, 'Chrome');
+    test.ok(!a.isKonqueror, 'Konqueror');
+    test.ok(a.isDesktop, 'Desktop'); 
+    test.ok(!a.isWindows, 'Windows');
+    test.ok(!a.isLinux, 'Linux');
+    test.ok(a.isMac, 'Mac');
+    test.equal(a.Version, '622.8.0.112941');
+
+    test.done();
+};
+
+exports['OS X Safari 530'] = function(test) {
 
     var s = 'Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_5_8; en-us)'
         + ' AppleWebKit/530.19.2 (KHTML, like Gecko) Version/4.0.2 Safari/530.19';
@@ -340,7 +428,7 @@ exports['OS X Safari'] = function(test) {
     test.ok(!a.isWebkit, 'Webkit');
     test.ok(!a.isChrome, 'Chrome');
     test.ok(!a.isKonqueror, 'Konqueror');
-    test.ok(a.isDesktop, 'Desktop'); // XXX it actually is desktop?
+    test.ok(a.isDesktop, 'Desktop'); 
     test.ok(!a.isWindows, 'Windows');
     test.ok(!a.isLinux, 'Linux');
     test.ok(a.isMac, 'Mac');
@@ -359,20 +447,20 @@ exports['Android Samsung'] = function(test) {
 
     var a = ua.parse(s);
 
-    test.ok(a.isMobile, 'Mobile'); // XXX not mobile?
+    test.ok(a.isMobile, 'Mobile');
     test.ok(!a.isiPad, 'iPad');
     test.ok(!a.isiPod, 'iPod');
     test.ok(!a.isiPhone, 'iPhone');
-    test.ok(a.isAndroid, 'Android'); // XXX actually is android
+    test.ok(a.isAndroid, 'Android'); 
     test.ok(!a.isBlackberry, 'Blackberry');
     test.ok(!a.isOpera, 'Opera');
     test.ok(!a.isIE, 'IE');
-    test.ok(a.isSafari, 'Safari'); // XXX Safari?
+    test.ok(a.isSafari, 'Safari');
     test.ok(!a.isFirefox, 'Firefox');
     test.ok(!a.isWebkit, 'Webkit');
     test.ok(!a.isChrome, 'Chrome');
     test.ok(!a.isKonqueror, 'Konqueror');
-    test.ok(!a.isDesktop, 'Desktop'); // XXX desktop?
+    test.ok(!a.isDesktop, 'Desktop');
     test.ok(!a.isWindows, 'Windows');
     test.ok(a.isLinux, 'Linux');
     test.ok(!a.isMac, 'Mac');
@@ -391,20 +479,20 @@ exports['Android Xoom'] = function(test) {
 
     var a = ua.parse(s);
 
-    test.ok(a.isMobile, 'Mobile'); // XXX not mobile?
+    test.ok(a.isMobile, 'Mobile');
     test.ok(!a.isiPad, 'iPad');
     test.ok(!a.isiPod, 'iPod');
     test.ok(!a.isiPhone, 'iPhone');
-    test.ok(a.isAndroid, 'Android'); // XXX actually is android
+    test.ok(a.isAndroid, 'Android');
     test.ok(!a.isBlackberry, 'Blackberry');
     test.ok(!a.isOpera, 'Opera');
     test.ok(!a.isIE, 'IE');
-    test.ok(a.isSafari, 'Safari'); // XXX Safari?
+    test.ok(a.isSafari, 'Safari');
     test.ok(!a.isFirefox, 'Firefox');
     test.ok(!a.isWebkit, 'Webkit');
     test.ok(!a.isChrome, 'Chrome');
     test.ok(!a.isKonqueror, 'Konqueror');
-    test.ok(!a.isDesktop, 'Desktop'); // XXX desktop?
+    test.ok(!a.isDesktop, 'Desktop');
     test.ok(!a.isWindows, 'Windows');
     test.ok(a.isLinux, 'Linux');
     test.ok(!a.isMac, 'Mac');
@@ -423,7 +511,7 @@ exports['iPhone 4'] = function(test) {
 
     var a = ua.parse(s);
 
-    test.ok(a.isMobile, 'Mobile'); // XXX actually mobile device?
+    test.ok(a.isMobile, 'Mobile');
     test.ok(!a.isiPad, 'iPad');
     test.ok(!a.isiPod, 'iPod');
     test.ok(a.isiPhone, 'iPhone');
@@ -439,7 +527,7 @@ exports['iPhone 4'] = function(test) {
     test.ok(!a.isDesktop, 'Desktop');
     test.ok(!a.isWindows, 'Windows');
     test.ok(!a.isLinux, 'Linux');
-    test.ok(!a.isMac, 'Mac');
+    test.ok(a.isMac, 'Mac');
     test.equal(a.Version, '5.0.2');
 
     test.done();
@@ -455,9 +543,7 @@ exports['Bada OS browser'] = function(test) {
 
     var a = ua.parse(s);
 
-    // XXX doesn't match anything
-
-    test.ok(a.isMobile, 'Mobile'); // XXX not a mobile device?
+    test.ok(a.isMobile, 'Mobile');
     test.ok(!a.isiPad, 'iPad');
     test.ok(!a.isiPod, 'iPod');
     test.ok(!a.isiPhone, 'iPhone');
@@ -486,7 +572,6 @@ exports['America Online Browser'] = function(test) {
         + ' America Online Browser 1.1; Windows NT 5.1; (R1 1.5); .NET CLR 2.0.50727; InfoPath.1)';
 
     var a = ua.parse(s);
-
 
     test.ok(!a.isMobile, 'Mobile');
     test.ok(!a.isiPad, 'iPad');
