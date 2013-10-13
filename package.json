@@ -1,7 +1,7 @@
 {
   "name": "express-useragent",
   "description": "ExpressJS user-agent middleware",
-  "version": "0.0.8-1",
+  "version": "0.0.9",
   "homepage": "https://github.com/biggora/express-useragent/",
   "repository": {
     "type": "git",
@@ -27,9 +27,9 @@
   },
   "dependencies": {},
   "devDependencies": {
-      "connect": ">= 1.7.1 < 2.0.0",
-      "express": ">= 2.5.0 < 3.0.0",
-      "nodeunit": ">=0.5.4"
+      "connect": "2.9.x",
+      "express": "3.4.x",
+      "nodeunit": "0.8.1"
   },
   "scripts": {
     "test": "nodeunit tests/browsers.js"
