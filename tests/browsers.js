@@ -481,6 +481,36 @@ exports['OS X Safari 530'] = function(test) {
     test.done();
 };
 
+exports['OS X Chromium'] = function(test) {
+
+    var s = 'Mozilla/5.0 (iPad; CPU OS 7_0_4 like Mac OS X) AppleWebKit/537.51.1 (KHTML, like Gecko) CriOS/32.0.1700.20 Mobile/11B554a Safari/9537.53';
+
+    var a = ua.parse(s);
+
+    test.ok(a.isMobile, 'Mobile');
+    test.ok(a.isiPad, 'iPad');
+    test.ok(!a.isiPod, 'iPod');
+    test.ok(!a.isiPhone, 'iPhone');
+    test.ok(!a.isAndroid, 'Android');
+    test.ok(!a.isBlackberry, 'Blackberry');
+    test.ok(!a.isOpera, 'Opera');
+    test.ok(!a.isIE, 'IE');
+    test.ok(!a.isSafari, 'Safari');
+    test.ok(!a.isFirefox, 'Firefox');
+    test.ok(!a.isWebkit, 'Webkit');
+    test.ok(a.isChrome, 'Chrome');
+    test.ok(!a.isKonqueror, 'Konqueror');
+    test.ok(!a.isDesktop, 'Desktop');
+    test.ok(!a.isWindows, 'Windows');
+    test.ok(!a.isLinux, 'Linux');
+    test.ok(a.isMac, 'Mac');
+    test.ok(!a.isWindowsPhone, 'Windows Phone');
+    test.equal(a.Version, '32.0.1700.20');
+    test.ok(!a.isIECompatibilityMode);
+
+    test.done();
+};
+
 // Source:
 // http://www.gtrifonov.com/2011/04/15/google-android-user-agent-strings-2/
 
@@ -880,3 +910,4 @@ exports['Windows XP IE 9.0 - Compatibility mode'] = function(test) {
 
     test.done();
 };
+
