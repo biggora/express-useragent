@@ -1,13 +1,43 @@
 {
   "name": "express-useragent",
-  "description": "ExpressJS/Connect user-agent middleware exposing",
-  "version": "0.0.11",
+  "description": "ExpressJS/Connect/TrinteJS user-agent middleware exposing",
+  "version": "0.0.12",
   "homepage": "https://github.com/biggora/express-useragent/",
   "repository": {
     "type": "git",
     "url": "git://github.com/biggora/express-useragent.git"
   },
-  "author": "Aleksej Gordejev <aleksej@gordejev.lv> (https://github.com/biggora/)",
+  "author":     {
+      "name": "Aleksej Gordejev",
+      "email" : "aleksej@gordejev.lv",
+      "url": "https://github.com/biggora"
+    },
+  "contributors": [
+    {
+      "name": "Kacper Glowacki",
+      "url": "https://github.com/kacperus"
+    },
+    {
+      "name": "elisee",
+      "url": "https://github.com/elisee"
+    },
+    {
+      "name": "Bitdeli Chef",
+      "url": "https://github.com/bitdeli-chef"
+    },
+    {
+      "name": "Nicolas Tobo",
+      "url": "https://github.com/nicolastobo"
+    },
+    {
+      "name": "Samy Pessé",
+      "url": "https://github.com/SamyPesse"
+    },
+    {
+      "name": "Artem Nezvigin",
+      "url": "https://github.com/artnez"
+    }
+  ],
   "keywords": [
     "useragent",
     "connect",
