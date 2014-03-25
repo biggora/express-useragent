@@ -64,6 +64,35 @@ exports['Linux Iceweasel'] = function(test) {
     test.done();
 };
 
+exports['Linux 64 Chrome'] = function(test) {
+
+    var s = 'User-Agent:Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.152 Safari/537.36';
+
+    var a = ua.parse(s);
+
+    test.ok(!a.isMobile, 'Mobile');
+    test.ok(!a.isiPad, 'iPad');
+    test.ok(!a.isiPod, 'iPod');
+    test.ok(!a.isiPhone, 'iPhone');
+    test.ok(!a.isAndroid, 'Android');
+    test.ok(!a.isBlackberry, 'Blackberry');
+    test.ok(!a.isOpera, 'Opera');
+    test.ok(!a.isIE, 'IE');
+    test.ok(!a.isSafari, 'Safari');
+    test.ok(!a.isFirefox, 'Firefox');
+    test.ok(!a.isWebkit, 'Webkit');
+    test.ok(a.isChrome, 'Chrome');
+    test.ok(!a.isKonqueror, 'Konqueror');
+    test.ok(a.isDesktop, 'Desktop');
+    test.ok(!a.isWindows, 'Windows');
+    test.ok(a.isLinux, 'Linux');
+    test.ok(a.isLinux64, 'Linux 64');
+    test.ok(!a.isMac, 'Mac');
+    test.ok(!a.isWindowsPhone, 'Windows Phone');
+
+    test.done();
+};
+
 exports['Linux Firefox 11'] = function(test) {
 
     var s = 'Mozilla/5.0 (X11; Linux i686; rv:11.0) Gecko/20100101 Firefox/11.0';
@@ -86,6 +115,7 @@ exports['Linux Firefox 11'] = function(test) {
     test.ok(a.isDesktop, 'Desktop');
     test.ok(!a.isWindows, 'Windows');
     test.ok(a.isLinux, 'Linux');
+    test.ok(!a.isLinux64, 'Linux 64');
     test.ok(!a.isMac, 'Mac');
     test.ok(!a.isWindowsPhone, 'Windows Phone');
     test.equal(a.Version, '11.0');
