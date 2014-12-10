@@ -126,10 +126,13 @@ by getting in touch or submitting a pull request with changes to the README.
 - [TrinteJS](http://www.trintejs.com/)
 - [CaminteJS](http://www.camintejs.com/)
 
+## Running Tests
+Ensure you have [nodeunit](https://github.com/caolan/nodeunit) by running ```npm install -g nodeunit```.
+Then, run ```npm test```.
+
 ## Author
 
 Aleksej Gordejev (aleksej@gordejev.lv).
-
 
 ## License
 
@@ -166,4 +169,3 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 [![Analytics](https://ga-beacon.appspot.com/UA-22788134-5/express-useragent/readme)](https://github.com/igrigorik/ga-beacon)
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/biggora/express-useragent/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
