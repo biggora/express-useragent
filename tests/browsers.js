@@ -123,6 +123,38 @@ exports['Linux Chrome 17'] = function(test) {
     test.done();
 };
 
+
+exports['Linux Chromium 39'] = function(test) {
+
+    var s = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko)'
+        + ' Ubuntu Chromium/39.0.2171.65 Chrome/39.0.2171.65 Safari/537.36';
+
+    var a = ua.parse(s);
+
+    test.ok(!a.isMobile, 'Mobile');
+    test.ok(!a.isiPad, 'iPad');
+    test.ok(!a.isiPod, 'iPod');
+    test.ok(!a.isiPhone, 'iPhone');
+    test.ok(!a.isAndroid, 'Android');
+    test.ok(!a.isBlackberry, 'Blackberry');
+    test.ok(!a.isOpera, 'Opera');
+    test.ok(!a.isIE, 'IE');
+    test.ok(!a.isSafari, 'Safari');
+    test.ok(!a.isFirefox, 'Firefox');
+    test.ok(!a.isWebkit, 'Webkit');
+    test.ok(a.isChrome, 'Chrome');
+    test.ok(!a.isKonqueror, 'Konqueror');
+    test.ok(a.isDesktop, 'Desktop');
+    test.ok(!a.isWindows, 'Windows');
+    test.ok(a.isLinux, 'Linux');
+    test.ok(!a.isMac, 'Mac');
+    test.ok(!a.isWindowsPhone, 'Windows Phone');
+    test.equal(a.Version, '39.0.2171.65');
+    test.ok(!a.isIECompatibilityMode);
+
+    test.done();
+};
+
 exports['Linux Ephiphany 2.30'] = function(test) {
 
     var s = 'Mozilla/5.0 (X11; U; Linux i686; en-us) AppleWebKit/531.2+ (KHTML, like Gecko)'
