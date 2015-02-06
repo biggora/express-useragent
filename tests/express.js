@@ -13,7 +13,7 @@
  */
 
 var Express = require('express')
-  , App = Express.createServer()
+  , App = Express()
   , Useragent = require('./../lib/express-useragent');
 
 
