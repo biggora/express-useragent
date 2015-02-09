@@ -590,7 +590,7 @@ exports['OS X Chromium'] = function (test) {
     test.ok(!a.isSafari, 'Safari');
     test.ok(!a.isFirefox, 'Firefox');
     test.ok(!a.isWebkit, 'Webkit');
-    test.ok(a.isChrome, 'Chrome');
+    test.ok(a.isChrome, 'Chromium');
     test.ok(!a.isKonqueror, 'Konqueror');
     test.ok(!a.isDesktop, 'Desktop');
     test.ok(!a.isWindows, 'Windows');
