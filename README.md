@@ -9,7 +9,7 @@ express-useragent is a simple ExpressJS user-agent middleware exposing user-agen
 Installation is done using the Node Package Manager (npm). If you don't have npm installed on your system you can download it from [npmjs.org](http://npmjs.org/)
 To install express-useragent:
 
-    $ npm install express-useragent
+    $ npm install express-useragent --save
 
 ## Usage overview
 
