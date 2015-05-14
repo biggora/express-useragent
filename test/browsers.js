@@ -2,7 +2,7 @@
  * @author Raivo Laanemets <raivo@infdot.com>
  */
 
-var ua = require('../lib/express-useragent');
+var ua = require('../');
 
 exports['iPad 2'] = function (test) {
 
@@ -641,8 +641,8 @@ exports['Android Samsung'] = function (test) {
 
 exports['Android Xoom'] = function (test) {
 
-    var s = 'Mozilla/5.0 (Linux; U; Android 3.0; en-us; Xoom Build/HRI39) AppleWebKit/534.13'
-        + ' (KHTML, like Gecko) Version/4.0 Safari/534.13';
+    var s = 'Mozilla/5.0 (Linux; U; Android 3.0; en-us; Xoom Build/HRI39) AppleWebKit/534.13' +
+        ' (KHTML, like Gecko) Version/4.0 Safari/534.13';
 
     var a = ua.parse(s);
 
@@ -674,8 +674,8 @@ exports['Android Xoom'] = function (test) {
 
 exports['iPhone 4'] = function (test) {
 
-    var s = 'Mozilla/5.0 (iPhone; U; CPU iPhone OS 4_3_2 like Mac OS X; en-us) AppleWebKit/533.17.9'
-        + ' (KHTML, like Gecko) Version/5.0.2 Mobile/8H7 Safari/6533.18.5';
+    var s = 'Mozilla/5.0 (iPhone; U; CPU iPhone OS 4_3_2 like Mac OS X; en-us) AppleWebKit/533.17.9' +
+        ' (KHTML, like Gecko) Version/5.0.2 Mobile/8H7 Safari/6533.18.5';
 
     var a = ua.parse(s);
 
@@ -707,8 +707,9 @@ exports['iPhone 4'] = function (test) {
 
 exports['Bada OS browser'] = function (test) {
 
-    var s = 'Mozilla/5.0 (SAMSUNG; SAMSUNG-GT-S8500/S8500NEJE5; U; Bada/1.0; fr-fr) AppleWebKit/533.1'
-        + ' (KHTML, like Gecko) Dolfin/2.0 Mobile WVGA SMM-MMS/1.2.0 NexPlayer/3.0 profile/MIDP-2.1 configuration/CLDC-1.1 OPN-B';
+    var s = 'Mozilla/5.0 (SAMSUNG; SAMSUNG-GT-S8500/S8500NEJE5; U; Bada/1.0; fr-fr) AppleWebKit/533.1' +
+        ' (KHTML, like Gecko) Dolfin/2.0 Mobile WVGA SMM-MMS/1.2.0 NexPlayer/3.0 profile/MIDP-2.1 ' +
+        'configuration/CLDC-1.1 OPN-B';
 
     var a = ua.parse(s);
 
@@ -1003,7 +1004,8 @@ exports['Windows XP IE 7.0 - Compatibility mode (invalid mode)'] = function (tes
 
 exports['Windows XP IE 9.0 - Compatibility mode'] = function (test) {
 
-    var s = 'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.1; WOW64; Trident/5.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C)';
+    var s = 'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.1; WOW64; Trident/5.0; SLCC2; ' +
+        '.NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C)';
 
     var a = ua.parse(s);
 

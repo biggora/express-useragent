@@ -4,12 +4,42 @@
  * @created     2012-03-24 16:21:10
  * @category    Express Helpers
  * @package     express-useragent
- * @version     0.0.8
+ * @version     0.1.8
  * @copyright   Copyright (c) 2009-2012 - All rights reserved.
  * @license     MIT License
  * @author      Alexey Gordeyev IK <aleksej@gordejev.lv>
  * @link        http://www.gordejev.lv
  *
  */
-
-module.exports = require('./lib/express-useragent');
+var UserAgent = require('./lib/express-useragent').UserAgent;
+module.exports = new UserAgent();
+module.exports.UserAgent = UserAgent;
+module.exports.express = function () {
+    return function (req, res, next) {
+        var source = req.headers['user-agent'] || '',
+            ua = new UserAgent();
+        if (typeof source === 'undefined') {
+            source = "unknown";
+        }
+        ua.Agent.source = source.replace(/^\s*/, '').replace(/\s*$/, '');
+        ua.Agent.OS = ua.getOS(ua.Agent.source);
+        ua.Agent.Platform = ua.getPlatform(ua.Agent.source);
+        ua.Agent.Browser = ua.getBrowser(ua.Agent.source);
+        ua.Agent.Version = ua.getBrowserVersion(ua.Agent.source);
+        ua.testNginxGeoIP(req.headers);
+        ua.testBot();
+        ua.testMobile();
+        ua.testAndroidTablet();
+        ua.testTablet();
+        ua.testCompatibilityMode();
+        ua.testSilk();
+        ua.testKindleFire();
+        req.useragent = ua.Agent;
+        if ('function' === typeof res.locals) {
+            res.locals({useragent: ua.Agent});
+        } else {
+            res.locals.useragent = ua.Agent;
+        }
+        next();
+    };
+};

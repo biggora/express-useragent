@@ -1,5 +1,5 @@
 /*!
- * express-useragent.js v0.1.8 (https://github.com/biggora/express-useragent/)
+ * express-useragent.js v0.1.7 (https://github.com/biggora/express-useragent/)
  * Copyright 2011-2015 Alexey Gordeyev
  * Licensed under MIT (https://github.com/biggora/express-useragent/blob/master/LICENSE)
  */
@@ -328,38 +328,38 @@ var UserAgent = function () {
     this.getPlatform = function (string) {
         switch (true) {
             case this._Platform.Windows.test(string):
-                return 'Microsoft Windows';
+                return "Microsoft Windows";
             case this._Platform.WindowsPhone.test(string):
                 this.Agent.isWindowsPhone = true;
-                return 'Microsoft Windows Phone';
+                return "Microsoft Windows Phone";
             case this._Platform.Mac.test(string):
-                return 'Apple Mac';
+                return "Apple Mac";
             case this._Platform.Curl.test(string):
-                return 'Curl';
+                return "Curl";
             case this._Platform.Android.test(string):
                 this.Agent.isAndroid = true;
-                return 'Android';
+                return "Android";
             case this._Platform.Blackberry.test(string):
                 this.Agent.isBlackberry = true;
-                return 'Blackberry';
+                return "Blackberry";
             case this._Platform.Linux.test(string):
-                return 'Linux';
+                return "Linux";
             case this._Platform.Wii.test(string):
-                return 'Wii';
+                return "Wii";
             case this._Platform.Playstation.test(string):
-                return 'Playstation';
+                return "Playstation";
             case this._Platform.iPad.test(string):
                 this.Agent.isiPad = true;
-                return 'iPad';
+                return "iPad";
             case this._Platform.iPod.test(string):
                 this.Agent.isiPod = true;
-                return 'iPod';
+                return "iPod";
             case this._Platform.iPhone.test(string):
                 this.Agent.isiPhone = true;
-                return 'iPhone';
+                return "iPhone";
             case this._Platform.Samsung.test(string):
                 this.Agent.isiSamsung = true;
-                return 'Samsung';
+                return "Samsung";
             default:
                 return 'unknown';
         }
@@ -540,4 +540,4 @@ var UserAgent = function () {
     return this;
 };
 
-module.exports.UserAgent = UserAgent;
+window.UserAgent = UserAgent;

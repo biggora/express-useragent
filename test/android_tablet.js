@@ -3,11 +3,11 @@
  *
  * http://android-developers.blogspot.com/2010/12/android-browser-user-agent-issues.html
  * Based on the above post to detect the Android tablet.
-**/
+ **/
 
-var ua = require('../lib/express-useragent');
+var ua = require('../');
 
-exports['Andriod Tablet'] = function(test) {
+exports['Andriod Tablet'] = function (test) {
 
     var source = '';
     source += 'Mozilla/5.0 (Linux; U; Android 4.0.4; en-us; ';
@@ -47,7 +47,7 @@ exports['Andriod Tablet'] = function(test) {
     test.equal(userAgent.Browser, 'Safari');
     test.equal(userAgent.OS, 'Linux');
     test.equal(userAgent.Platform, 'Android');
-    test.equal(0, Object.keys(userAgent.GeoIP).length );
+    test.equal(0, Object.keys(userAgent.GeoIP).length);
     test.equal(userAgent.Version, '4.0');
 
     test.done();

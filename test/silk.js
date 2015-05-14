@@ -1,10 +1,9 @@
+var ua = require('../');
 
-var ua = require('../lib/express-useragent');
-
-exports['Macintosh Silk'] = function(test) {
+exports['Macintosh Silk'] = function (test) {
 
     var s = 'Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_3; en-us; Silk/1.0.13.81_10003810) ' +
-            'AppleWebKit/533.16 (KHTML, like Gecko) Version/5.0 Safari/533.16 Silk-Accelerated=true';
+        'AppleWebKit/533.16 (KHTML, like Gecko) Version/5.0 Safari/533.16 Silk-Accelerated=true';
 
     var a = ua.parse(s);
 
@@ -33,10 +32,10 @@ exports['Macintosh Silk'] = function(test) {
     test.done();
 };
 
-exports['Android Silk'] = function(test) {
+exports['Android Silk'] = function (test) {
 
     var s = 'Mozilla/5.0 (Linux; U; Android 2.3.4; en-us; Silk/1.0.13.81_10003810) AppleWebKit/533.1 (KHTML, like Gecko) ' +
-            'Version/4.0 Mobile Safari/533.1 Silk-Accelerated=true';
+        'Version/4.0 Mobile Safari/533.1 Silk-Accelerated=true';
 
     var a = ua.parse(s);
 
@@ -65,10 +64,10 @@ exports['Android Silk'] = function(test) {
     test.done();
 };
 
-exports['Kindle Fire HDX 7 Tablet'] = function(test) {
+exports['Kindle Fire HDX 7 Tablet'] = function (test) {
 
-    var s = 'Mozilla/5.0 (Linux; U; Android 4.2.2; en-us; KFTHWI Build/JDQ39) AppleWebKit/537.36 (KHTML, like Gecko) '+
-            'Silk/3.22 like Chrome/34.0.1847.137 Safari/537.36';
+    var s = 'Mozilla/5.0 (Linux; U; Android 4.2.2; en-us; KFTHWI Build/JDQ39) AppleWebKit/537.36 (KHTML, like Gecko) ' +
+        'Silk/3.22 like Chrome/34.0.1847.137 Safari/537.36';
 
     var a = ua.parse(s);
 
@@ -97,10 +96,10 @@ exports['Kindle Fire HDX 7 Tablet'] = function(test) {
     test.done();
 };
 
-exports['Kindle Fire Desktop'] = function(test) {
+exports['Kindle Fire Desktop'] = function (test) {
 
-    var s = 'Mozilla/5.0 (X11; Linux x86_64; U; en-us) AppleWebKit/537.36 (KHTML, like Gecko) '+
-            'Silk/3.22 like Chrome/34.0.1847.137 Safari/537.36';
+    var s = 'Mozilla/5.0 (X11; Linux x86_64; U; en-us) AppleWebKit/537.36 (KHTML, like Gecko) ' +
+        'Silk/3.22 like Chrome/34.0.1847.137 Safari/537.36';
 
     var a = ua.parse(s);
 
@@ -129,10 +128,10 @@ exports['Kindle Fire Desktop'] = function(test) {
     test.done();
 };
 
-exports['Kindle Fire HDX 7 Mobile'] = function(test) {
+exports['Kindle Fire HDX 7 Mobile'] = function (test) {
 
-    var s = 'Mozilla/5.0 (Linux; U; Android 4.2.2; en-us; KFTHWI Build/JDQ39) AppleWebKit/537.36 (KHTML, like Gecko) '+
-            'Silk/3.22 like Chrome/34.0.1847.138 Safari/537.36';
+    var s = 'Mozilla/5.0 (Linux; U; Android 4.2.2; en-us; KFTHWI Build/JDQ39) AppleWebKit/537.36 (KHTML, like Gecko) ' +
+        'Silk/3.22 like Chrome/34.0.1847.138 Safari/537.36';
 
     var a = ua.parse(s);
 

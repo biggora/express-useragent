@@ -13,7 +13,7 @@ To install express-useragent:
 
 ## Usage overview
 
-### Simple
+### Simple Node App
 
 ```js
 var http = require('http')
@@ -39,7 +39,7 @@ is permanently included
 var useragent = require('express-useragent');
 
 module.exports = function (app, express) {
-    app.configure(function () {
+    app.use(function () {
         app.use(useragent.express());
     });
 };
@@ -48,33 +48,15 @@ module.exports = function (app, express) {
 ### for [ExpressJS](http://expressjs.com/)
 
 ```js
-var express = require('express')
-  , app = express.createServer()
-  , useragent = require('express-useragent');
+var express = require('express');
+var app = express();
+var useragent = require('express-useragent');
 
 app.use(useragent.express());
 app.get('/', function(req, res){
     res.send(req.useragent);
 });
 app.listen(3000);
-```
-
-### for [CompoundJS](http://compoundjs.com)
-
-    $ compound install https://github.com/biggora/express-useragent.git
-
-#### or manual setup in project config/environment.js
-
-```js
-var useragent = require('express-useragent');
-
-app.configure(function () {
-
-   // init useragent
-   app.use(useragent.express());
-
-   app.use(app.router);
-});
 ```
 
 module provides details such as the following:
@@ -89,7 +71,7 @@ module provides details such as the following:
   "Version":"17.0.963.79",
   "OS":"Windows 7",
   "Platform":"Microsoft Windows",
-  "source":"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.11 (KHTML, like Gecko) Chrome/17.0.963.79 Safari/535.11"
+  "source":"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.11 (KHTML, like Gecko) Chrome/17.0.963.79..."
 }
 
 ```
@@ -102,6 +84,43 @@ provides an easy way to access the user-agent as:
 - `req.useragent` from your app server
 - `useragent` helper accessible from your `express` views.
 
+## Client Side
+
+* Clone the repo: `git clone git://github.com/biggora/express-useragent.git`
+* Or Install with [Bower](http://twitter.github.com/bower): `bower install express-useragent`.
+
+The client side version of express-useragent available in the `dist/` subdirectory.
+
+#### Include file in your HTML. The minimum required for this plugin are:
+```
+    <script type="text/javascript" src="/path/to/express-useragent.js"></script>
+```
+#### Execute the plugin:
+```javascript
+    var userAgent = new UserAgent().parse(navigator.userAgent);
+```
+
+
+## Running Tests
+
+To run the test suite, first install the dependencies, then run `npm test`:
+
+```bash
+npm install
+npm test
+```
+
+#### Run Example Node App
+
+```bash
+npm run-script http
+```
+
+#### Run Example Express App
+
+```bash
+npm run-script express
+```
 
 ## In the Wild
 

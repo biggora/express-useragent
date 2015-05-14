@@ -1,6 +1,6 @@
 {
   "name": "express-useragent",
-  "description": "ExpressJS/Connect/TrinteJS user-agent middleware exposing",
+  "description": "Fast User-Agent exposing",
   "version": "0.1.8",
   "homepage": "https://github.com/biggora/express-useragent/",
   "repository": {
@@ -36,7 +36,7 @@
       "url": "https://github.com/nicolastobo"
     },
     {
-      "name": "Samy Pess�",
+      "name": "Samy Pess?",
       "url": "https://github.com/SamyPesse"
     },
     {
@@ -46,38 +46,22 @@
   ],
   "keywords": [
     "useragent",
-    "connect",
+    "user-agent",
     "express",
     "trinte",
-    "browser",
     "compound",
     "middleware"
   ],
-  "main": "./index.js",
-  "scripts": {
-    "test": "nodeunit  test/browsers.js",
-    "express": "node test/express.js",
-    "http": "node test/http.js",
-    "build-js": "grunt build"
-  },
-  "directories": {
-    "lib": "lib",
-    "test": "test"
-  },
-  "engines": {
-    "node": ">=0.8"
-  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "test",
+    "lib",
+    ".idea",
+    "Gruntfile.js",
+    "index.js",
+    "index.js"
+  ],
   "dependencies": {},
-  "devDependencies": {
-    "express": ">= 3.0.0",
-    "mocha":"*",
-    "chai":"*",
-    "bower":"*",
-    "grunt": "*",
-    "grunt-contrib-clean": "*",
-    "grunt-contrib-concat": "*",
-    "grunt-string-replace": "*",
-    "grunt-contrib-uglify":"*"
-  }
+  "devDependencies": {}
 }
-

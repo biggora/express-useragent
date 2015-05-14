@@ -13,8 +13,7 @@
  */
 
 
-
-var Ua = require('./../lib/express-useragent');
+var Ua = require('./../');
 
 var ua1 = Ua.parse('Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.1.16) Gecko/20111108 Iceweasel/3.5.16 (like Firefox/3.5.16)');
 console.log('Ua 1: ' + ua1.Browser);
