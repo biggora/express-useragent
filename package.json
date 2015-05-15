@@ -70,8 +70,7 @@
   "dependencies": {},
   "devDependencies": {
     "express": ">= 3.0.0",
-    "mocha":"*",
-    "chai":"*",
+    "nodeunit":"*",
     "bower":"*",
     "grunt": "*",
     "grunt-contrib-clean": "*",
