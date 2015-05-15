@@ -102,7 +102,8 @@ The client side version of express-useragent available in the `lib/` subdirector
 
 ## Running Tests
 
-To run the test suite, first install the dependencies, then run `npm test`:
+Ensure you have [nodeunit](https://github.com/caolan/nodeunit) by running ```npm install -g nodeunit```.
+Then, run ```npm test```.
 
 ```bash
 npm install
@@ -143,10 +144,6 @@ by getting in touch or submitting a pull request with changes to the README.
 - [GorkaTV](https://gorkatv.com/)
 - [TrinteJS](http://www.trintejs.com/)
 - [CaminteJS](http://www.camintejs.com/)
-
-## Running Tests
-Ensure you have [nodeunit](https://github.com/caolan/nodeunit) by running ```npm install -g nodeunit```.
-Then, run ```npm test```.
 
 ## Author
 
