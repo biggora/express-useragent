@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../lib/express-useragent.js"></script>
+    <style>
+        .table-header {
+            width: 150px;
+            font-weight: bold;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+<div id="userAgent">
+
+</div>
+<script>
+    var userAgent = new UserAgent().parse(navigator.userAgent);
+    function render() {
+        var mobile = userAgent.isMobile ? 'Yes' : 'No';
+        var tpl = '<table><tbody><tr>' +
+                '<td class="table-header">Platform:</td><td>' + userAgent.platform + '</td>' +
+                '</tr><tr>' +
+                '<td class="table-header">Os:</td><td>' + userAgent.os + '</td>' +
+                '</tr><tr>' +
+                '<td class="table-header">Browser:</td><td>' + userAgent.browser + '</td>' +
+                '</tr><tr>' +
+                '<td class="table-header">Browser version:</td><td>' + userAgent.version + '</td>' +
+                '</tr><tr>' +
+                '<td class="table-header">Mobile:</td><td>' + mobile + '</td>' +
+                '</tr></tbody></table>';
+        document.getElementById('userAgent').innerHTML = tpl;
+    }
+    render();
+</script>
+</body>
+</html>

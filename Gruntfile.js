@@ -17,29 +17,15 @@ module.exports = function(grunt) {
         ' * Licensed under <%= _.pluck(pkg.licenses, "type") %> (<%= _.pluck(pkg.licenses, "url") %>)\n' +
         ' */\n',
         clean: {
-            build: ["dist/*.js"]
-        },
-        'string-replace': {
-            dist: {
-                files: [{
-                    src: 'lib/express-useragent.js',
-                    dest: 'dist/express-useragent.js'
-                }],
-                options: {
-                    replacements: [{
-                        pattern: 'module.exports.UserAgent',
-                        replacement: 'window.UserAgent'
-                    }]
-                }
-            }
+            build: ["lib/*.min.js"]
         },
         uglify: {
             options: {
                 banner: '<%= banner %>'
             },
             forbrowser: {
-                src: 'dist/<%= pkg.name %>.js',
-                dest: 'dist/<%= pkg.name %>.min.js'
+                src: 'lib/<%= pkg.name %>.js',
+                dest: 'lib/<%= pkg.name %>.min.js'
             }
         }
     });
@@ -47,7 +33,6 @@ module.exports = function(grunt) {
     require('load-grunt-tasks')(grunt, {scope: 'devDependencies'});
     grunt.registerTask('build', [
         'clean:build',
-        'string-replace',
         'uglify'
     ]);
     grunt.registerTask('default', 'build');

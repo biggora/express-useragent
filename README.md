@@ -89,7 +89,7 @@ provides an easy way to access the user-agent as:
 * Clone the repo: `git clone git://github.com/biggora/express-useragent.git`
 * Or Install with [Bower](http://twitter.github.com/bower): `bower install express-useragent`.
 
-The client side version of express-useragent available in the `dist/` subdirectory.
+The client side version of express-useragent available in the `lib/` subdirectory.
 
 #### Include file in your HTML. The minimum required for this plugin are:
 ```
@@ -99,7 +99,6 @@ The client side version of express-useragent available in the `dist/` subdirecto
 ```javascript
     var userAgent = new UserAgent().parse(navigator.userAgent);
 ```
-
 
 ## Running Tests
 

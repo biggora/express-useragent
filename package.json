@@ -75,8 +75,6 @@
     "bower":"*",
     "grunt": "*",
     "grunt-contrib-clean": "*",
-    "grunt-contrib-concat": "*",
-    "grunt-string-replace": "*",
     "grunt-contrib-uglify":"*"
   }
 }

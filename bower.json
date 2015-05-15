@@ -56,10 +56,7 @@
     "**/.*",
     "node_modules",
     "test",
-    "lib",
-    ".idea",
     "Gruntfile.js",
-    "index.js",
     "index.js"
   ],
   "dependencies": {},
