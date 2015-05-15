@@ -52,13 +52,21 @@
     "compound",
     "middleware"
   ],
+  "main": "./lib/express-useragent.js",
   "ignore": [
     "**/.*",
     "node_modules",
     "test",
     "Gruntfile.js",
-    "index.js"
+    "index.js",
+    "bower_components",
+    "tests"
   ],
-  "dependencies": {},
-  "devDependencies": {}
+  "authors": [
+    "Alexey Gordeyev <aleksej@gordejev.lv>"
+  ],
+  "moduleType": [
+    "globals"
+  ],
+  "license": "MIT"
 }
