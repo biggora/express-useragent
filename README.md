@@ -2,14 +2,15 @@
 [![NPM version](https://badge.fury.io/js/express-useragent.png)](http://badge.fury.io/js/express-useragent)
 # Fast Middleware exposing user-agent for [NodeJS](http://nodejs.org/)
 
-express-useragent is a simple ExpressJS user-agent middleware exposing user-agent details to your application and views.
+express-useragent is a simple NodeJS/ExpressJS user-agent middleware exposing user-agent details to your application and views.
 
 ## Installation
 
 Installation is done using the Node Package Manager (npm). If you don't have npm installed on your system you can download it from [npmjs.org](http://npmjs.org/)
 To install express-useragent:
-
+```bash
     $ npm install express-useragent --save
+```
 
 ## Usage overview
 
@@ -153,7 +154,7 @@ Aleksej Gordejev (aleksej@gordejev.lv).
 
 (The MIT License)
 
-Copyright (c) 2012 Aleksej Gordejev <aleksej@gordejev.lv>
+Copyright (c) 2012 Alexey Gordeyev <aleksej@gordejev.lv>
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
