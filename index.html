@@ -1,0 +1,196 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Express User-Agent by biggora</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 class="header">Express User-Agent</h1>
+        <p class="header">Fast exposing user-agent details plugin as middleware for nodejs and expressjs or direct in browser</p>
+
+        <ul>
+          <li class="download"><a class="buttons" href="https://github.com/biggora/express-useragent/zipball/master">Download ZIP</a></li>
+          <li class="download"><a class="buttons" href="https://github.com/biggora/express-useragent/tarball/master">Download TAR</a></li>
+          <li><a class="buttons github" href="https://github.com/biggora/express-useragent">View On GitHub</a></li>
+        </ul>
+
+        <p class="header">This project is maintained by <a class="header name" href="https://github.com/biggora">biggora</a></p>
+
+
+      </header>
+      <section>
+        <h1>
+<a id="plugin-exposing-user-agent-for-nodejsexpressjstrintejs" class="anchor" href="#plugin-exposing-user-agent-for-nodejsexpressjstrintejs" aria-hidden="true"><span class="octicon octicon-link"></span></a>Plugin exposing user-agent for <a href="http://nodejs.org/">NodeJS</a>/<a href="http://expressjs.com/">ExpressJS</a>/<a href="http://www.trintejs.com/">TrinteJS</a>
+</h1>
+
+<p>express-useragent is a simple, fast exposing user-agent details plugin as middleware for nodejs, trintejs and expressjs or direct in browser.</p>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<h3>
+<a id="for-nodejs" class="anchor" href="#for-nodejs" aria-hidden="true"><span class="octicon octicon-link"></span></a>for NodeJS</h3>
+
+<p>Installation is done using the Node Package Manager (npm). If you don't have npm installed on your system you can download it from <a href="http://npmjs.org/">npmjs.org</a>
+To install express-useragent:</p>
+
+<div class="highlight highlight-bash"><pre>    $ npm install express-useragent --save</pre></div>
+
+<h3>
+<a id="client-side" class="anchor" href="#client-side" aria-hidden="true"><span class="octicon octicon-link"></span></a>Client Side</h3>
+
+<ul>
+<li>Clone the repo: <code>git clone git://github.com/biggora/express-useragent.git</code>
+</li>
+<li>Or Install with <a href="http://twitter.github.com/bower">Bower</a>: <code>bower install express-useragent</code>.</li>
+</ul>
+
+<p>The client side version of express-useragent available in the <code>lib/</code> subdirectory.</p>
+
+<h4>
+<a id="include-file-in-your-html-the-minimum-required-for-this-plugin-are" class="anchor" href="#include-file-in-your-html-the-minimum-required-for-this-plugin-are" aria-hidden="true"><span class="octicon octicon-link"></span></a>Include file in your HTML. The minimum required for this plugin are:</h4>
+
+<pre><code>    &lt;script type="text/javascript" src="/path/to/express-useragent.js"&gt;&lt;/script&gt;
+</code></pre>
+
+<h4>
+<a id="execute-the-plugin" class="anchor" href="#execute-the-plugin" aria-hidden="true"><span class="octicon octicon-link"></span></a>Execute the plugin:</h4>
+
+<div class="highlight highlight-javascript"><pre>    <span class="pl-k">var</span> userAgent <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">UserAgent</span>().<span class="pl-c1">parse</span>(<span class="pl-c1">navigator</span>.<span class="pl-c1">userAgent</span>);</pre></div>
+
+<h2>
+<a id="usage-overview" class="anchor" href="#usage-overview" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage overview</h2>
+
+<h3>
+<a id="simple-node-app" class="anchor" href="#simple-node-app" aria-hidden="true"><span class="octicon octicon-link"></span></a>Simple Node App</h3>
+
+<div class="highlight highlight-js"><pre><span class="pl-k">var</span> http <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>http<span class="pl-pds">'</span></span>)
+  , useragent <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>express-useragent<span class="pl-pds">'</span></span>);
+
+<span class="pl-k">var</span> srv <span class="pl-k">=</span> http.createServer(<span class="pl-k">function</span> (<span class="pl-smi">req</span>, <span class="pl-smi">res</span>) {
+  <span class="pl-k">var</span> source <span class="pl-k">=</span> req.<span class="pl-c1">headers</span>[<span class="pl-s"><span class="pl-pds">'</span>user-agent<span class="pl-pds">'</span></span>],
+  ua <span class="pl-k">=</span> useragent.<span class="pl-c1">parse</span>(source);
+  res.writeHead(<span class="pl-c1">200</span>, {<span class="pl-s"><span class="pl-pds">'</span>Content-Type<span class="pl-pds">'</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>text/plain<span class="pl-pds">'</span></span>});
+  res.end(JSON.stringify(ua));
+});
+
+srv.listen(<span class="pl-c1">3000</span>);</pre></div>
+
+<h3>
+<a id="for-trintejs" class="anchor" href="#for-trintejs" aria-hidden="true"><span class="octicon octicon-link"></span></a>for <a href="http://www.trintejs.com/">TrinteJS</a>
+</h3>
+
+<p>is permanently included</p>
+
+<h4>
+<a id="manual-setup-in-project-configmiddlewarejs" class="anchor" href="#manual-setup-in-project-configmiddlewarejs" aria-hidden="true"><span class="octicon octicon-link"></span></a>manual setup in project config/middleware.js</h4>
+
+<div class="highlight highlight-js"><pre><span class="pl-k">var</span> useragent <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>express-useragent<span class="pl-pds">'</span></span>);
+
+<span class="pl-c1">module</span>.<span class="pl-en">exports</span> <span class="pl-k">=</span> <span class="pl-k">function</span> (<span class="pl-smi">app</span>, <span class="pl-smi">express</span>) {
+    app.use(<span class="pl-k">function</span> () {
+        app.use(useragent.express());
+    });
+};</pre></div>
+
+<h3>
+<a id="for-expressjs" class="anchor" href="#for-expressjs" aria-hidden="true"><span class="octicon octicon-link"></span></a>for <a href="http://expressjs.com/">ExpressJS</a>
+</h3>
+
+<div class="highlight highlight-js"><pre><span class="pl-k">var</span> express <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>express<span class="pl-pds">'</span></span>);
+<span class="pl-k">var</span> app <span class="pl-k">=</span> express();
+<span class="pl-k">var</span> useragent <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>express-useragent<span class="pl-pds">'</span></span>);
+
+app.use(useragent.express());
+app.get(<span class="pl-s"><span class="pl-pds">'</span>/<span class="pl-pds">'</span></span>, <span class="pl-k">function</span>(<span class="pl-smi">req</span>, <span class="pl-smi">res</span>){
+    res.<span class="pl-c1">send</span>(req.useragent);
+});
+app.listen(<span class="pl-c1">3000</span>);</pre></div>
+
+<p>module provides details such as the following:</p>
+
+<div class="highlight highlight-js"><pre>{
+  <span class="pl-s"><span class="pl-pds">"</span>isMobile<span class="pl-pds">"</span></span><span class="pl-k">:</span><span class="pl-c1">false</span>,
+  <span class="pl-s"><span class="pl-pds">"</span>isDesktop<span class="pl-pds">"</span></span><span class="pl-k">:</span><span class="pl-c1">true</span>,
+  <span class="pl-s"><span class="pl-pds">"</span>isBot<span class="pl-pds">"</span></span><span class="pl-k">:</span><span class="pl-c1">false</span>,
+  .....
+  <span class="pl-s"><span class="pl-pds">"</span>Browser<span class="pl-pds">"</span></span><span class="pl-k">:</span><span class="pl-s"><span class="pl-pds">"</span>Chrome<span class="pl-pds">"</span></span>,
+  <span class="pl-s"><span class="pl-pds">"</span>Version<span class="pl-pds">"</span></span><span class="pl-k">:</span><span class="pl-s"><span class="pl-pds">"</span>17.0.963.79<span class="pl-pds">"</span></span>,
+  <span class="pl-s"><span class="pl-pds">"</span>OS<span class="pl-pds">"</span></span><span class="pl-k">:</span><span class="pl-s"><span class="pl-pds">"</span>Windows 7<span class="pl-pds">"</span></span>,
+  <span class="pl-s"><span class="pl-pds">"</span>Platform<span class="pl-pds">"</span></span><span class="pl-k">:</span><span class="pl-s"><span class="pl-pds">"</span>Microsoft Windows<span class="pl-pds">"</span></span>,
+  <span class="pl-s"><span class="pl-pds">"</span>source<span class="pl-pds">"</span></span><span class="pl-k">:</span><span class="pl-s"><span class="pl-pds">"</span>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.11 (KHTML, like Gecko) Chrome/17.0.963.79...<span class="pl-pds">"</span></span>
+}
+</pre></div>
+
+<h3>
+<a id="accessing-the-user-agent" class="anchor" href="#accessing-the-user-agent" aria-hidden="true"><span class="octicon octicon-link"></span></a>Accessing the User-Agent</h3>
+
+<p>If you are using <code>express</code> or <code>connect</code>, then <code>express-useragent</code>
+provides an easy way to access the user-agent as:</p>
+
+<ul>
+<li>
+<code>req.useragent</code> from your app server</li>
+<li>
+<code>useragent</code> helper accessible from your <code>express</code> views.</li>
+</ul>
+
+<h2>
+<a id="author" class="anchor" href="#author" aria-hidden="true"><span class="octicon octicon-link"></span></a>Author</h2>
+
+<p>Aleksej Gordejev (<a href="mailto:aleksej@gordejev.lv">aleksej@gordejev.lv</a>).</p>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>(The MIT License)</p>
+
+<p>Copyright (c) 2012 Alexey Gordeyev <a href="mailto:aleksej@gordejev.lv">aleksej@gordejev.lv</a></p>
+
+<p>Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+'Software'), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:</p>
+
+<p>The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.</p>
+
+<p>THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+
+<h2>
+<a id="resources" class="anchor" href="#resources" aria-hidden="true"><span class="octicon octicon-link"></span></a>Resources</h2>
+
+<ul>
+<li>Visit the <a href="http://www.gordejev.lv">author website</a>.</li>
+<li>Follow <a href="https://twitter.com/#!/biggora">@biggora</a> on Twitter for updates.</li>
+<li>Report issues on the <a href="https://github.com/biggora/express-useragent/issues">github issues</a> page.</li>
+</ul>
+      </section>
+      <footer>
+        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+		
+  </body>
+</html>
