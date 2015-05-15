@@ -29,7 +29,7 @@ exports['iPad 2'] = function (test) {
     test.ok(!a.isLinux, 'Linux');
     test.ok(a.isMac, 'Mac');
     test.ok(!a.isWindowsPhone, 'Windows Phone');
-    test.equal(a.Version, '5.1');
+    test.equal(a.version, '5.1');
 
     test.done();
 };
@@ -59,7 +59,7 @@ exports['Linux Iceweasel'] = function (test) {
     test.ok(a.isLinux, 'Linux');
     test.ok(!a.isMac, 'Mac');
     test.ok(!a.isWindowsPhone, 'Windows Phone');
-    test.equal(a.Version, '3.5.16');
+    test.equal(a.version, '3.5.16');
 
     test.done();
 };
@@ -118,7 +118,7 @@ exports['Linux Firefox 11'] = function (test) {
     test.ok(!a.isLinux64, 'Linux 64');
     test.ok(!a.isMac, 'Mac');
     test.ok(!a.isWindowsPhone, 'Windows Phone');
-    test.equal(a.Version, '11.0');
+    test.equal(a.version, '11.0');
 
     test.done();
 };
@@ -148,7 +148,7 @@ exports['Linux Chrome 17'] = function (test) {
     test.ok(a.isLinux, 'Linux');
     test.ok(!a.isMac, 'Mac');
     test.ok(!a.isWindowsPhone, 'Windows Phone');
-    test.equal(a.Version, '17.0.963.56');
+    test.equal(a.version, '17.0.963.56');
 
     test.done();
 };
@@ -178,7 +178,7 @@ exports['Linux Chromium 39'] = function (test) {
     test.ok(a.isLinux, 'Linux');
     test.ok(!a.isMac, 'Mac');
     test.ok(!a.isWindowsPhone, 'Windows Phone');
-    test.equal(a.Version, '39.0.2171.65');
+    test.equal(a.version, '39.0.2171.65');
     test.ok(!a.isIECompatibilityMode);
 
     test.done();
@@ -210,7 +210,7 @@ exports['Linux Ephiphany 2.30'] = function (test) {
     test.ok(a.isLinux, 'Linux');
     test.ok(!a.isMac, 'Mac');
     test.ok(!a.isWindowsPhone, 'Windows Phone');
-    test.equal(a.Version, '2.30.6');
+    test.equal(a.version, '2.30.6');
 
     test.done();
 };
@@ -239,8 +239,8 @@ exports['Windows 8 Chrome 28'] = function (test) {
     test.ok(!a.isLinux, 'Linux');
     test.ok(!a.isMac, 'Mac');
     test.ok(!a.isWindowsPhone, 'Windows Phone');
-    test.equal(a.Version, '28.0.1500.95');
-    test.equal(a.OS, 'Windows 8');
+    test.equal(a.version, '28.0.1500.95');
+    test.equal(a.os, 'Windows 8');
 
     test.done();
 };
@@ -270,8 +270,8 @@ exports['Windows 8.1 WinJs'] = function (test) {
     test.ok(!a.isLinux, 'Linux');
     test.ok(!a.isMac, 'Mac');
     test.ok(!a.isWindowsPhone, 'Windows Phone');
-    test.equal(a.Version, '2.0');
-    test.equal(a.OS, 'Windows 8.1');
+    test.equal(a.version, '2.0');
+    test.equal(a.os, 'Windows 8.1');
 
     test.done();
 };
@@ -300,8 +300,8 @@ exports['Windows 7 Firefox 23'] = function (test) {
     test.ok(!a.isLinux, 'Linux');
     test.ok(!a.isMac, 'Mac');
     test.ok(!a.isWindowsPhone, 'Windows Phone');
-    test.equal(a.Version, '23.0');
-    test.equal(a.OS, 'Windows 7');
+    test.equal(a.version, '23.0');
+    test.equal(a.os, 'Windows 7');
 
     test.done();
 };
@@ -330,7 +330,7 @@ exports['Windows XP IE 5.5'] = function (test) {
     test.ok(!a.isLinux, 'Linux');
     test.ok(!a.isMac, 'Mac');
     test.ok(!a.isWindowsPhone, 'Windows Phone');
-    test.equal(a.Version, '5.5');
+    test.equal(a.version, '5.5');
 
     test.done();
 };
@@ -359,7 +359,7 @@ exports['Windows XP IE 6.0'] = function (test) {
     test.ok(!a.isLinux, 'Linux');
     test.ok(!a.isMac, 'Mac');
     test.ok(!a.isWindowsPhone, 'Windows Phone');
-    test.equal(a.Version, '6.0');
+    test.equal(a.version, '6.0');
 
     test.done();
 };
@@ -388,7 +388,7 @@ exports['Windows XP IE 7.0'] = function (test) {
     test.ok(!a.isLinux, 'Linux');
     test.ok(!a.isMac, 'Mac');
     test.ok(!a.isWindowsPhone, 'Windows Phone');
-    test.equal(a.Version, '7.0');
+    test.equal(a.version, '7.0');
 
     test.done();
 };
@@ -417,7 +417,7 @@ exports['Windows XP Opera'] = function (test) {
     test.ok(!a.isLinux, 'Linux');
     test.ok(!a.isMac, 'Mac');
     test.ok(!a.isWindowsPhone, 'Windows Phone');
-    test.equal(a.Version, '11.62');
+    test.equal(a.version, '11.62');
 
     test.done();
 };
@@ -447,7 +447,7 @@ exports['Windows XP Safari'] = function (test) {
     test.ok(!a.isLinux, 'Linux');
     test.ok(!a.isMac, 'Mac');
     test.ok(!a.isWindowsPhone, 'Windows Phone');
-    test.equal(a.Version, '5.1.1');
+    test.equal(a.version, '5.1.1');
 
     test.done();
 };
@@ -477,7 +477,7 @@ exports['Windows XP Chrome'] = function (test) {
     test.ok(!a.isLinux, 'Linux');
     test.ok(!a.isMac, 'Mac');
     test.ok(!a.isWindowsPhone, 'Windows Phone');
-    test.equal(a.Version, '18.0.1025.162');
+    test.equal(a.version, '18.0.1025.162');
 
     test.done();
 };
@@ -507,7 +507,7 @@ exports['Windows Phone 8'] = function (test) {
     test.ok(a.isWindowsPhone, 'Windows Phone');
     test.ok(!a.isLinux, 'Linux');
     test.ok(!a.isMac, 'Mac');
-    test.equal(a.Version, '10.0');
+    test.equal(a.version, '10.0');
 
     test.done();
 };
@@ -538,7 +538,7 @@ exports['OS X OmniWeb 622'] = function (test) {
     test.ok(!a.isLinux, 'Linux');
     test.ok(a.isMac, 'Mac');
     test.ok(!a.isWindowsPhone, 'Windows Phone');
-    test.equal(a.Version, '622.8.0.112941');
+    test.equal(a.version, '622.8.0.112941');
 
     test.done();
 };
@@ -568,7 +568,7 @@ exports['OS X Safari 530'] = function (test) {
     test.ok(!a.isLinux, 'Linux');
     test.ok(a.isMac, 'Mac');
     test.ok(!a.isWindowsPhone, 'Windows Phone');
-    test.equal(a.Version, '4.0.2');
+    test.equal(a.version, '4.0.2');
 
     test.done();
 };
@@ -597,7 +597,7 @@ exports['OS X Chromium'] = function (test) {
     test.ok(!a.isLinux, 'Linux');
     test.ok(a.isMac, 'Mac');
     test.ok(!a.isWindowsPhone, 'Windows Phone');
-    test.equal(a.Version, '32.0.1700.20');
+    test.equal(a.version, '32.0.1700.20');
     test.ok(!a.isIECompatibilityMode);
 
     test.done();
@@ -631,7 +631,7 @@ exports['Android Samsung'] = function (test) {
     test.ok(a.isLinux, 'Linux');
     test.ok(!a.isMac, 'Mac');
     test.ok(!a.isWindowsPhone, 'Windows Phone');
-    test.equal(a.Version, '4.0');
+    test.equal(a.version, '4.0');
 
     test.done();
 };
@@ -664,7 +664,7 @@ exports['Android Xoom'] = function (test) {
     test.ok(a.isLinux, 'Linux');
     test.ok(!a.isMac, 'Mac');
     test.ok(!a.isWindowsPhone, 'Windows Phone');
-    test.equal(a.Version, '4.0');
+    test.equal(a.version, '4.0');
 
     test.done();
 };
@@ -697,7 +697,7 @@ exports['iPhone 4'] = function (test) {
     test.ok(!a.isLinux, 'Linux');
     test.ok(a.isMac, 'Mac');
     test.ok(!a.isWindowsPhone, 'Windows Phone');
-    test.equal(a.Version, '5.0.2');
+    test.equal(a.version, '5.0.2');
 
     test.done();
 };
@@ -731,7 +731,7 @@ exports['Bada OS browser'] = function (test) {
     test.ok(!a.isLinux, 'Linux');
     test.ok(!a.isMac, 'Mac');
     test.ok(!a.isWindowsPhone, 'Windows Phone');
-    test.equal(a.Version, undefined);
+    test.equal(a.version, undefined);
 
     test.done();
 };
@@ -762,7 +762,7 @@ exports['America Online Browser'] = function (test) {
     test.ok(!a.isLinux, 'Linux');
     test.ok(!a.isMac, 'Mac');
     test.ok(!a.isWindowsPhone, 'Windows Phone');
-    test.equal(a.Version, '7.0');
+    test.equal(a.version, '7.0');
 
     test.done();
 };
@@ -791,7 +791,7 @@ exports['Windows 7 IE 10.6'] = function (test) {
     test.ok(!a.isLinux, 'Linux');
     test.ok(!a.isMac, 'Mac');
     test.ok(!a.isWindowsPhone, 'Windows Phone');
-    test.equal(a.Version, '10.6');
+    test.equal(a.version, '10.6');
 
     test.done();
 };
@@ -820,7 +820,7 @@ exports['Windows 7 IE 11.0'] = function (test) {
     test.ok(!a.isLinux, 'Linux');
     test.ok(!a.isMac, 'Mac');
     test.ok(!a.isWindowsPhone, 'Windows Phone');
-    test.equal(a.Version, '11.0');
+    test.equal(a.version, '11.0');
 
     test.done();
 };
@@ -848,7 +848,7 @@ exports['Windows 8.1 IE 11 Touch'] = function (test) {
     test.ok(!a.isLinux, 'Linux');
     test.ok(!a.isMac, 'Mac');
     test.ok(!a.isWindowsPhone, 'Windows Phone');
-    test.equal(a.Version, '11.0');
+    test.equal(a.version, '11.0');
 
     test.done();
 };
@@ -877,7 +877,7 @@ exports['Windows XP IE 8.0'] = function (test) {
     test.ok(!a.isLinux, 'Linux');
     test.ok(!a.isMac, 'Mac');
     test.ok(!a.isWindowsPhone, 'Windows Phone');
-    test.equal(a.Version, '8.0');
+    test.equal(a.version, '8.0');
 
     test.done();
 };
@@ -905,7 +905,7 @@ exports['Windows XP IE 8.0 - Compatibility mode'] = function (test) {
     test.ok(a.isWindows, 'Windows');
     test.ok(!a.isLinux, 'Linux');
     test.ok(!a.isMac, 'Mac');
-    test.equal(a.Version, '8.0');
+    test.equal(a.version, '8.0');
     test.ok(!a.isWindowsPhone, 'Windows Phone');
     test.ok(a.isIECompatibilityMode);
 
@@ -936,7 +936,7 @@ exports['Windows XP IE 10.0'] = function (test) {
     test.ok(!a.isLinux, 'Linux');
     test.ok(!a.isMac, 'Mac');
     test.ok(!a.isWindowsPhone, 'Windows Phone');
-    test.equal(a.Version, '10.0');
+    test.equal(a.version, '10.0');
     test.ok(!a.isIECompatibilityMode);
 
     test.done();
@@ -966,7 +966,7 @@ exports['Windows XP IE 10.0 - Compatibility mode'] = function (test) {
     test.ok(!a.isLinux, 'Linux');
     test.ok(!a.isMac, 'Mac');
     test.ok(!a.isWindowsPhone, 'Windows Phone');
-    test.equal(a.Version, '10.0');
+    test.equal(a.version, '10.0');
     test.ok(a.isIECompatibilityMode);
 
     test.done();
@@ -996,7 +996,7 @@ exports['Windows XP IE 7.0 - Compatibility mode (invalid mode)'] = function (tes
     test.ok(!a.isLinux, 'Linux');
     test.ok(!a.isMac, 'Mac');
     test.ok(!a.isWindowsPhone, 'Windows Phone');
-    test.equal(a.Version, '7.0');
+    test.equal(a.version, '7.0');
     test.ok(!a.isIECompatibilityMode);
 
     test.done();
@@ -1027,7 +1027,7 @@ exports['Windows XP IE 9.0 - Compatibility mode'] = function (test) {
     test.ok(!a.isLinux, 'Linux');
     test.ok(!a.isMac, 'Mac');
     test.ok(!a.isWindowsPhone, 'Windows Phone');
-    test.equal(a.Version, '9.0');
+    test.equal(a.version, '9.0');
     test.ok(a.isIECompatibilityMode);
 
     test.done();

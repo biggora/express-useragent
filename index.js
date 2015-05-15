@@ -22,10 +22,10 @@ module.exports.express = function () {
             source = "unknown";
         }
         ua.Agent.source = source.replace(/^\s*/, '').replace(/\s*$/, '');
-        ua.Agent.OS = ua.getOS(ua.Agent.source);
-        ua.Agent.Platform = ua.getPlatform(ua.Agent.source);
-        ua.Agent.Browser = ua.getBrowser(ua.Agent.source);
-        ua.Agent.Version = ua.getBrowserVersion(ua.Agent.source);
+        ua.Agent.os = ua.getOS(ua.Agent.source);
+        ua.Agent.platform = ua.getPlatform(ua.Agent.source);
+        ua.Agent.browser = ua.getBrowser(ua.Agent.source);
+        ua.Agent.version = ua.getBrowserVersion(ua.Agent.source);
         ua.testNginxGeoIP(req.headers);
         ua.testBot();
         ua.testMobile();
