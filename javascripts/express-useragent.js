@@ -6,7 +6,7 @@
 (function loadUA(exports) {
     'use strict';
 
-    var UserAgent = function () {
+    var UserAgent = function UserAgent() {
         this.version = '0.1.8';
         this._Versions = {
             Firefox: /firefox\/([\d\w\.\-]+)/i,
