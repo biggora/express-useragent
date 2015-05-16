@@ -5,7 +5,7 @@
  */
 'use strict';
 
-(function (exports) {
+(function loadUA(exports) {
     'use strict';
 
     var UserAgent = function UserAgent() {
@@ -130,7 +130,7 @@
 
         this.Agent = {};
 
-        this.getBrowser = function (string) {
+        this.getBrowser = function getBrowser(string) {
             switch (true) {
                 case this._Browsers.Konqueror.test(string):
                     this.Agent.isKonqueror = true;
@@ -180,7 +180,7 @@
             }
         };
 
-        this.getBrowserVersion = function (string) {
+        this.getBrowserVersion = function getBrowserVersion(string) {
             var regex;
             switch (this.Agent.browser) {
                 case 'Chrome':
@@ -261,7 +261,7 @@
             }
         };
 
-        this.getOS = function (string) {
+        this.getOS = function getOS(string) {
             switch (true) {
                 case this._OS.WindowsVista.test(string):
                     this.Agent.isWindows = true;
@@ -328,7 +328,7 @@
             }
         };
 
-        this.getPlatform = function (string) {
+        this.getPlatform = function getPlatform(string) {
             switch (true) {
                 case this._Platform.Windows.test(string):
                     return 'Microsoft Windows';
@@ -368,7 +368,7 @@
             }
         };
 
-        this.testCompatibilityMode = function () {
+        this.testCompatibilityMode = function testCompatibilityMode() {
             var ua = this;
             if (this.Agent.isIE) {
                 if (/Trident\/(\d)\.0/i.test(ua.Agent.source)) {
@@ -392,7 +392,7 @@
             }
         };
 
-        this.testSilk = function () {
+        this.testSilk = function testSilk() {
             var ua = this;
             switch (true) {
                 case new RegExp('silk', 'gi').test(ua.Agent.source):
@@ -407,7 +407,7 @@
             return this.Agent.isSilk ? 'Silk' : false;
         };
 
-        this.testKindleFire = function () {
+        this.testKindleFire = function testKindleFire() {
             var ua = this;
             switch (true) {
                 case /KFOT/gi.test(ua.Agent.source):
@@ -545,4 +545,4 @@
 
     exports.UserAgent = UserAgent;
     return new UserAgent();
-})(undefined);
+})(this);
