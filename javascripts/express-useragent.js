@@ -3,7 +3,7 @@
  * Copyright 2011-2015 Alexey Gordeyev
  * Licensed under MIT (https://github.com/biggora/express-useragent/blob/master/LICENSE)
  */
-(function(exports) {
+(function loadUA(exports) {
     'use strict';
 
     var UserAgent = function () {
