@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/github-light.css">
     <script src="javascripts/scale.fix.js"></script>
+    <srcipt src="https://raw.githubusercontent.com/biggora/express-useragent/master/lib/express-useragent.min.js"></srcipt>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -26,8 +27,7 @@
         </ul>
 
         <p class="header">This project is maintained by <a class="header name" href="https://github.com/biggora">biggora</a></p>
-
-
+        
       </header>
       <section>
         <h1>
@@ -145,6 +145,33 @@ provides an easy way to access the user-agent as:</p>
 <li>
 <code>useragent</code> helper accessible from your <code>express</code> views.</li>
 </ul>
+
+<h2>
+	<a id="demo" class="anchor" href="#demo" aria-hidden="true">
+	     <span class="octicon octicon-link"></span>
+	</a>
+	Demo
+</h2>
+<div id="userAgent"></div>
+<script>
+    var userAgent = new UserAgent().parse(navigator.userAgent);
+    function render() {
+        var mobile = userAgent.isMobile ? 'Yes' : 'No';
+        var tpl = '<table><tbody><tr>' +
+                '<td class="table-header">Platform:</td><td>' + userAgent.platform + '</td>' +
+                '</tr><tr>' +
+                '<td class="table-header">Os:</td><td>' + userAgent.os + '</td>' +
+                '</tr><tr>' +
+                '<td class="table-header">Browser:</td><td>' + userAgent.browser + '</td>' +
+                '</tr><tr>' +
+                '<td class="table-header">Browser version:</td><td>' + userAgent.version + '</td>' +
+                '</tr><tr>' +
+                '<td class="table-header">Mobile:</td><td>' + mobile + '</td>' +
+                '</tr></tbody></table>';
+        document.getElementById('userAgent').innerHTML = tpl;
+    }
+    render();
+</script>
 
 <h2>
 <a id="author" class="anchor" href="#author" aria-hidden="true"><span class="octicon octicon-link"></span></a>Author</h2>
