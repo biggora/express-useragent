@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/github-light.css">
     <script src="javascripts/scale.fix.js"></script>
+    <srcipt src="javascripts/express-useragent.js"></srcipt>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -152,7 +153,6 @@ provides an easy way to access the user-agent as:</p>
 	Demo
 </h2>
 <div id="userAgent"></div>
-<srcipt src="javascripts/express-useragent.min.js"></srcipt>
 <script>
     var userAgent = new UserAgent().parse(navigator.userAgent);
     function render() {
