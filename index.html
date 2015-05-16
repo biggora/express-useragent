@@ -154,6 +154,7 @@ provides an easy way to access the user-agent as:</p>
 </h2>
 <div id="userAgent"></div>
 <script>
+(function(){
     var userAgent = new UserAgent().parse(navigator.userAgent);
     function render() {
         var mobile = userAgent.isMobile ? 'Yes' : 'No';
@@ -171,6 +172,7 @@ provides an easy way to access the user-agent as:</p>
         document.getElementById('userAgent').innerHTML = tpl;
     }
     render();
+})();
 </script>
 
 <h2>
