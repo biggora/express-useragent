@@ -6,8 +6,6 @@
 'use strict';
 
 (function loadUA(exports) {
-    'use strict';
-
     var UserAgent = function UserAgent() {
         this.version = '0.1.8';
         this._Versions = {
