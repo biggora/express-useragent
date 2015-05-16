@@ -68,10 +68,10 @@ module provides details such as the following:
   "isDesktop":true,
   "isBot":false,
   .....
-  "Browser":"Chrome",
-  "Version":"17.0.963.79",
-  "OS":"Windows 7",
-  "Platform":"Microsoft Windows",
+  "browser":"Chrome",
+  "version":"17.0.963.79",
+  "os":"Windows 7",
+  "platform":"Microsoft Windows",
   "source":"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.11 (KHTML, like Gecko) Chrome/17.0.963.79..."
 }
 
