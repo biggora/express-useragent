@@ -3,7 +3,9 @@
  * Copyright 2011-2015 Alexey Gordeyev
  * Licensed under MIT (https://github.com/biggora/express-useragent/blob/master/LICENSE)
  */
-(function loadUA(exports) {
+'use strict';
+
+(function (exports) {
     'use strict';
 
     var UserAgent = function UserAgent() {
@@ -374,17 +376,17 @@
                     var version = parseInt(ua.Agent.version, 10);
                     if (version === 7 && tridentVersion === 6) {
                         ua.Agent.isIECompatibilityMode = true;
-                        ua.Agent.version = 10.0;
+                        ua.Agent.version = 10;
                     }
 
                     if (version === 7 && tridentVersion === 5) {
                         ua.Agent.isIECompatibilityMode = true;
-                        ua.Agent.version = 9.0;
+                        ua.Agent.version = 9;
                     }
 
                     if (version === 7 && tridentVersion === 4) {
                         ua.Agent.isIECompatibilityMode = true;
-                        ua.Agent.version = 8.0;
+                        ua.Agent.version = 8;
                     }
                 }
             }
@@ -400,7 +402,7 @@
             }
 
             if (/Silk-Accelerated=true/gi.test(ua.Agent.source)) {
-            this.Agent.SilkAccelerated = true;
+                this.Agent.SilkAccelerated = true;
             }
             return this.Agent.isSilk ? 'Silk' : false;
         };
@@ -543,5 +545,4 @@
 
     exports.UserAgent = UserAgent;
     return new UserAgent();
-
-})(this);
+})(undefined);
