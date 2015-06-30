@@ -69,12 +69,12 @@
   },
   "dependencies": {},
   "devDependencies": {
+    "bower": "*",
     "express": ">= 3.0.0",
-    "nodeunit":"*",
-    "bower":"*",
     "grunt": "*",
     "grunt-contrib-clean": "*",
-    "grunt-contrib-uglify":"*"
+    "grunt-contrib-uglify": "*",
+    "load-grunt-tasks": "^3.2.0",
+    "nodeunit": "*"
   }
 }
-
