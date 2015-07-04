@@ -148,7 +148,7 @@ by getting in touch or submitting a pull request with changes to the README.
 
 ## Author
 
-Aleksej Gordejev (aleksej@gordejev.lv).
+Alexey Gordeyev (aleksej@gordejev.lv).
 
 ## License
 

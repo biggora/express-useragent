@@ -12,19 +12,19 @@
  *
  */
 
-var Http = require('http')
-    , Useragent = require('./../');
+var http = require('http')
+    , useragent = require('./../');
 
-var App = Http.createServer(function (req, res) {
+var app = http.createServer(function (req, res) {
     var source = req.headers['user-agent'],
-        ua = Useragent.parse(source);
+        ua = useragent.parse(source);
     res.writeHead(200, {'Content-Type': 'text/plain'});
     res.end(JSON.stringify(ua));
 });
 
 // To test it try http://localhost:3000/
 
-App.listen(3000);
+app.listen(3000);
 console.log('App started on port 3000');
 
 

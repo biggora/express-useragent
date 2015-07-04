@@ -3,7 +3,7 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
-    <script src="../lib/express-useragent.js"></script>
+    <script src="http://biggora.github.io/express-useragent/javascripts/express-useragent.js"></script>
     <style>
         .table-header {
             width: 150px;
@@ -13,9 +13,7 @@
     </style>
 </head>
 <body>
-<div id="userAgent">
-
-</div>
+<div id="userAgent"></div>
 <script>
     var userAgent = new UserAgent().parse(navigator.userAgent);
     function render() {

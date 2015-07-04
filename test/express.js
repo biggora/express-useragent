@@ -12,17 +12,20 @@
  *
  */
 
-var Express = require('express')
-    , App = Express()
-    , Useragent = require('./../');
+var express = require('express')
+    , app = express()
+    , useragent = require('./../');
 
-App.use(Useragent.express());
+app.use(useragent.express());
+app.use(express.static(__dirname +''));
 
-App.get('/', function (req, res) {
+app.get('/', function (req, res) {
     res.send(req.useragent);
 });
-
+app.get('/demo', function (req, res) {
+    res.sendfile('./test/client_test.html');
+});
 // To test it try http://localhost:3000/
 
-App.listen(3000);
+app.listen(3000);
 console.log('App started on port 3000');
