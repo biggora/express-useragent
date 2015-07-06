@@ -59,7 +59,7 @@
   ],
   "main": "./index.js",
   "scripts": {
-    "test": "nodeunit  test/browsers.js",
+    "test": "nodeunit  test/browsers.js test/bots_test.js",
     "express": "node test/express.js",
     "http": "node test/http.js",
     "build-js": "grunt build"
