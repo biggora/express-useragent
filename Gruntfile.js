@@ -30,7 +30,8 @@ module.exports = function(grunt) {
         }
     });
 
-    require('load-grunt-tasks')(grunt, {scope: 'devDependencies'});
+    var loader = require('load-grunt-tasks');
+    loader(grunt, {scope: 'devDependencies'});
     grunt.registerTask('build', [
         'clean:build',
         'uglify'

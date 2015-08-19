@@ -1,7 +1,7 @@
 {
   "name": "express-useragent",
   "description": "Fast User-Agent exposing",
-  "version": "0.1.8",
+  "version": "0.2.0",
   "homepage": "https://github.com/biggora/express-useragent/",
   "repository": {
     "type": "git",
