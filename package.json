@@ -62,7 +62,8 @@
     "test": "nodeunit  test/browsers.js test/bots_test.js",
     "express": "node test/express.js",
     "http": "node test/http.js",
-    "build-js": "grunt build"
+    "build": "grunt build",
+    "lint": "make lint",
   },
   "directories": {
     "lib": "lib",
@@ -73,12 +74,13 @@
   },
   "dependencies": {},
   "devDependencies": {
+    "nodeunit": "*",
+    "jshint": "*",
     "bower": "*",
     "express": ">= 3.0.0",
     "grunt": "*",
     "grunt-contrib-clean": "*",
     "grunt-contrib-uglify": "*",
-    "load-grunt-tasks": "^3.2.0",
-    "nodeunit": "*"
+    "load-grunt-tasks": "^3.2.0"
   }
 }
