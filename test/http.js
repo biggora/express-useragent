@@ -12,8 +12,8 @@
  *
  */
 
-var http = require('http')
-    , useragent = require('./../');
+var http = require('http');
+var useragent = require('../');
 
 var app = http.createServer(function (req, res) {
     var source = req.headers['user-agent'],
