@@ -11,6 +11,7 @@ exports['iPad 2'] = function (test) {
 
     var a = ua.parse(s);
 
+    test.ok(a.isAuthoritative, 'Authoritative');
     test.ok(a.isMobile, 'Mobile');
     test.ok(a.isiPad, 'iPad');
     test.ok(!a.isiPod, 'iPod');
@@ -41,6 +42,7 @@ exports['Linux Iceweasel'] = function (test) {
 
     var a = ua.parse(s);
 
+    test.ok(a.isAuthoritative, 'Authoritative');
     test.ok(!a.isMobile, 'Mobile');
     test.ok(!a.isiPad, 'iPad');
     test.ok(!a.isiPod, 'iPod');
@@ -70,6 +72,7 @@ exports['Linux 64 Chrome'] = function (test) {
 
     var a = ua.parse(s);
 
+    test.ok(a.isAuthoritative, 'Authoritative');
     test.ok(!a.isMobile, 'Mobile');
     test.ok(!a.isiPad, 'iPad');
     test.ok(!a.isiPod, 'iPod');
@@ -99,6 +102,7 @@ exports['Linux Firefox 11'] = function (test) {
 
     var a = ua.parse(s);
 
+    test.ok(a.isAuthoritative, 'Authoritative');
     test.ok(!a.isMobile, 'Mobile');
     test.ok(!a.isiPad, 'iPad');
     test.ok(!a.isiPod, 'iPod');
@@ -130,6 +134,7 @@ exports['Linux Chrome 17'] = function (test) {
 
     var a = ua.parse(s);
 
+    test.ok(a.isAuthoritative, 'Authoritative');
     test.ok(!a.isMobile, 'Mobile');
     test.ok(!a.isiPad, 'iPad');
     test.ok(!a.isiPod, 'iPod');
@@ -160,6 +165,7 @@ exports['Linux Chromium 39'] = function (test) {
 
     var a = ua.parse(s);
 
+    test.ok(a.isAuthoritative, 'Authoritative');
     test.ok(!a.isMobile, 'Mobile');
     test.ok(!a.isiPad, 'iPad');
     test.ok(!a.isiPod, 'iPod');
@@ -191,6 +197,7 @@ exports['Linux Ephiphany 2.30'] = function (test) {
 
     var a = ua.parse(s);
 
+    test.ok(a.isAuthoritative, 'Authoritative');
     test.ok(!a.isMobile, 'Mobile');
     test.ok(!a.isiPad, 'iPad');
     test.ok(!a.isiPod, 'iPod');
@@ -221,6 +228,7 @@ exports['Windows 8 Chrome 28'] = function (test) {
 
     var a = ua.parse(s);
 
+    test.ok(a.isAuthoritative, 'Authoritative');
     test.ok(!a.isMobile, 'Mobile');
     test.ok(!a.isiPad, 'iPad');
     test.ok(!a.isiPod, 'iPod');
@@ -251,6 +259,7 @@ exports['Windows 8.1 WinJs'] = function (test) {
 
     var a = ua.parse(s);
 
+    test.ok(a.isAuthoritative, 'Authoritative');
     test.ok(!a.isMobile, 'Mobile');
     test.ok(!a.isiPad, 'iPad');
     test.ok(!a.isiPod, 'iPod');
@@ -282,6 +291,7 @@ exports['Windows 7 Firefox 23'] = function (test) {
 
     var a = ua.parse(s);
 
+    test.ok(a.isAuthoritative, 'Authoritative');
     test.ok(!a.isMobile, 'Mobile');
     test.ok(!a.isiPad, 'iPad');
     test.ok(!a.isiPod, 'iPod');
@@ -312,6 +322,7 @@ exports['Windows XP IE 5.5'] = function (test) {
 
     var a = ua.parse(s);
 
+    test.ok(a.isAuthoritative, 'Authoritative');
     test.ok(!a.isMobile, 'Mobile');
     test.ok(!a.isiPad, 'iPad');
     test.ok(!a.isiPod, 'iPod');
@@ -341,6 +352,7 @@ exports['Windows XP IE 6.0'] = function (test) {
 
     var a = ua.parse(s);
 
+    test.ok(a.isAuthoritative, 'Authoritative');
     test.ok(!a.isMobile, 'Mobile');
     test.ok(!a.isiPad, 'iPad');
     test.ok(!a.isiPod, 'iPod');
@@ -370,6 +382,7 @@ exports['Windows XP IE 7.0'] = function (test) {
 
     var a = ua.parse(s);
 
+    test.ok(a.isAuthoritative, 'Authoritative');
     test.ok(!a.isMobile, 'Mobile');
     test.ok(!a.isiPad, 'iPad');
     test.ok(!a.isiPod, 'iPod');
@@ -399,6 +412,7 @@ exports['Windows XP Opera'] = function (test) {
 
     var a = ua.parse(s);
 
+    test.ok(a.isAuthoritative, 'Authoritative');
     test.ok(!a.isMobile, 'Mobile');
     test.ok(!a.isiPad, 'iPad');
     test.ok(!a.isiPod, 'iPod');
@@ -429,6 +443,7 @@ exports['Windows XP Safari'] = function (test) {
 
     var a = ua.parse(s);
 
+    test.ok(a.isAuthoritative, 'Authoritative');
     test.ok(!a.isMobile, 'Mobile');
     test.ok(!a.isiPad, 'iPad');
     test.ok(!a.isiPod, 'iPod');
@@ -459,6 +474,7 @@ exports['Windows XP Chrome'] = function (test) {
 
     var a = ua.parse(s);
 
+    test.ok(a.isAuthoritative, 'Authoritative');
     test.ok(!a.isMobile, 'Mobile');
     test.ok(!a.isiPad, 'iPad');
     test.ok(!a.isiPod, 'iPod');
@@ -489,6 +505,7 @@ exports['Windows Phone 8'] = function (test) {
 
     var a = ua.parse(s);
 
+    test.ok(a.isAuthoritative, 'Authoritative');
     test.ok(a.isMobile, 'Mobile');
     test.ok(!a.isiPad, 'iPad');
     test.ok(!a.isiPod, 'iPod');
@@ -519,6 +536,7 @@ exports['OS X OmniWeb 622'] = function (test) {
 
     var a = ua.parse(s);
 
+    test.ok(a.isAuthoritative, 'Authoritative');
     test.ok(!a.isMobile, 'Mobile');
     test.ok(!a.isiPad, 'iPad');
     test.ok(!a.isiPod, 'iPod');
@@ -550,6 +568,7 @@ exports['OS X Safari 530'] = function (test) {
 
     var a = ua.parse(s);
 
+    test.ok(a.isAuthoritative, 'Authoritative');
     test.ok(!a.isMobile, 'Mobile');
     test.ok(!a.isiPad, 'iPad');
     test.ok(!a.isiPod, 'iPod');
@@ -579,6 +598,7 @@ exports['OS X Chromium'] = function (test) {
 
     var a = ua.parse(s);
 
+    test.ok(a.isAuthoritative, 'Authoritative');
     test.ok(a.isMobile, 'Mobile');
     test.ok(a.isiPad, 'iPad');
     test.ok(!a.isiPod, 'iPod');
@@ -613,6 +633,7 @@ exports['Android Samsung'] = function (test) {
 
     var a = ua.parse(s);
 
+    test.ok(a.isAuthoritative, 'Authoritative');
     test.ok(a.isMobile, 'Mobile');
     test.ok(!a.isiPad, 'iPad');
     test.ok(!a.isiPod, 'iPod');
@@ -646,6 +667,7 @@ exports['Android Xoom'] = function (test) {
 
     var a = ua.parse(s);
 
+    test.ok(a.isAuthoritative, 'Authoritative');
     test.ok(a.isMobile, 'Mobile');
     test.ok(!a.isiPad, 'iPad');
     test.ok(!a.isiPod, 'iPod');
@@ -713,6 +735,7 @@ exports['Bada OS browser'] = function (test) {
 
     var a = ua.parse(s);
 
+    test.ok(a.isAuthoritative, 'Authoritative');
     test.ok(a.isMobile, 'Mobile');
     test.ok(!a.isiPad, 'iPad');
     test.ok(!a.isiPod, 'iPod');
@@ -744,6 +767,7 @@ exports['America Online Browser'] = function (test) {
 
     var a = ua.parse(s);
 
+    test.ok(a.isAuthoritative, 'Authoritative');
     test.ok(!a.isMobile, 'Mobile');
     test.ok(!a.isiPad, 'iPad');
     test.ok(!a.isiPod, 'iPod');
@@ -802,6 +826,7 @@ exports['Windows 7 IE 11.0'] = function (test) {
 
     var a = ua.parse(s);
 
+    test.ok(a.isAuthoritative, 'Authoritative');
     test.ok(!a.isMobile, 'Mobile');
     test.ok(!a.isiPad, 'iPad');
     test.ok(!a.isiPod, 'iPod');
@@ -830,6 +855,7 @@ exports['Windows 8.1 IE 11 Touch'] = function (test) {
 
     var a = ua.parse(s);
 
+    test.ok(a.isAuthoritative, 'Authoritative');
     test.ok(!a.isMobile, 'Mobile');
     test.ok(!a.isiPad, 'iPad');
     test.ok(!a.isiPod, 'iPod');
@@ -859,6 +885,7 @@ exports['Windows XP IE 8.0'] = function (test) {
 
     var a = ua.parse(s);
 
+    test.ok(a.isAuthoritative, 'Authoritative');
     test.ok(!a.isMobile, 'Mobile');
     test.ok(!a.isiPad, 'iPad');
     test.ok(!a.isiPod, 'iPod');
@@ -888,6 +915,7 @@ exports['Windows XP IE 8.0 - Compatibility mode'] = function (test) {
 
     var a = ua.parse(s);
 
+    test.ok(a.isAuthoritative, 'Authoritative');
     test.ok(!a.isMobile, 'Mobile');
     test.ok(!a.isiPad, 'iPad');
     test.ok(!a.isiPod, 'iPod');
@@ -918,6 +946,7 @@ exports['Windows XP IE 10.0'] = function (test) {
 
     var a = ua.parse(s);
 
+    test.ok(a.isAuthoritative, 'Authoritative');
     test.ok(!a.isMobile, 'Mobile');
     test.ok(!a.isiPad, 'iPad');
     test.ok(!a.isiPod, 'iPod');
@@ -948,6 +977,7 @@ exports['Windows XP IE 10.0 - Compatibility mode'] = function (test) {
 
     var a = ua.parse(s);
 
+    test.ok(a.isAuthoritative, 'Authoritative');
     test.ok(!a.isMobile, 'Mobile');
     test.ok(!a.isiPad, 'iPad');
     test.ok(!a.isiPod, 'iPod');
@@ -978,6 +1008,7 @@ exports['Windows XP IE 7.0 - Compatibility mode (invalid mode)'] = function (tes
 
     var a = ua.parse(s);
 
+    test.ok(a.isAuthoritative, 'Authoritative');
     test.ok(!a.isMobile, 'Mobile');
     test.ok(!a.isiPad, 'iPad');
     test.ok(!a.isiPod, 'iPod');
@@ -1009,6 +1040,7 @@ exports['Windows XP IE 9.0 - Compatibility mode'] = function (test) {
 
     var a = ua.parse(s);
 
+    test.ok(a.isAuthoritative, 'Authoritative');
     test.ok(!a.isMobile, 'Mobile');
     test.ok(!a.isiPad, 'iPad');
     test.ok(!a.isiPod, 'iPod');
@@ -1040,6 +1072,7 @@ exports['Mac OSX Opera 30'] = function (test) {
 
     var a = ua.parse(s);
 
+    test.ok(a.isAuthoritative, 'Authoritative');
     test.ok(!a.isMobile, 'Mobile');
     test.ok(!a.isiPad, 'iPad');
     test.ok(!a.isiPod, 'iPod');
@@ -1071,6 +1104,7 @@ exports['Microsoft Edge 12'] = function (test) {
 
     var a = ua.parse(s);
 
+    test.ok(a.isAuthoritative, 'Authoritative');
     test.ok(!a.isMobile, 'Mobile');
     test.ok(!a.isiPad, 'iPad');
     test.ok(!a.isiPod, 'iPod');
@@ -1103,6 +1137,7 @@ exports['Microsoft Edge Mobile'] = function (test) {
 
     var a = ua.parse(s);
 
+    test.ok(a.isAuthoritative, 'Authoritative');
     test.ok(a.isMobile, 'Mobile');
     test.ok(!a.isiPad, 'iPad');
     test.ok(!a.isiPod, 'iPod');
