@@ -17,8 +17,11 @@ module.exports = new UserAgent();
 module.exports.UserAgent = UserAgent;
 module.exports.express = function () {
     return function (req, res, next) {
-        var source = req.headers['user-agent'] || '',
-            ua = new UserAgent();
+        var source = req.headers['user-agent'] || '';
+        if (req.headers['x-ucbrowser-ua']) {  //special case of UC Browser
+            source = req.headers['x-ucbrowser-ua'];
+        }
+        var ua = new UserAgent();
         if (typeof source === 'undefined') {
             source = "unknown";
         }
