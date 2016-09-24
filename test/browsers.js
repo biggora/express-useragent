@@ -1162,3 +1162,36 @@ exports['Microsoft Edge Mobile'] = function (test) {
 
     test.done();
 };
+
+exports['PhantomJS'] = function (test) {
+
+    var s = 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.8 Safari/534.34';
+
+    var a = ua.parse(s);
+
+    test.ok(a.isAuthoritative, 'Authoritative');
+    test.ok(!a.isMobile, 'Mobile');
+    test.ok(!a.isiPad, 'iPad');
+    test.ok(!a.isiPod, 'iPod');
+    test.ok(!a.isiPhone, 'iPhone');
+    test.ok(!a.isAndroid, 'Android');
+    test.ok(!a.isBlackberry, 'Blackberry');
+    test.ok(!a.isOpera, 'Opera');
+    test.ok(!a.isIE, 'IE');
+    test.ok(!a.isEdge, 'Edge');
+    test.ok(!a.isSafari, 'Safari');
+    test.ok(!a.isFirefox, 'Firefox');
+    test.ok(!a.isWebkit, 'Webkit');
+    test.ok(!a.isChrome, 'Chrome');
+    test.ok(!a.isKonqueror, 'Konqueror');
+    test.ok(a.isDesktop, 'Desktop');
+    test.ok(a.isWindows, 'Windows');
+    test.ok(!a.isLinux, 'Linux');
+    test.ok(!a.isMac, 'Mac');
+    test.ok(!a.isWindowsPhone, 'Windows Phone');
+    test.ok(a.isPhantomJS, 'PhantomJS');
+    test.equal(a.version, '1.9.8');
+    test.ok(!a.isIECompatibilityMode);
+
+    test.done();
+};
