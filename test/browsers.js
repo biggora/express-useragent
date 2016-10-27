@@ -26,6 +26,7 @@ exports['iPad 2'] = function (test) {
     test.ok(!a.isChrome, 'Chrome');
     test.ok(!a.isKonqueror, 'Konqueror');
     test.ok(!a.isMaxthon, 'Maxthon');
+    test.ok(!a.isCamino, 'Camino');
     test.ok(!a.isDesktop, 'Desktop');
     test.ok(!a.isWindows, 'Windows');
     test.ok(!a.isLinux, 'Linux');
@@ -58,6 +59,7 @@ exports['Linux Iceweasel'] = function (test) {
     test.ok(!a.isChrome, 'Chrome');
     test.ok(!a.isKonqueror, 'Konqueror');
     test.ok(!a.isMaxthon, 'Maxthon');
+    test.ok(!a.isCamino, 'Camino');
     test.ok(a.isDesktop, 'Desktop');
     test.ok(!a.isWindows, 'Windows');
     test.ok(a.isLinux, 'Linux');
@@ -89,6 +91,7 @@ exports['Linux 64 Chrome'] = function (test) {
     test.ok(a.isChrome, 'Chrome');
     test.ok(!a.isKonqueror, 'Konqueror');
     test.ok(!a.isMaxthon, 'Maxthon');
+    test.ok(!a.isCamino, 'Camino');
     test.ok(a.isDesktop, 'Desktop');
     test.ok(!a.isWindows, 'Windows');
     test.ok(a.isLinux, 'Linux');
@@ -120,6 +123,7 @@ exports['Linux Firefox 11'] = function (test) {
     test.ok(!a.isChrome, 'Chrome');
     test.ok(!a.isKonqueror, 'Konqueror');
     test.ok(!a.isMaxthon, 'Maxthon');
+    test.ok(!a.isCamino, 'Camino');
     test.ok(a.isDesktop, 'Desktop');
     test.ok(!a.isWindows, 'Windows');
     test.ok(a.isLinux, 'Linux');
@@ -153,6 +157,7 @@ exports['Linux Chrome 17'] = function (test) {
     test.ok(a.isChrome, 'Chrome');
     test.ok(!a.isKonqueror, 'Konqueror');
     test.ok(!a.isMaxthon, 'Maxthon');
+    test.ok(!a.isCamino, 'Camino');
     test.ok(a.isDesktop, 'Desktop');
     test.ok(!a.isWindows, 'Windows');
     test.ok(a.isLinux, 'Linux');
@@ -185,6 +190,7 @@ exports['Linux Chromium 39'] = function (test) {
     test.ok(a.isChrome, 'Chrome');
     test.ok(!a.isKonqueror, 'Konqueror');
     test.ok(!a.isMaxthon, 'Maxthon');
+    test.ok(!a.isCamino, 'Camino');
     test.ok(a.isDesktop, 'Desktop');
     test.ok(!a.isWindows, 'Windows');
     test.ok(a.isLinux, 'Linux');
@@ -219,6 +225,7 @@ exports['Linux Ephiphany 2.30'] = function (test) {
     test.ok(!a.isChrome, 'Chrome');
     test.ok(!a.isKonqueror, 'Konqueror');
     test.ok(!a.isMaxthon, 'Maxthon');
+    test.ok(!a.isCamino, 'Camino');
     test.ok(a.isDesktop, 'Desktop');
     test.ok(!a.isWindows, 'Windows');
     test.ok(a.isLinux, 'Linux');
@@ -250,6 +257,7 @@ exports['Windows 8 Chrome 28'] = function (test) {
     test.ok(a.isChrome, 'Chrome');
     test.ok(!a.isKonqueror, 'Konqueror');
     test.ok(!a.isMaxthon, 'Maxthon');
+    test.ok(!a.isCamino, 'Camino');
     test.ok(a.isDesktop, 'Desktop');
     test.ok(a.isWindows, 'Windows');
     test.ok(!a.isLinux, 'Linux');
@@ -283,6 +291,7 @@ exports['Windows 8.1 WinJs'] = function (test) {
     test.ok(!a.isChrome, 'Chrome');
     test.ok(!a.isKonqueror, 'Konqueror');
     test.ok(!a.isMaxthon, 'Maxthon');
+    test.ok(!a.isCamino, 'Camino');
     test.ok(a.isDesktop, 'Desktop');
     test.ok(a.isWindows, 'Windows');
     test.ok(!a.isLinux, 'Linux');
@@ -315,6 +324,7 @@ exports['Windows 7 Firefox 23'] = function (test) {
     test.ok(!a.isChrome, 'Chrome');
     test.ok(!a.isKonqueror, 'Konqueror');
     test.ok(!a.isMaxthon, 'Maxthon');
+    test.ok(!a.isCamino, 'Camino');
     test.ok(a.isDesktop, 'Desktop');
     test.ok(a.isWindows, 'Windows');
     test.ok(!a.isLinux, 'Linux');
@@ -347,6 +357,7 @@ exports['Windows XP IE 5.5'] = function (test) {
     test.ok(!a.isChrome, 'Chrome');
     test.ok(!a.isKonqueror, 'Konqueror');
     test.ok(!a.isMaxthon, 'Maxthon');
+    test.ok(!a.isCamino, 'Camino');
     test.ok(a.isDesktop, 'Desktop');
     test.ok(a.isWindows, 'Windows');
     test.ok(!a.isLinux, 'Linux');
@@ -378,6 +389,7 @@ exports['Windows XP IE 6.0'] = function (test) {
     test.ok(!a.isChrome, 'Chrome');
     test.ok(!a.isKonqueror, 'Konqueror');
     test.ok(!a.isMaxthon, 'Maxthon');
+    test.ok(!a.isCamino, 'Camino');
     test.ok(a.isDesktop, 'Desktop');
     test.ok(a.isWindows, 'Windows');
     test.ok(!a.isLinux, 'Linux');
@@ -409,6 +421,7 @@ exports['Windows XP IE 7.0'] = function (test) {
     test.ok(!a.isChrome, 'Chrome');
     test.ok(!a.isKonqueror, 'Konqueror');
     test.ok(!a.isMaxthon, 'Maxthon');
+    test.ok(!a.isCamino, 'Camino');
     test.ok(a.isDesktop, 'Desktop');
     test.ok(a.isWindows, 'Windows');
     test.ok(!a.isLinux, 'Linux');
@@ -440,6 +453,7 @@ exports['Windows XP Opera'] = function (test) {
     test.ok(!a.isChrome, 'Chrome');
     test.ok(!a.isKonqueror, 'Konqueror');
     test.ok(!a.isMaxthon, 'Maxthon');
+    test.ok(!a.isCamino, 'Camino');
     test.ok(a.isDesktop, 'Desktop');
     test.ok(a.isWindows, 'Windows');
     test.ok(!a.isLinux, 'Linux');
@@ -472,6 +486,7 @@ exports['Windows XP Safari'] = function (test) {
     test.ok(!a.isChrome, 'Chrome');
     test.ok(!a.isKonqueror, 'Konqueror');
     test.ok(!a.isMaxthon, 'Maxthon');
+    test.ok(!a.isCamino, 'Camino');
     test.ok(a.isDesktop, 'Desktop');
     test.ok(a.isWindows, 'Windows');
     test.ok(!a.isLinux, 'Linux');
@@ -504,6 +519,7 @@ exports['Windows XP Chrome'] = function (test) {
     test.ok(a.isChrome, 'Chrome');
     test.ok(!a.isKonqueror, 'Konqueror');
     test.ok(!a.isMaxthon, 'Maxthon');
+    test.ok(!a.isCamino, 'Camino');
     test.ok(a.isDesktop, 'Desktop');
     test.ok(a.isWindows, 'Windows');
     test.ok(!a.isLinux, 'Linux');
@@ -536,6 +552,7 @@ exports['Windows Phone 8'] = function (test) {
     test.ok(!a.isChrome, 'Chrome');
     test.ok(!a.isKonqueror, 'Konqueror');
     test.ok(!a.isMaxthon, 'Maxthon');
+    test.ok(!a.isCamino, 'Camino');
     test.ok(!a.isDesktop, 'Desktop');
     test.ok(!a.isWindows, 'Windows');
     test.ok(a.isWindowsPhone, 'Windows Phone');
@@ -569,6 +586,7 @@ exports['OS X OmniWeb 622'] = function (test) {
     test.ok(!a.isChrome, 'Chrome');
     test.ok(!a.isKonqueror, 'Konqueror');
     test.ok(!a.isMaxthon, 'Maxthon');
+    test.ok(!a.isCamino, 'Camino');
     test.ok(a.isDesktop, 'Desktop');
     test.ok(!a.isWindows, 'Windows');
     test.ok(!a.isLinux, 'Linux');
@@ -601,6 +619,7 @@ exports['OS X Safari 530'] = function (test) {
     test.ok(!a.isChrome, 'Chrome');
     test.ok(!a.isKonqueror, 'Konqueror');
     test.ok(!a.isMaxthon, 'Maxthon');
+    test.ok(!a.isCamino, 'Camino');
     test.ok(a.isDesktop, 'Desktop');
     test.ok(!a.isWindows, 'Windows');
     test.ok(!a.isLinux, 'Linux');
@@ -632,6 +651,7 @@ exports['OS X Chromium'] = function (test) {
     test.ok(a.isChrome, 'Chromium');
     test.ok(!a.isKonqueror, 'Konqueror');
     test.ok(!a.isMaxthon, 'Maxthon');
+    test.ok(!a.isCamino, 'Camino');
     test.ok(!a.isDesktop, 'Desktop');
     test.ok(!a.isWindows, 'Windows');
     test.ok(!a.isLinux, 'Linux');
@@ -668,6 +688,7 @@ exports['Android Samsung'] = function (test) {
     test.ok(!a.isChrome, 'Chrome');
     test.ok(!a.isKonqueror, 'Konqueror');
     test.ok(!a.isMaxthon, 'Maxthon');
+    test.ok(!a.isCamino, 'Camino');
     test.ok(!a.isDesktop, 'Desktop');
     test.ok(!a.isWindows, 'Windows');
     test.ok(a.isLinux, 'Linux');
@@ -703,6 +724,7 @@ exports['Android Xoom'] = function (test) {
     test.ok(!a.isChrome, 'Chrome');
     test.ok(!a.isKonqueror, 'Konqueror');
     test.ok(!a.isMaxthon, 'Maxthon');
+    test.ok(!a.isCamino, 'Camino');
     test.ok(!a.isDesktop, 'Desktop');
     test.ok(!a.isWindows, 'Windows');
     test.ok(a.isLinux, 'Linux');
@@ -737,6 +759,7 @@ exports['iPhone 4'] = function (test) {
     test.ok(!a.isChrome, 'Chrome');
     test.ok(!a.isKonqueror, 'Konqueror');
     test.ok(!a.isMaxthon, 'Maxthon');
+    test.ok(!a.isCamino, 'Camino');
     test.ok(!a.isDesktop, 'Desktop');
     test.ok(!a.isWindows, 'Windows');
     test.ok(!a.isLinux, 'Linux');
@@ -773,6 +796,7 @@ exports['Bada OS browser'] = function (test) {
     test.ok(!a.isChrome, 'Chrome');
     test.ok(!a.isKonqueror, 'Konqueror');
     test.ok(!a.isMaxthon, 'Maxthon');
+    test.ok(!a.isCamino, 'Camino');
     test.ok(!a.isDesktop, 'Desktop');
     test.ok(!a.isWindows, 'Windows');
     test.ok(!a.isLinux, 'Linux');
@@ -806,6 +830,7 @@ exports['America Online Browser'] = function (test) {
     test.ok(!a.isChrome, 'Chrome');
     test.ok(!a.isKonqueror, 'Konqueror');
     test.ok(!a.isMaxthon, 'Maxthon');
+    test.ok(!a.isCamino, 'Camino');
     test.ok(a.isDesktop, 'Desktop');
     test.ok(a.isWindows, 'Windows');
     test.ok(!a.isLinux, 'Linux');
@@ -836,6 +861,7 @@ exports['Windows 7 IE 10.6'] = function (test) {
     test.ok(!a.isChrome, 'Chrome');
     test.ok(!a.isKonqueror, 'Konqueror');
     test.ok(!a.isMaxthon, 'Maxthon');
+    test.ok(!a.isCamino, 'Camino');
     test.ok(a.isDesktop, 'Desktop');
     test.ok(a.isWindows, 'Windows');
     test.ok(!a.isLinux, 'Linux');
@@ -867,6 +893,7 @@ exports['Windows 7 IE 11.0'] = function (test) {
     test.ok(!a.isChrome, 'Chrome');
     test.ok(!a.isKonqueror, 'Konqueror');
     test.ok(!a.isMaxthon, 'Maxthon');
+    test.ok(!a.isCamino, 'Camino');
     test.ok(a.isDesktop, 'Desktop');
     test.ok(a.isWindows, 'Windows');
     test.ok(!a.isLinux, 'Linux');
@@ -897,6 +924,7 @@ exports['Windows 8.1 IE 11 Touch'] = function (test) {
     test.ok(!a.isChrome, 'Chrome');
     test.ok(!a.isKonqueror, 'Konqueror');
     test.ok(!a.isMaxthon, 'Maxthon');
+    test.ok(!a.isCamino, 'Camino');
     test.ok(a.isDesktop, 'Desktop');
     test.ok(a.isWindows, 'Windows');
     test.ok(!a.isLinux, 'Linux');
@@ -928,6 +956,7 @@ exports['Windows XP IE 8.0'] = function (test) {
     test.ok(!a.isChrome, 'Chrome');
     test.ok(!a.isKonqueror, 'Konqueror');
     test.ok(!a.isMaxthon, 'Maxthon');
+    test.ok(!a.isCamino, 'Camino');
     test.ok(a.isDesktop, 'Desktop');
     test.ok(a.isWindows, 'Windows');
     test.ok(!a.isLinux, 'Linux');
@@ -959,6 +988,7 @@ exports['Windows XP IE 8.0 - Compatibility mode'] = function (test) {
     test.ok(!a.isChrome, 'Chrome');
     test.ok(!a.isKonqueror, 'Konqueror');
     test.ok(!a.isMaxthon, 'Maxthon');
+    test.ok(!a.isCamino, 'Camino');
     test.ok(a.isDesktop, 'Desktop');
     test.ok(a.isWindows, 'Windows');
     test.ok(!a.isLinux, 'Linux');
@@ -991,6 +1021,7 @@ exports['Windows XP IE 10.0'] = function (test) {
     test.ok(!a.isChrome, 'Chrome');
     test.ok(!a.isKonqueror, 'Konqueror');
     test.ok(!a.isMaxthon, 'Maxthon');
+    test.ok(!a.isCamino, 'Camino');
     test.ok(a.isDesktop, 'Desktop');
     test.ok(a.isWindows, 'Windows');
     test.ok(!a.isLinux, 'Linux');
@@ -1023,6 +1054,7 @@ exports['Windows XP IE 10.0 - Compatibility mode'] = function (test) {
     test.ok(!a.isChrome, 'Chrome');
     test.ok(!a.isKonqueror, 'Konqueror');
     test.ok(!a.isMaxthon, 'Maxthon');
+    test.ok(!a.isCamino, 'Camino');
     test.ok(a.isDesktop, 'Desktop');
     test.ok(a.isWindows, 'Windows');
     test.ok(!a.isLinux, 'Linux');
@@ -1055,6 +1087,7 @@ exports['Windows XP IE 7.0 - Compatibility mode (invalid mode)'] = function (tes
     test.ok(!a.isChrome, 'Chrome');
     test.ok(!a.isKonqueror, 'Konqueror');
     test.ok(!a.isMaxthon, 'Maxthon');
+    test.ok(!a.isCamino, 'Camino');
     test.ok(a.isDesktop, 'Desktop');
     test.ok(a.isWindows, 'Windows');
     test.ok(!a.isLinux, 'Linux');
@@ -1088,6 +1121,7 @@ exports['Windows XP IE 9.0 - Compatibility mode'] = function (test) {
     test.ok(!a.isChrome, 'Chrome');
     test.ok(!a.isKonqueror, 'Konqueror');
     test.ok(!a.isMaxthon, 'Maxthon');
+    test.ok(!a.isCamino, 'Camino');
     test.ok(a.isDesktop, 'Desktop');
     test.ok(a.isWindows, 'Windows');
     test.ok(!a.isLinux, 'Linux');
@@ -1121,6 +1155,7 @@ exports['Mac OSX Opera 30'] = function (test) {
     test.ok(!a.isChrome, 'Chrome');
     test.ok(!a.isKonqueror, 'Konqueror');
     test.ok(!a.isMaxthon, 'Maxthon');
+    test.ok(!a.isCamino, 'Camino');
     test.ok(a.isDesktop, 'Desktop');
     test.ok(!a.isWindows, 'Windows');
     test.ok(!a.isLinux, 'Linux');
@@ -1155,6 +1190,7 @@ exports['Microsoft Edge 12'] = function (test) {
     test.ok(!a.isChrome, 'Chrome');
     test.ok(!a.isKonqueror, 'Konqueror');
     test.ok(!a.isMaxthon, 'Maxthon');
+    test.ok(!a.isCamino, 'Camino');
     test.ok(a.isDesktop, 'Desktop');
     test.ok(a.isWindows, 'Windows');
     test.ok(!a.isLinux, 'Linux');
@@ -1189,6 +1225,7 @@ exports['Microsoft Edge Mobile'] = function (test) {
     test.ok(!a.isChrome, 'Chrome');
     test.ok(!a.isKonqueror, 'Konqueror');
     test.ok(!a.isMaxthon, 'Maxthon');
+    test.ok(!a.isCamino, 'Camino');
     test.ok(!a.isDesktop, 'Desktop');
     test.ok(!a.isWindows, 'Windows');
     test.ok(!a.isLinux, 'Linux');
@@ -1222,6 +1259,7 @@ exports['PhantomJS'] = function (test) {
     test.ok(!a.isChrome, 'Chrome');
     test.ok(!a.isKonqueror, 'Konqueror');
     test.ok(!a.isMaxthon, 'Maxthon');
+    test.ok(!a.isCamino, 'Camino');
     test.ok(a.isDesktop, 'Desktop');
     test.ok(a.isWindows, 'Windows');
     test.ok(!a.isLinux, 'Linux');
