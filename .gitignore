@@ -1,6 +1,6 @@
 # Editor
-.idea
-nbproject
+/.idea/
+/nbproject/
 
 # Windows
 Thumbs.db
@@ -12,7 +12,7 @@ Desktop.ini
 *~
 
 # npm
-node_modules
+/node_modules/
 *.log
 *.gz
 
