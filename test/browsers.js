@@ -785,7 +785,7 @@ exports['Bada OS browser'] = function (test) {
     test.ok(!a.isLinux, 'Linux');
     test.ok(!a.isMac, 'Mac');
     test.ok(!a.isWindowsPhone, 'Windows Phone');
-    test.equal(a.version, undefined);
+    test.equal(a.version, 'unknown');
 
     test.done();
 };
