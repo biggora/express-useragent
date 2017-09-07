@@ -655,6 +655,40 @@ exports['OS X Chromium'] = function (test) {
 };
 
 // Source:
+// https://www.handsetdetection.com/properties/devices/Google/Pixel
+
+exports['Google Pixel'] = function (test) {
+
+    var s = 'Mozilla/5.0 (Linux; Android 8.0.0; Pixel Build/OPR6.170623.011) AppleWebKit/537.36'
+        + ' (KHTML, like Gecko) Chrome/60.0.3112.116 Mobile Safari/537.36';
+
+    var a = ua.parse(s);
+
+    test.ok(a.isAuthoritative, 'Authoritative');
+    test.ok(a.isMobile, 'Mobile');
+    test.ok(!a.isiPad, 'iPad');
+    test.ok(!a.isiPod, 'iPod');
+    test.ok(!a.isiPhone, 'iPhone');
+    test.ok(a.isAndroid, 'Android');
+    test.ok(!a.isBlackberry, 'Blackberry');
+    test.ok(!a.isOpera, 'Opera');
+    test.ok(!a.isIE, 'IE');
+    test.ok(!a.isSafari, 'Safari');
+    test.ok(!a.isFirefox, 'Firefox');
+    test.ok(!a.isWebkit, 'Webkit');
+    test.ok(a.isChrome, 'Chrome');
+    test.ok(!a.isKonqueror, 'Konqueror');
+    test.ok(!a.isDesktop, 'Desktop');
+    test.ok(!a.isWindows, 'Windows');
+    test.ok(a.isLinux, 'Linux');
+    test.ok(!a.isMac, 'Mac');
+    test.ok(!a.isWindowsPhone, 'Windows Phone');
+    test.equal(a.version, '60.0.3112.116');
+
+    test.done();
+};
+
+// Source:
 // http://www.gtrifonov.com/2011/04/15/google-android-user-agent-strings-2/
 
 exports['Android Samsung'] = function (test) {
@@ -1098,7 +1132,7 @@ exports['Windows XP IE 9.0 - Compatibility mode'] = function (test) {
 
 exports['Mac OSX Opera 30'] = function (test) {
 
-    var s = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_2) AppleWebKit/537.36 (KHTML, like Gecko)' + 
+    var s = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_2) AppleWebKit/537.36 (KHTML, like Gecko)' +
             'Chrome/43.0.2357.125 Safari/537.36 OPR/30.0.1835.88'
 
     var a = ua.parse(s);
