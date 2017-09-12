@@ -553,6 +553,7 @@ exports['Windows Phone 8.1'] = function (test) {
     test.ok(!a.isDesktop, 'Desktop');
     test.ok(!a.isWindows, 'Windows');
     test.ok(a.isWindowsPhone, 'Windows Phone');
+    test.ok(!a.isFacebook, 'Facebook');
     test.ok(!a.isLinux, 'Linux');
     test.ok(!a.isMac, 'Mac');
     test.equal(a.version, '11.0');
@@ -751,6 +752,7 @@ exports['Android Xoom'] = function (test) {
     test.ok(a.isLinux, 'Linux');
     test.ok(!a.isMac, 'Mac');
     test.ok(!a.isWindowsPhone, 'Windows Phone');
+    test.ok(!a.isFacebook, 'Facebook');
     test.equal(a.version, '4.0');
 
     test.done();
@@ -1222,6 +1224,7 @@ exports['Microsoft Edge Mobile'] = function (test) {
     test.ok(!a.isLinux, 'Linux');
     test.ok(!a.isMac, 'Mac');
     test.ok(a.isWindowsPhone, 'Windows Phone');
+    test.ok(!a.isFacebook, 'Facebook');
     test.equal(a.version, '12.0');
     test.ok(!a.isIECompatibilityMode);
 
@@ -1255,7 +1258,78 @@ exports['PhantomJS'] = function (test) {
     test.ok(!a.isMac, 'Mac');
     test.ok(!a.isWindowsPhone, 'Windows Phone');
     test.ok(a.isPhantomJS, 'PhantomJS');
+    test.ok(!a.isFacebook, 'Facebook');
     test.equal(a.version, '1.9.8');
+    test.ok(!a.isIECompatibilityMode);
+
+    test.done();
+};
+
+exports['Facebook on iPhone'] = function (test) {
+
+    var s = '[FBAN/FBIOS;FBAV/137.0.0.44.48;FBBV/68333368;FBDV/iPhone9,1;FBMD/iPhone;FBSN/iOS;FBSV/10.3.3;' +
+        'FBSS/2;FBCR/AT&T;FBID/phone;FBLC/en_GB;FBOP/5;FBRV/0]';
+
+    var a = ua.parse(s);
+
+    test.ok(a.isAuthoritative, 'Authoritative');
+    test.ok(a.isMobile, 'Mobile');
+    test.ok(!a.isiPad, 'iPad');
+    test.ok(!a.isiPod, 'iPod');
+    test.ok(a.isiPhone, 'iPhone');
+    test.ok(!a.isAndroid, 'Android');
+    test.ok(!a.isBlackberry, 'Blackberry');
+    test.ok(!a.isOpera, 'Opera');
+    test.ok(!a.isIE, 'IE');
+    test.ok(!a.isEdge, 'Edge');
+    test.ok(!a.isSafari, 'Safari');
+    test.ok(!a.isFirefox, 'Firefox');
+    test.ok(!a.isWebkit, 'Webkit');
+    test.ok(!a.isChrome, 'Chrome');
+    test.ok(!a.isKonqueror, 'Konqueror');
+    test.ok(!a.isDesktop, 'Desktop');
+    test.ok(!a.isWindows, 'Windows');
+    test.ok(!a.isLinux, 'Linux');
+    test.ok(!a.isMac, 'Mac');
+    test.ok(!a.isWindowsPhone, 'Windows Phone');
+    test.ok(!a.isPhantomJS, 'PhantomJS');
+    test.ok(a.isFacebook, 'Facebook');
+    test.equal(a.version, '137.0.0.44.48');
+    test.ok(!a.isIECompatibilityMode);
+
+    test.done();
+};
+
+exports['Facebook on Android'] = function (test) {
+
+    var s = 'Mozilla/5.0 (Linux; Android 7.1.2; Nexus 5X Build/N2G47Z; wv) AppleWebKit/537.36 (KHTML, like Gecko)' +
+        ' Version/4.0 Chrome/60.0.3112.107 Mobile Safari/537.36 [FB_IAB/MESSENGER;FBAV/132.0.0.20.90;]';
+
+    var a = ua.parse(s);
+
+    test.ok(a.isAuthoritative, 'Authoritative');
+    test.ok(a.isMobile, 'Mobile');
+    test.ok(!a.isiPad, 'iPad');
+    test.ok(!a.isiPod, 'iPod');
+    test.ok(!a.isiPhone, 'iPhone');
+    test.ok(a.isAndroid, 'Android');
+    test.ok(!a.isBlackberry, 'Blackberry');
+    test.ok(!a.isOpera, 'Opera');
+    test.ok(!a.isIE, 'IE');
+    test.ok(!a.isEdge, 'Edge');
+    test.ok(!a.isSafari, 'Safari');
+    test.ok(!a.isFirefox, 'Firefox');
+    test.ok(!a.isWebkit, 'Webkit');
+    test.ok(!a.isChrome, 'Chrome');
+    test.ok(!a.isKonqueror, 'Konqueror');
+    test.ok(!a.isDesktop, 'Desktop');
+    test.ok(!a.isWindows, 'Windows');
+    test.ok(a.isLinux, 'Linux');
+    test.ok(!a.isMac, 'Mac');
+    test.ok(!a.isWindowsPhone, 'Windows Phone');
+    test.ok(!a.isPhantomJS, 'PhantomJS');
+    test.ok(a.isFacebook, 'Facebook');
+    test.equal(a.version, '132.0.0.20.90');
     test.ok(!a.isIECompatibilityMode);
 
     test.done();
