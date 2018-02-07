@@ -986,7 +986,7 @@ exports['Bada OS browser'] = function (test) {
     test.ok(!a.isIE, 'IE');
     test.ok(!a.isSafari, 'Safari');
     test.ok(!a.isFirefox, 'Firefox');
-    test.ok(!a.isWebkit, 'Webkit');
+    test.ok(a.isWebkit, 'Webkit');
     test.ok(!a.isChrome, 'Chrome');
     test.ok(!a.isKonqueror, 'Konqueror');
     test.ok(!a.isDesktop, 'Desktop');
@@ -994,7 +994,7 @@ exports['Bada OS browser'] = function (test) {
     test.ok(!a.isLinux, 'Linux');
     test.ok(!a.isMac, 'Mac');
     test.ok(!a.isWindowsPhone, 'Windows Phone');
-    test.equal(a.version, undefined);
+    test.equal(a.version, '533.1');
 
     test.done();
 };
