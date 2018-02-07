@@ -1231,6 +1231,74 @@ exports['Microsoft Edge Mobile'] = function (test) {
     test.done();
 };
 
+exports['Microsoft Edge Android'] = function (test) {
+
+    var s = 'Mozilla/5.0 (Linux; Android 8.0; Pixel XL Build/OPP3.170518.006) AppleWebKit/537.36 (KHTML, like Gecko)' +
+        ' Chrome/58.0.3029.0 Mobile Safari/537.36 EdgA/41.1.35.1';
+
+    var a = ua.parse(s);
+
+    test.ok(a.isAuthoritative, 'Authoritative');
+    test.ok(a.isMobile, 'Mobile');
+    test.ok(!a.isiPad, 'iPad');
+    test.ok(!a.isiPod, 'iPod');
+    test.ok(!a.isiPhone, 'iPhone');
+    test.ok(a.isAndroid, 'Android');
+    test.ok(!a.isBlackberry, 'Blackberry');
+    test.ok(!a.isOpera, 'Opera');
+    test.ok(!a.isIE, 'IE');
+    test.ok(a.isEdge, 'Edge');
+    test.ok(!a.isSafari, 'Safari');
+    test.ok(!a.isFirefox, 'Firefox');
+    test.ok(!a.isWebkit, 'Webkit');
+    test.ok(!a.isChrome, 'Chrome');
+    test.ok(!a.isKonqueror, 'Konqueror');
+    test.ok(!a.isDesktop, 'Desktop');
+    test.ok(!a.isWindows, 'Windows');
+    test.ok(a.isLinux, 'Linux');
+    test.ok(!a.isMac, 'Mac');
+    test.ok(!a.isWindowsPhone, 'Windows Phone');
+    test.ok(!a.isFacebook, 'Facebook');
+    test.equal(a.version, '41.1.35.1');
+    test.ok(!a.isIECompatibilityMode);
+
+    test.done();
+};
+
+exports['Microsoft Edge iOS'] = function (test) {
+
+    var s = 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3_2 like Mac OS X) AppleWebKit/603.2.4 (KHTML, like Gecko)' +
+        ' Mobile/14F89 Safari/603.2.4 EdgiOS/41.1.35.1';
+
+    var a = ua.parse(s);
+
+    test.ok(a.isAuthoritative, 'Authoritative');
+    test.ok(a.isMobile, 'Mobile');
+    test.ok(!a.isiPad, 'iPad');
+    test.ok(!a.isiPod, 'iPod');
+    test.ok(a.isiPhone, 'iPhone');
+    test.ok(!a.isAndroid, 'Android');
+    test.ok(!a.isBlackberry, 'Blackberry');
+    test.ok(!a.isOpera, 'Opera');
+    test.ok(!a.isIE, 'IE');
+    test.ok(a.isEdge, 'Edge');
+    test.ok(!a.isSafari, 'Safari');
+    test.ok(!a.isFirefox, 'Firefox');
+    test.ok(!a.isWebkit, 'Webkit');
+    test.ok(!a.isChrome, 'Chrome');
+    test.ok(!a.isKonqueror, 'Konqueror');
+    test.ok(!a.isDesktop, 'Desktop');
+    test.ok(!a.isWindows, 'Windows');
+    test.ok(!a.isLinux, 'Linux');
+    test.ok(a.isMac, 'Mac');
+    test.ok(!a.isWindowsPhone, 'Windows Phone');
+    test.ok(!a.isFacebook, 'Facebook');
+    test.equal(a.version, '41.1.35.1');
+    test.ok(!a.isIECompatibilityMode);
+
+    test.done();
+};
+
 exports['PhantomJS'] = function (test) {
 
     var s = 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.8 Safari/534.34';
@@ -1330,6 +1398,40 @@ exports['Facebook on Android'] = function (test) {
     test.ok(!a.isPhantomJS, 'PhantomJS');
     test.ok(a.isFacebook, 'Facebook');
     test.equal(a.version, '132.0.0.20.90');
+    test.ok(!a.isIECompatibilityMode);
+
+    test.done();
+};
+
+exports['Chrome iOS'] = function (test) {
+
+    var s = 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko)' +
+        ' CriOS/56.0.2924.75 Mobile/14E5239e Safari/602.1';
+
+    var a = ua.parse(s);
+
+    test.ok(a.isAuthoritative, 'Authoritative');
+    test.ok(a.isMobile, 'Mobile');
+    test.ok(!a.isiPad, 'iPad');
+    test.ok(!a.isiPod, 'iPod');
+    test.ok(a.isiPhone, 'iPhone');
+    test.ok(!a.isAndroid, 'Android');
+    test.ok(!a.isBlackberry, 'Blackberry');
+    test.ok(!a.isOpera, 'Opera');
+    test.ok(!a.isIE, 'IE');
+    test.ok(!a.isEdge, 'Edge');
+    test.ok(!a.isSafari, 'Safari');
+    test.ok(!a.isFirefox, 'Firefox');
+    test.ok(!a.isWebkit, 'Webkit');
+    test.ok(a.isChrome, 'Chrome');
+    test.ok(!a.isKonqueror, 'Konqueror');
+    test.ok(!a.isDesktop, 'Desktop');
+    test.ok(!a.isWindows, 'Windows');
+    test.ok(!a.isLinux, 'Linux');
+    test.ok(a.isMac, 'Mac');
+    test.ok(!a.isWindowsPhone, 'Windows Phone');
+    test.ok(!a.isFacebook, 'Facebook');
+    test.equal(a.version, '56.0.2924.75');
     test.ok(!a.isIECompatibilityMode);
 
     test.done();
