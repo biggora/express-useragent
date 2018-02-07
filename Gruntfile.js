@@ -14,7 +14,7 @@ module.exports = function(grunt) {
         banner: '/*!\n' +
         ' * express-useragent.js v<%= pkg.version %> (<%= pkg.homepage %>)\n' +
         ' * Copyright 2011-<%= grunt.template.today("yyyy") %> <%= pkg.author.name %>\n' +
-        ' * Licensed under <%= _.pluck(pkg.licenses, "type") %> (<%= _.pluck(pkg.licenses, "url") %>)\n' +
+        ' * Licensed under <%= pkg.license %> (https://github.com/biggora/express-useragent/blob/master/README.md#license)\n' +
         ' */\n',
         clean: {
             build: ["lib/*.min.js"]
