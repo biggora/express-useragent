@@ -13,4 +13,4 @@ app.get('/demo', function (req, res) {
 });
 
 app.listen(3000);
-console.log('Started on port 3000');
+console.log('STARTED! Check on http://localhost:3000');
