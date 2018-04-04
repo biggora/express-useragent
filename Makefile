@@ -13,7 +13,6 @@ http:
 	node test/http.js
 
 help:
-	@echo "## WORKFLOW"
 	@echo "  make build                # Minify js"
 	@echo "  make push                 # Push changes to repos"
 	@echo "  make lint                 # Check js"

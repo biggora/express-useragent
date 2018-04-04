@@ -1,55 +1,33 @@
 {
   "name": "express-useragent",
-  "description": "Fast User-Agent exposing",
-  "version": "1.0.12",
-  "homepage": "https://github.com/biggora/express-useragent/",
+  "description": "Fast User-Agent Exposing",
+  "version": "1.0.0",
+  "homepage": "https://github.com/angelcustodio/express-useragent/",
   "repository": {
     "type": "git",
-    "url": "git://github.com/biggora/express-useragent.git"
+    "url": "git://github.com/angelcustodio/express-useragent.git"
   },
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/biggora/express-useragent/blob/master/LICENSE"
+      "url": "https://github.com/angelcustodio/express-useragent/blob/master/LICENSE"
     }
   ],
   "author": {
-    "name": "Alexey Gordeyev",
-    "email": "aleksej@gordejev.lv",
-    "url": "https://github.com/biggora"
+    "name": "Angel Custodio",
+    "email": "ancude@gmail.com",
+    "url": "https://github.com/angelcustodio"
   },
   "contributors": [
     {
-      "name": "Kacper Glowacki",
-      "url": "https://github.com/kacperus"
-    },
-    {
-      "name": "elisee",
-      "url": "https://github.com/elisee"
-    },
-    {
-      "name": "Bitdeli Chef",
-      "url": "https://github.com/bitdeli-chef"
-    },
-    {
-      "name": "Nicolas Tobo",
-      "url": "https://github.com/nicolastobo"
-    },
-    {
-      "name": "Samy Pess?",
-      "url": "https://github.com/SamyPesse"
-    },
-    {
-      "name": "Artem Nezvigin",
-      "url": "https://github.com/artnez"
+      "name": "Aitor Palacios",
+      "url": "https://github.com/apalzab"
     }
   ],
   "keywords": [
     "useragent",
     "user-agent",
     "express",
-    "trinte",
-    "compound",
     "middleware"
   ],
   "main": "./lib/express-useragent.js",
@@ -61,9 +39,6 @@
     "index.js",
     "bower_components",
     "tests"
-  ],
-  "authors": [
-    "Alexey Gordeyev <aleksej@gordejev.lv>"
   ],
   "moduleType": [
     "globals"
