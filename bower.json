@@ -1,6 +1,6 @@
 {
-  "name": "express-useragent",
-  "description": "Fast User-Agent Exposing",
+  "name": "express-useragent-exposer",
+  "description": "Fast User-Agent Exposer",
   "version": "1.0.0",
   "homepage": "https://github.com/angelcustodio/express-useragent/",
   "repository": {
