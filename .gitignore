@@ -1,20 +1,5 @@
-# Editor
-/.idea/
-/nbproject/
-
-# Windows
-Thumbs.db
-ehthumbs.db
-Desktop.ini
-
-# Linux
-.directory
-*~
-
-# npm
+coverage
 /node_modules/
 *.log
 *.gz
-
-# Coveralls
-coverage
+.DS_Store
