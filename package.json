@@ -70,7 +70,7 @@
   "dependencies": {},
   "devDependencies": {
     "bower": "*",
-    "express": ">= 3.0.0",
+    "express": ">= 4.16.4",
     "grunt": "^1.0.1",
     "grunt-contrib-clean": "^1.0.0",
     "grunt-contrib-uglify": "^1.0.1",
