@@ -58,7 +58,8 @@
     "express": "node test/express.js",
     "http": "node test/http.js",
     "build": "grunt build",
-    "lint": "make lint"
+    "lint": "make lint",
+    "prepublishOnly": "npm run build"
   },
   "directories": {
     "lib": "lib",
