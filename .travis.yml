@@ -6,3 +6,9 @@ node_js:
   - 6.5
   - 7.0
   - 8.0
+  - 10
+  - 12
+install:
+  - npm i npminstall && npminstall
+script:
+  - npm test
