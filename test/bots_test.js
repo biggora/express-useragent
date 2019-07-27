@@ -682,3 +682,183 @@ exports['Nimbostratus-Bot'] = function(test) {
 
     test.done();
 };
+
+exports['Zoominfo Bot'] = function(test) {
+    var source = 'ZoominfoBot (zoominfobot at zoominfo dot com)'
+
+    var userAgent = ua.parse(source);
+
+    test.ok(userAgent.isAuthoritative, 'Authoritative');
+    test.ok(!userAgent.isiPad, 'iPad');
+    test.ok(!userAgent.isiPod, 'iPod');
+    test.ok(!userAgent.isiPhone, 'iPhone');
+    test.ok(!userAgent.isAndroid, 'Android');
+    test.ok(!userAgent.isBlackberry, 'Blackberry');
+    test.ok(!userAgent.isOpera, 'Opera');
+    test.ok(!userAgent.isIE, 'IE');
+    test.ok(!userAgent.isSafari, 'Safari');
+    test.ok(!userAgent.isFirefox, 'Firefox');
+    test.ok(!userAgent.isWebkit, 'Webkit');
+    test.ok(!userAgent.isChrome, 'Chrome');
+    test.ok(!userAgent.isKonqueror, 'Konqueror');
+    test.ok(!userAgent.isOmniWeb, 'OmniWeb');
+    test.ok(!userAgent.isSeaMonkey, 'SeaMonkey');
+    test.ok(!userAgent.isFlock, 'Flock');
+    test.ok(!userAgent.isAmaya, 'Amaya');
+    test.ok(!userAgent.isEpiphany, 'Epiphany');
+    test.ok(!userAgent.isDesktop, 'Desktop');
+    test.ok(!userAgent.isWindows, 'Windows');
+    test.ok(!userAgent.isLinux, 'Linux');
+    test.ok(!userAgent.isMac, 'Mac');
+    test.ok(!userAgent.isBada, 'Bada');
+    test.ok(!userAgent.isSamsung, 'Samsung');
+    test.ok(!userAgent.isRaspberry, 'Raspberry');
+    test.ok(userAgent.isBot, 'Bot');
+    test.ok(!userAgent.isAndroidTablet, 'AndroidTablet');
+
+    test.done();
+};
+
+exports['IFTTT'] = function(test) {
+    var source = 'IFTTT production'
+
+    var userAgent = ua.parse(source);
+
+    test.ok(userAgent.isAuthoritative, 'Authoritative');
+    test.ok(!userAgent.isiPad, 'iPad');
+    test.ok(!userAgent.isiPod, 'iPod');
+    test.ok(!userAgent.isiPhone, 'iPhone');
+    test.ok(!userAgent.isAndroid, 'Android');
+    test.ok(!userAgent.isBlackberry, 'Blackberry');
+    test.ok(!userAgent.isOpera, 'Opera');
+    test.ok(!userAgent.isIE, 'IE');
+    test.ok(!userAgent.isSafari, 'Safari');
+    test.ok(!userAgent.isFirefox, 'Firefox');
+    test.ok(!userAgent.isWebkit, 'Webkit');
+    test.ok(!userAgent.isChrome, 'Chrome');
+    test.ok(!userAgent.isKonqueror, 'Konqueror');
+    test.ok(!userAgent.isOmniWeb, 'OmniWeb');
+    test.ok(!userAgent.isSeaMonkey, 'SeaMonkey');
+    test.ok(!userAgent.isFlock, 'Flock');
+    test.ok(!userAgent.isAmaya, 'Amaya');
+    test.ok(!userAgent.isEpiphany, 'Epiphany');
+    test.ok(!userAgent.isDesktop, 'Desktop');
+    test.ok(!userAgent.isWindows, 'Windows');
+    test.ok(!userAgent.isLinux, 'Linux');
+    test.ok(!userAgent.isMac, 'Mac');
+    test.ok(!userAgent.isBada, 'Bada');
+    test.ok(!userAgent.isSamsung, 'Samsung');
+    test.ok(!userAgent.isRaspberry, 'Raspberry');
+    test.ok(userAgent.isBot, 'Bot');
+    test.ok(!userAgent.isAndroidTablet, 'AndroidTablet');
+
+    test.done();
+};
+
+exports['Sogou spider'] = function(test) {
+    var source = 'Sogou web spider/4.0(+http://www.sogou.com/docs/help/webmasters.htm#07)'
+
+    var userAgent = ua.parse(source);
+
+    test.ok(userAgent.isAuthoritative, 'Authoritative');
+    test.ok(!userAgent.isiPad, 'iPad');
+    test.ok(!userAgent.isiPod, 'iPod');
+    test.ok(!userAgent.isiPhone, 'iPhone');
+    test.ok(!userAgent.isAndroid, 'Android');
+    test.ok(!userAgent.isBlackberry, 'Blackberry');
+    test.ok(!userAgent.isOpera, 'Opera');
+    test.ok(!userAgent.isIE, 'IE');
+    test.ok(!userAgent.isSafari, 'Safari');
+    test.ok(!userAgent.isFirefox, 'Firefox');
+    test.ok(!userAgent.isWebkit, 'Webkit');
+    test.ok(!userAgent.isChrome, 'Chrome');
+    test.ok(!userAgent.isKonqueror, 'Konqueror');
+    test.ok(!userAgent.isOmniWeb, 'OmniWeb');
+    test.ok(!userAgent.isSeaMonkey, 'SeaMonkey');
+    test.ok(!userAgent.isFlock, 'Flock');
+    test.ok(!userAgent.isAmaya, 'Amaya');
+    test.ok(!userAgent.isEpiphany, 'Epiphany');
+    test.ok(!userAgent.isDesktop, 'Desktop');
+    test.ok(!userAgent.isWindows, 'Windows');
+    test.ok(!userAgent.isLinux, 'Linux');
+    test.ok(!userAgent.isMac, 'Mac');
+    test.ok(!userAgent.isBada, 'Bada');
+    test.ok(!userAgent.isSamsung, 'Samsung');
+    test.ok(!userAgent.isRaspberry, 'Raspberry');
+    test.ok(userAgent.isBot, 'Bot');
+    test.ok(!userAgent.isAndroidTablet, 'AndroidTablet');
+
+    test.done();
+};
+
+exports['Mail.ru Bot'] = function(test) {
+    var source = 'Mozilla/5.0 (compatible; Linux x86_64; Mail.RU_Bot/2.0; +http://go.mail.ru/help/robots)'
+
+    var userAgent = ua.parse(source);
+
+    test.ok(userAgent.isAuthoritative, 'Authoritative');
+    test.ok(!userAgent.isiPad, 'iPad');
+    test.ok(!userAgent.isiPod, 'iPod');
+    test.ok(!userAgent.isiPhone, 'iPhone');
+    test.ok(!userAgent.isAndroid, 'Android');
+    test.ok(!userAgent.isBlackberry, 'Blackberry');
+    test.ok(!userAgent.isOpera, 'Opera');
+    test.ok(!userAgent.isIE, 'IE');
+    test.ok(!userAgent.isSafari, 'Safari');
+    test.ok(!userAgent.isFirefox, 'Firefox');
+    test.ok(!userAgent.isWebkit, 'Webkit');
+    test.ok(!userAgent.isChrome, 'Chrome');
+    test.ok(!userAgent.isKonqueror, 'Konqueror');
+    test.ok(!userAgent.isOmniWeb, 'OmniWeb');
+    test.ok(!userAgent.isSeaMonkey, 'SeaMonkey');
+    test.ok(!userAgent.isFlock, 'Flock');
+    test.ok(!userAgent.isAmaya, 'Amaya');
+    test.ok(!userAgent.isEpiphany, 'Epiphany');
+    test.ok(userAgent.isDesktop, 'Desktop');
+    test.ok(!userAgent.isWindows, 'Windows');
+    test.ok(userAgent.isLinux, 'Linux');
+    test.ok(!userAgent.isMac, 'Mac');
+    test.ok(!userAgent.isBada, 'Bada');
+    test.ok(!userAgent.isSamsung, 'Samsung');
+    test.ok(!userAgent.isRaspberry, 'Raspberry');
+    test.ok(userAgent.isBot, 'Bot');
+    test.ok(!userAgent.isAndroidTablet, 'AndroidTablet');
+
+    test.done();
+};
+
+exports['Researchscan'] = function(test) {
+    var source = 'Mozilla/5.0 zgrab/0.x (compatible; Researchscan/t12sns; +http://researchscan.comsys.rwth-aachen.de'
+
+    var userAgent = ua.parse(source);
+
+    test.ok(userAgent.isAuthoritative, 'Authoritative');
+    test.ok(!userAgent.isiPad, 'iPad');
+    test.ok(!userAgent.isiPod, 'iPod');
+    test.ok(!userAgent.isiPhone, 'iPhone');
+    test.ok(!userAgent.isAndroid, 'Android');
+    test.ok(!userAgent.isBlackberry, 'Blackberry');
+    test.ok(!userAgent.isOpera, 'Opera');
+    test.ok(!userAgent.isIE, 'IE');
+    test.ok(!userAgent.isSafari, 'Safari');
+    test.ok(!userAgent.isFirefox, 'Firefox');
+    test.ok(!userAgent.isWebkit, 'Webkit');
+    test.ok(!userAgent.isChrome, 'Chrome');
+    test.ok(!userAgent.isKonqueror, 'Konqueror');
+    test.ok(!userAgent.isOmniWeb, 'OmniWeb');
+    test.ok(!userAgent.isSeaMonkey, 'SeaMonkey');
+    test.ok(!userAgent.isFlock, 'Flock');
+    test.ok(!userAgent.isAmaya, 'Amaya');
+    test.ok(!userAgent.isEpiphany, 'Epiphany');
+    test.ok(!userAgent.isDesktop, 'Desktop');
+    test.ok(!userAgent.isWindows, 'Windows');
+    test.ok(!userAgent.isLinux, 'Linux');
+    test.ok(!userAgent.isMac, 'Mac');
+    test.ok(!userAgent.isBada, 'Bada');
+    test.ok(!userAgent.isSamsung, 'Samsung');
+    test.ok(!userAgent.isRaspberry, 'Raspberry');
+    test.ok(userAgent.isBot, 'Bot');
+    test.ok(!userAgent.isAndroidTablet, 'AndroidTablet');
+
+    test.done();
+};
