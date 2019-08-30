@@ -16,10 +16,11 @@ exports["Android Phone"] = function(test) {
   test.ok(!userAgent.isiPod, "iPod");
   test.ok(!userAgent.isiPhone, "iPhone");
   test.ok(userAgent.isAndroid, "Android");
+  test.ok(userAgent.isAndroidNative, "AndroidNative");
   test.ok(!userAgent.isBlackberry, "Blackberry");
   test.ok(!userAgent.isOpera, "Opera");
   test.ok(!userAgent.isIE, "IE");
-  test.ok(userAgent.isSafari, "Safari");
+  test.ok(!userAgent.isSafari, "Safari");
   test.ok(!userAgent.isFirefox, "Firefox");
   test.ok(!userAgent.isWebkit, "Webkit");
   test.ok(!userAgent.isChrome, "Chrome");
@@ -37,12 +38,11 @@ exports["Android Phone"] = function(test) {
   test.ok(!userAgent.isSamsung, "Samsung");
   test.ok(!userAgent.isRaspberry, "Raspberry");
   test.ok(!userAgent.isBot, "Bot");
-  test.ok(!userAgent.isAndroidTablet, "AndroidTablet");
 
-  test.equal(userAgent.browser, "Safari");
+  test.equal(userAgent.browser, "unknown");
   test.equal(userAgent.os, "Linux");
   test.equal(userAgent.platform, "Android");
-  test.equal(userAgent.version, "4.0");
+  test.equal(userAgent.version, "unknown");
 
   test.done();
 };
