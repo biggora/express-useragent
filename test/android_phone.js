@@ -7,7 +7,7 @@
 
 var ua = require('../');
 
-exports['Andriod Phone'] = function (test) {
+exports['Android Phone'] = function (test) {
 
     var source = '';
     source += 'Mozilla/5.0 (Linux; U; Android 4.1.2; en-us; ';
