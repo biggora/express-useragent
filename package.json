@@ -1,7 +1,7 @@
 {
   "name": "express-useragent",
   "description": "ExpressJS/Connect/TrinteJS user-agent middleware exposing",
-  "version": "1.0.12",
+  "version": "1.0.14",
   "homepage": "https://github.com/biggora/express-useragent/",
   "repository": {
     "type": "git",
@@ -41,6 +41,10 @@
     {
       "name": "Josh Dickson",
       "url": "https://github.com/joshdickson40"
+    },
+    {
+      "name": "Kewang",
+      "url": "https://github.com/kewang"
     }
   ],
   "keywords": [
@@ -54,11 +58,11 @@
   ],
   "main": "./index.js",
   "scripts": {
-    "test": "nodeunit test/browsers.js test/ios.js test/android_phone.js test/android_tablet.js test/bots_test.js test/electron.js",
+    "test": "nodeunit test/browsers.js test/ios.js test/android_phone.js test/android_tablet.js test/bots_test.js test/mobile_native.js",
     "express": "node test/express.js",
     "http": "node test/http.js",
     "build": "grunt build",
-    "lint": "make lint"
+    "lint": "jshint lib/express-useragent.js"
   },
   "directories": {
     "lib": "lib",
