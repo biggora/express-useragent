@@ -1,5 +1,6 @@
 [![build status](https://secure.travis-ci.org/biggora/express-useragent.png)](http://travis-ci.org/biggora/express-useragent)
 [![NPM version](https://badge.fury.io/js/express-useragent.png)](http://badge.fury.io/js/express-useragent)
+[![Git commit with emojis!](https://img.shields.io/badge/gitmoji-git%20commit%20with%20emojis!-brightgreen.svg)](https://gitmoji.js.org)
 # Fast Middleware exposing user-agent for [NodeJS](http://nodejs.org/)
 
 express-useragent is a simple NodeJS/ExpressJS user-agent middleware exposing user-agent details to your application and views.

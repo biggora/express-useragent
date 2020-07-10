@@ -58,11 +58,12 @@
   ],
   "main": "./index.js",
   "scripts": {
-    "test": "nodeunit test/browsers.js test/ios.js test/android_phone.js test/android_tablet.js test/bots_test.js test/mobile_native.js",
+    "test": "nodeunit test/browsers.js test/ios.js test/android_phone.js test/android_tablet.js test/bots_test.js test/wechat.js",
     "express": "node test/express.js",
     "http": "node test/http.js",
     "build": "grunt build",
-    "lint": "jshint lib/express-useragent.js"
+    "lint": "jshint lib/express-useragent.js",
+    "prepublishOnly": "npm run build"
   },
   "directories": {
     "lib": "lib",

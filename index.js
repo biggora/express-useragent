@@ -38,6 +38,7 @@ module.exports.express = function () {
         ua.testCompatibilityMode();
         ua.testSilk();
         ua.testKindleFire();
+        ua.testWechat();
         req.useragent = ua.Agent;
         if ('function' === typeof res.locals) {
             res.locals({useragent: ua.Agent});
