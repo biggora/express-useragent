@@ -131,21 +131,6 @@ The following projects use express-useragent.
 If you are using express-useragent in a project, app, or module, get on the list below
 by getting in touch or submitting a pull request with changes to the README.
 
-### Recommend extensions
-
-- [Bootstrap Fancy File Plugin](http://biggora.github.io/bootstrap-fancyfile/)
-- [Bootstrap Ajax Typeahead Plugin](https://github.com/biggora/bootstrap-ajax-typeahead)
-- [TrinteJS - Javascrpt MVC Framework for Node.JS](http://www.trintejs.com/)
-- [CaminteJS - Cross-db ORM for NodeJS](http://www.camintejs.com/)
-- [MongoDB Session Storage for ExpressJS](https://github.com/biggora/express-mongodb)
-- [2CO NodeJS adapter for 2checkout API payment gateway](https://github.com/biggora/2co)
-
-### Startups & Apps
-
-- [TViMama](http://tvimama.com/)
-- [GorkaTV](https://gorkatv.com/)
-- [TrinteJS](http://www.trintejs.com/)
-- [CaminteJS](http://www.camintejs.com/)
 
 ## Author
 
@@ -155,7 +140,7 @@ Alexey Gordeyev (aleksej@gordejev.lv).
 
 (The MIT License)
 
-Copyright (c) 2012 Alexey Gordeyev <aleksej@gordejev.lv>
+Copyright (c) 2012-2020 Alexey Gordeyev <aleksej@gordejev.lv>
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the

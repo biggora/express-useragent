@@ -58,7 +58,7 @@
   ],
   "main": "./index.js",
   "scripts": {
-    "test": "nodeunit test/browsers.js test/ios.js test/android_phone.js test/android_tablet.js test/bots_test.js test/wechat.js",
+    "test": "nodeunit test/browsers.js test/ios.js test/android_phone.js test/android_tablet.js test/bots_test.js test/wechat.js test/electron.js test/smart_tv.js",
     "express": "node test/express.js",
     "http": "node test/http.js",
     "build": "grunt build",

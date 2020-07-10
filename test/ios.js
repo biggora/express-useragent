@@ -72,35 +72,6 @@ exports['Chrome iOS'] = function (test) {
 // Source
 // Chrome UA Spoofer
 
-exports['iPhone 4'] = function (test) {
-
-    var s = 'Mozilla/5.0 (iPhone; U; CPU iPhone OS 4_3_2 like Mac OS X; en-us) AppleWebKit/533.17.9' +
-        ' (KHTML, like Gecko) Version/5.0.2 Mobile/8H7 Safari/6533.18.5';
-
-    var a = ua.parse(s);
-
-    test.ok(a.isMobile, 'Mobile');
-    test.ok(!a.isiPad, 'iPad');
-    test.ok(!a.isiPod, 'iPod');
-    test.ok(a.isiPhone, 'iPhone');
-    test.ok(!a.isAndroid, 'Android');
-    test.ok(!a.isBlackberry, 'Blackberry');
-    test.ok(!a.isOpera, 'Opera');
-    test.ok(!a.isIE, 'IE');
-    test.ok(a.isSafari, 'Safari');
-    test.ok(!a.isFirefox, 'Firefox');
-    test.ok(!a.isWebkit, 'Webkit');
-    test.ok(!a.isChrome, 'Chrome');
-    test.ok(!a.isKonqueror, 'Konqueror');
-    test.ok(!a.isDesktop, 'Desktop');
-    test.ok(!a.isWindows, 'Windows');
-    test.ok(!a.isLinux, 'Linux');
-    test.ok(a.isMac, 'Mac');
-    test.ok(!a.isWindowsPhone, 'Windows Phone');
-    test.equal(a.version, '5.0.2');
-
-    test.done();
-};
 
 exports['iOS AlamoFire'] = function (test) {
 
@@ -162,4 +133,61 @@ exports['iPhone like OS X'] = function (test) {
     test.done();
 };
 
-//
+exports['iPhone 4'] = function (test) {
+
+    var s = 'Mozilla/5.0 (iPhone; U; CPU iPhone OS 4_3_2 like Mac OS X; en-us) AppleWebKit/533.17.9' +
+        ' (KHTML, like Gecko) Version/5.0.2 Mobile/8H7 Safari/6533.18.5';
+
+    var a = ua.parse(s);
+
+    test.ok(a.isMobile, 'Mobile');
+    test.ok(!a.isiPad, 'iPad');
+    test.ok(!a.isiPod, 'iPod');
+    test.ok(a.isiPhone, 'iPhone');
+    test.ok(!a.isAndroid, 'Android');
+    test.ok(!a.isBlackberry, 'Blackberry');
+    test.ok(!a.isOpera, 'Opera');
+    test.ok(!a.isIE, 'IE');
+    test.ok(a.isSafari, 'Safari');
+    test.ok(!a.isFirefox, 'Firefox');
+    test.ok(!a.isWebkit, 'Webkit');
+    test.ok(!a.isChrome, 'Chrome');
+    test.ok(!a.isKonqueror, 'Konqueror');
+    test.ok(!a.isDesktop, 'Desktop');
+    test.ok(!a.isWindows, 'Windows');
+    test.ok(!a.isLinux, 'Linux');
+    test.ok(a.isMac, 'Mac');
+    test.ok(!a.isWindowsPhone, 'Windows Phone');
+    test.equal(a.version, '5.0.2');
+
+    test.done();
+};
+
+exports['iPhone 11'] = function (test) {
+
+    var s = 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_4_1 like Mac OS X) AppleWebKit/604.1.34 (KHTML, like Gecko) GSA/80.0.262003652 Mobile/15G77 Safari/604.1';
+
+    var a = ua.parse(s);
+
+    test.ok(a.isMobile, 'Mobile');
+    test.ok(!a.isiPad, 'iPad');
+    test.ok(!a.isiPod, 'iPod');
+    test.ok(a.isiPhone, 'iPhone');
+    test.ok(!a.isAndroid, 'Android');
+    test.ok(!a.isBlackberry, 'Blackberry');
+    test.ok(!a.isOpera, 'Opera');
+    test.ok(!a.isIE, 'IE');
+    test.ok(a.isSafari, 'Safari');
+    test.ok(!a.isFirefox, 'Firefox');
+    test.ok(!a.isWebkit, 'Webkit');
+    test.ok(!a.isChrome, 'Chrome');
+    test.ok(!a.isKonqueror, 'Konqueror');
+    test.ok(!a.isDesktop, 'Desktop');
+    test.ok(!a.isWindows, 'Windows');
+    test.ok(!a.isLinux, 'Linux');
+    test.ok(a.isMac, 'Mac');
+    test.ok(!a.isWindowsPhone, 'Windows Phone');
+    test.equal(a.version, '604.1');
+
+    test.done();
+};
