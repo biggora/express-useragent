@@ -120,7 +120,7 @@ exports['Apple Bot'] = function (test) {
     test.done();
 };
 
-exports['Pingdom Bot'] = function(test) {
+exports['Pingdom Bot'] = function (test) {
 
     var source = 'Pingdom.com_bot_version_1.4_(http://www.pingdom.com/)';
 
@@ -159,7 +159,7 @@ exports['Pingdom Bot'] = function(test) {
 
 }
 
-exports['Google Bot'] = function(test) {
+exports['Google Bot'] = function (test) {
 
     var source = 'Mozilla/5.0 (iPhone; CPU iPhone OS 8_3 like Mac OS X) AppleWebKit/537.36 (KHTML, like Gecko; Google Page Speed Insights) Version/8.0 Mobile/12F70 Safari/600.1.4';
 
@@ -199,7 +199,7 @@ exports['Google Bot'] = function(test) {
 }
 
 /** new bot's **/
-exports['BLEX Bot'] = function(test) {
+exports['BLEX Bot'] = function (test) {
 
     var source = 'Mozilla/5.0 (compatible; BLEXBot/1.0; +http://webmeup-crawler.com/)';
 
@@ -237,7 +237,7 @@ exports['BLEX Bot'] = function(test) {
 
 };
 
-exports['Orange Bot'] = function(test) {
+exports['Orange Bot'] = function (test) {
 
     var source = 'Mozilla/5.0 (compatible; OrangeBot/2.0; support.orangebot@orange.com)';
 
@@ -275,7 +275,7 @@ exports['Orange Bot'] = function(test) {
 
 };
 
-exports['SMT Bot'] = function(test) {
+exports['SMT Bot'] = function (test) {
 
     var source = 'Mozilla/5.0 (Windows NT 6.1) (compatible; SMTBot/1.0; +http://www.similartech.com/smtbot)';
 
@@ -313,7 +313,7 @@ exports['SMT Bot'] = function(test) {
 
 };
 
-exports['Qwantify Bot'] = function(test) {
+exports['Qwantify Bot'] = function (test) {
 
     var source = 'Mozilla/5.0 (compatible; Qwantify/2.3w; +https://www.qwant.com/)/2.3w';
 
@@ -351,7 +351,7 @@ exports['Qwantify Bot'] = function(test) {
 
 };
 
-exports['MJ12 Bot'] = function(test) {
+exports['MJ12 Bot'] = function (test) {
 
     var source = 'Mozilla/5.0 (compatible; MJ12bot/v1.4.5; http://www.majestic12.co.uk/bot.php?+)';
 
@@ -389,7 +389,7 @@ exports['MJ12 Bot'] = function(test) {
 
 };
 
-exports['Ahrefs Bot'] = function(test) {
+exports['Ahrefs Bot'] = function (test) {
 
     var source = 'Mozilla/5.0 (compatible; AhrefsBot/5.1; +http://ahrefs.com/robot/)';
 
@@ -427,7 +427,7 @@ exports['Ahrefs Bot'] = function(test) {
 
 };
 
-exports['Panscient Bot'] = function(test) {
+exports['Panscient Bot'] = function (test) {
 
     var source = 'panscient.com';
 
@@ -465,7 +465,7 @@ exports['Panscient Bot'] = function(test) {
 
 };
 
-exports['Seznam Bot'] = function(test) {
+exports['Seznam Bot'] = function (test) {
 
     var source = 'Mozilla/5.0 (compatible; SeznamBot/3.2; +http://napoveda.seznam.cz/en/seznambot-intro/)';
 
@@ -503,7 +503,7 @@ exports['Seznam Bot'] = function(test) {
 
 };
 
-exports['DuckDuckGo Favicons Bot'] = function(test) {
+exports['DuckDuckGo Favicons Bot'] = function (test) {
     var source = 'Mozilla/5.0 (compatible; DuckDuckGo-Favicons-Bot/1.0; +http://duckduckgo.com)'
 
     var userAgent = ua.parse(source);
@@ -539,7 +539,7 @@ exports['DuckDuckGo Favicons Bot'] = function(test) {
     test.done();
 };
 
-exports['UptimeRobot'] = function(test) {
+exports['UptimeRobot'] = function (test) {
     var source = 'Mozilla/5.0+(compatible; UptimeRobot/2.0; http://www.uptimerobot.com/)'
 
     var userAgent = ua.parse(source);
@@ -575,7 +575,7 @@ exports['UptimeRobot'] = function(test) {
     test.done();
 };
 
-exports['SEMrushBot'] = function(test) {
+exports['SEMrushBot'] = function (test) {
     var source = 'SEMrushBot'
 
     var userAgent = ua.parse(source);
@@ -611,7 +611,7 @@ exports['SEMrushBot'] = function(test) {
     test.done();
 };
 
-exports['DotBot'] = function(test) {
+exports['DotBot'] = function (test) {
     var source = 'DotBot'
 
     var userAgent = ua.parse(source);
@@ -647,7 +647,7 @@ exports['DotBot'] = function(test) {
     test.done();
 };
 
-exports['Nimbostratus-Bot'] = function(test) {
+exports['Nimbostratus-Bot'] = function (test) {
     var source = 'Nimbostratus-Bot'
 
     var userAgent = ua.parse(source);
@@ -683,7 +683,7 @@ exports['Nimbostratus-Bot'] = function(test) {
     test.done();
 };
 
-exports['Zoominfo Bot'] = function(test) {
+exports['Zoominfo Bot'] = function (test) {
     var source = 'ZoominfoBot (zoominfobot at zoominfo dot com)'
 
     var userAgent = ua.parse(source);
@@ -719,7 +719,7 @@ exports['Zoominfo Bot'] = function(test) {
     test.done();
 };
 
-exports['IFTTT'] = function(test) {
+exports['IFTTT'] = function (test) {
     var source = 'IFTTT production'
 
     var userAgent = ua.parse(source);
@@ -755,7 +755,7 @@ exports['IFTTT'] = function(test) {
     test.done();
 };
 
-exports['Sogou spider'] = function(test) {
+exports['Sogou spider'] = function (test) {
     var source = 'Sogou web spider/4.0(+http://www.sogou.com/docs/help/webmasters.htm#07)'
 
     var userAgent = ua.parse(source);
@@ -791,7 +791,7 @@ exports['Sogou spider'] = function(test) {
     test.done();
 };
 
-exports['Mail.ru Bot'] = function(test) {
+exports['Mail.ru Bot'] = function (test) {
     var source = 'Mozilla/5.0 (compatible; Linux x86_64; Mail.RU_Bot/2.0; +http://go.mail.ru/help/robots)'
 
     var userAgent = ua.parse(source);
@@ -827,7 +827,7 @@ exports['Mail.ru Bot'] = function(test) {
     test.done();
 };
 
-exports['Researchscan'] = function(test) {
+exports['Researchscan'] = function (test) {
     var source = 'Mozilla/5.0 zgrab/0.x (compatible; Researchscan/t12sns; +http://researchscan.comsys.rwth-aachen.de'
 
     var userAgent = ua.parse(source);
@@ -863,7 +863,7 @@ exports['Researchscan'] = function(test) {
     test.done();
 };
 
-exports['Slack-ImgProxy'] = function(test) {
+exports['Slack-ImgProxy'] = function (test) {
     var source = 'Slack-ImgProxy (+https://api.slack.com/robots)'
 
     var userAgent = ua.parse(source);
@@ -899,7 +899,7 @@ exports['Slack-ImgProxy'] = function(test) {
     test.done();
 };
 
-exports['node-superagent'] = function(test) {
+exports['node-superagent'] = function (test) {
     var source = 'node-superagent/4.1.0'
 
     var userAgent = ua.parse(source);
@@ -935,7 +935,7 @@ exports['node-superagent'] = function(test) {
     test.done();
 };
 
-exports['Go-http-client'] = function(test) {
+exports['Go-http-client'] = function (test) {
     var source = 'Go-http-client/1.1'
 
     var userAgent = ua.parse(source);
@@ -971,7 +971,7 @@ exports['Go-http-client'] = function(test) {
     test.done();
 };
 
-exports['Jersey'] = function(test) {
+exports['Jersey'] = function (test) {
     var source = 'Jersey/2.25.1 (HttpUrlConnection 1.8.0_141)'
 
     var userAgent = ua.parse(source);
@@ -1007,7 +1007,7 @@ exports['Jersey'] = function(test) {
     test.done();
 };
 
-exports['Dataprovider.com'] = function(test) {
+exports['Dataprovider.com'] = function (test) {
     var source = 'Mozilla/5.0 (compatible; Dataprovider.com)'
 
     var userAgent = ua.parse(source);
@@ -1043,7 +1043,7 @@ exports['Dataprovider.com'] = function(test) {
     test.done();
 };
 
-exports['github-camo'] = function(test) {
+exports['github-camo'] = function (test) {
     var source = 'github-camo (f55913b5)'
 
     var userAgent = ua.parse(source);
@@ -1079,7 +1079,7 @@ exports['github-camo'] = function(test) {
     test.done();
 };
 
-exports['Dispatch'] = function(test) {
+exports['Dispatch'] = function (test) {
     var source = 'Dispatch/0.11.3'
 
     var userAgent = ua.parse(source);
@@ -1115,7 +1115,7 @@ exports['Dispatch'] = function(test) {
     test.done();
 };
 
-exports['CheckMarkNetwork'] = function(test) {
+exports['CheckMarkNetwork'] = function (test) {
     var source = 'CheckMarkNetwork/1.0 (+http://www.checkmarknetwork.com/spider.html)'
 
     var userAgent = ua.parse(source);
@@ -1151,7 +1151,7 @@ exports['CheckMarkNetwork'] = function(test) {
     test.done();
 };
 
-exports['Screaming Frog SEO Spider'] = function(test) {
+exports['Screaming Frog SEO Spider'] = function (test) {
     var source = 'Screaming Frog SEO Spider/9.4'
 
     var userAgent = ua.parse(source);
@@ -1187,7 +1187,7 @@ exports['Screaming Frog SEO Spider'] = function(test) {
     test.done();
 };
 
-exports['WhatWeb'] = function(test) {
+exports['WhatWeb'] = function (test) {
     var source = 'WhatWeb/0.4.8-dev'
 
     var userAgent = ua.parse(source);
@@ -1223,7 +1223,7 @@ exports['WhatWeb'] = function(test) {
     test.done();
 };
 
-exports['Daum'] = function(test) {
+exports['Daum'] = function (test) {
     var source = 'Mozilla/5.0 (compatible; Daum/4.1; +http://cs.daum.net/faq/15/4118.html?faqId=28966)'
 
     var userAgent = ua.parse(source);
@@ -1259,7 +1259,7 @@ exports['Daum'] = function(test) {
     test.done();
 };
 
-exports['NetcraftSurveyAgent'] = function(test) {
+exports['NetcraftSurveyAgent'] = function (test) {
     var source = 'Mozilla/5.0 (compatible; NetcraftSurveyAgent/1.0; +info@netcraft.com)'
 
     var userAgent = ua.parse(source);
@@ -1295,7 +1295,7 @@ exports['NetcraftSurveyAgent'] = function(test) {
     test.done();
 };
 
-exports['MojeekBot'] = function(test) {
+exports['MojeekBot'] = function (test) {
     var source = 'Mozilla/5.0 (compatible; MojeekBot/0.6; +https://www.mojeek.com/bot.html)'
 
     var userAgent = ua.parse(source);
@@ -1331,7 +1331,7 @@ exports['MojeekBot'] = function(test) {
     test.done();
 };
 
-exports['SurdotlyBot'] = function(test) {
+exports['SurdotlyBot'] = function (test) {
     var source = 'Mozilla/5.0 (compatible; SurdotlyBot/1.0; +http://sur.ly/bot.html)'
 
     var userAgent = ua.parse(source);

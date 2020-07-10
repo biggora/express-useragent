@@ -17,7 +17,7 @@ var express = require('express')
     , useragent = require('./../');
 
 app.use(useragent.express());
-app.use(express.static(__dirname +''));
+app.use(express.static(__dirname + ''));
 
 app.get('/', function (req, res) {
     res.send(req.useragent);
