@@ -1,7 +1,7 @@
 {
   "name": "express-useragent",
   "description": "ExpressJS/Connect/TrinteJS user-agent middleware exposing",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "homepage": "https://github.com/biggora/express-useragent/",
   "repository": {
     "type": "git",
@@ -58,9 +58,10 @@
   ],
   "main": "./index.js",
   "scripts": {
-    "test": "nodeunit test/browsers.js test/ios.js test/android_phone.js test/android_tablet.js test/bots_test.js test/wechat.js test/electron.js test/smart_tv.js",
-    "express": "node test/express.js",
+    "test": "nodeunit test/tests.js",
+    "express": "node test/server.js",
     "http": "node test/http.js",
+    "simple": "node test/simple.js",
     "build": "grunt build",
     "lint": "jshint lib/express-useragent.js",
     "prepublishOnly": "npm run build"
@@ -70,17 +71,17 @@
     "test": "test"
   },
   "engines": {
-    "node": ">=0.8"
+    "node": ">=4.5"
   },
   "dependencies": {},
   "devDependencies": {
     "bower": "*",
     "express": ">= 4.16.4",
-    "grunt": "^1.0.1",
+    "grunt": "^1.2.1",
     "grunt-contrib-clean": "^1.0.0",
     "grunt-contrib-uglify": "^1.0.1",
     "jshint": "*",
     "load-grunt-tasks": "^3.2.0",
-    "nodeunit": "^0.11.2"
+    "nodeunit": "^0.11.3"
   }
 }

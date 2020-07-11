@@ -4,8 +4,8 @@
  * @created     2012-03-24 16:21:10
  * @category    Express Helpers
  * @package     express-useragent
- * @version     0.1.8
- * @copyright   Copyright (c) 2009-2012 - All rights reserved.
+ * @version     1.0.15
+ * @copyright   Copyright (c) 2009-2020 - All rights reserved.
  * @license     MIT License
  * @author      Alexey Gordeyev IK <aleksej@gordejev.lv>
  * @link        http://www.gordejev.lv
