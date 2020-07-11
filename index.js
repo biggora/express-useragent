@@ -7,7 +7,7 @@
  * @version     1.0.15
  * @copyright   Copyright (c) 2009-2020 - All rights reserved.
  * @license     MIT License
- * @author      Alexey Gordeyev IK <aleksej@gordejev.lv>
+ * @author      Aleksejs Gordejevs IK <aleksej@gordejev.lv>
  * @link        http://www.gordejev.lv
  *
  */

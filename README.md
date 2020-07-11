@@ -134,13 +134,13 @@ by getting in touch or submitting a pull request with changes to the README.
 
 ## Author
 
-Alexey Gordeyev (aleksej@gordejev.lv).
+Aleksejs Gordejevs (aleksej@gordejev.lv).
 
 ## License
 
 (The MIT License)
 
-Copyright (c) 2012-2020 Alexey Gordeyev <aleksej@gordejev.lv>
+Copyright (c) 2012-2020 Aleksejs Gordejevs <aleksej@gordejev.lv>
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the

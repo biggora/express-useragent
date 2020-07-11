@@ -14,7 +14,7 @@
     }
   ],
   "author": {
-    "name": "Alexey Gordeyev",
+    "name": "Aleksejs Gordejevs",
     "email": "aleksej@gordejev.lv",
     "url": "https://github.com/biggora"
   },
@@ -63,7 +63,7 @@
     "tests"
   ],
   "authors": [
-    "Alexey Gordeyev <aleksej@gordejev.lv>"
+    "Aleksejs Gordejevs <aleksej@gordejev.lv>"
   ],
   "moduleType": [
     "globals"
