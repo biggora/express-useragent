@@ -6,8 +6,10 @@ var browsers = require('./browsers.test.js');
 var smartTV = require('./smart_tv.test.js');
 var silk = require('./silk.test.js');
 var electron = require('./electron.test.js');
+var osVersions = require('./os_version.test.js');
 var wechat = require('./wechat.test.js');
 var geoip = require('./geoip.test.js');
+
 
 var tests = {};
 
@@ -21,6 +23,7 @@ Object.assign(
     smartTV,
     silk,
     electron,
+    osVersions,
     geoip,
     wechat
 );
