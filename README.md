@@ -131,6 +131,7 @@ The following projects use express-useragent.
 If you are using express-useragent in a project, app, or module, get on the list below
 by getting in touch or submitting a pull request with changes to the README.
 
+[LK4us](https://lk4.us)
 
 ## Author
 
