@@ -19,5 +19,8 @@
   "smarttabs": true,
   "jquery": true,
   "white": true,
-  "multistr": true
+  "multistr": true,
+  "globals": {
+    "window": true
+  }
 }

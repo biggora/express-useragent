@@ -11,40 +11,48 @@
  * @link        http://www.gordejev.lv
  *
  */
-var usrg = require('./lib/express-useragent');
-var UserAgent = usrg.UserAgent;
+var UserAgent = require('./lib/express-useragent').UserAgent;
+
+/* Fallback of previous solution. */
 module.exports = new UserAgent();
+
+/* Override of instance functions to static. */
+module.exports.parse = UserAgent.parse;
+module.exports.testNginxGeoIP = UserAgent.testNginxGeoIP;
 module.exports.UserAgent = UserAgent;
+
+/**
+ * Middleware of express.js for parse user agent.
+ *
+ * @param {object} req - The request object of express.js.
+ * @param {object} res - The response object of express.js.
+ * @param {function} next - Callback of middleware with optional error for run follwing or error middleware.
+ */
+var middleware = function (req, res, next) {
+    /* The 'x-ucbrowser-ua' is special case of UC Browser, the 'user-agent' for other browsers. */
+    var source = req.headers['x-ucbrowser-ua'] || req.headers['user-agent'] || '';
+    req.useragent = UserAgent.parse(source);
+
+    if (typeof res.locals === 'function') {
+        /*
+         * Support of express.js version 2.x.
+         *
+         * See more: http://expressjs.com/2x/guide.html#res.locals().
+         */
+        res.locals({ useragent: ua.Agent });
+    } else {
+        res.locals.useragent = ua.Agent;
+    }
+
+    next();
+};
+module.exports.middleware = middleware;
+
+/**
+ * Getter of express.js middleware.
+ *
+ * @returns {function} middleware of express.js for parse user agent.
+ */
 module.exports.express = function () {
-    return function (req, res, next) {
-        var source = req.headers['user-agent'] || '';
-        if (req.headers['x-ucbrowser-ua']) {  //special case of UC Browser
-            source = req.headers['x-ucbrowser-ua'];
-        }
-        var ua = new UserAgent();
-        if (typeof source === 'undefined') {
-            source = "unknown";
-        }
-        ua.Agent.source = source.replace(/^\s*/, '').replace(/\s*$/, '');
-        ua.Agent.os = ua.getOS(ua.Agent.source);
-        ua.Agent.platform = ua.getPlatform(ua.Agent.source);
-        ua.Agent.browser = ua.getBrowser(ua.Agent.source);
-        ua.Agent.version = ua.getBrowserVersion(ua.Agent.source);
-        ua.testNginxGeoIP(req.headers);
-        ua.testBot();
-        ua.testMobile();
-        ua.testAndroidTablet();
-        ua.testTablet();
-        ua.testCompatibilityMode();
-        ua.testSilk();
-        ua.testKindleFire();
-        ua.testWechat();
-        req.useragent = ua.Agent;
-        if ('function' === typeof res.locals) {
-            res.locals({useragent: ua.Agent});
-        } else {
-            res.locals.useragent = ua.Agent;
-        }
-        next();
-    };
+    return middleware;
 };
