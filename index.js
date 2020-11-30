@@ -13,8 +13,10 @@
  */
 var UserAgent = require('./lib/express-useragent').UserAgent;
 
+var isBrowser = typeof window === 'object' && typeof window.navigator === 'object';
+var defaultUserAgent = isBrowser ? window.navigator.userAgent : "";
 /* Fallback of previous solution. */
-module.exports = new UserAgent();
+module.exports = new UserAgent(defaultUserAgent);
 
 /* Override of instance functions to static. */
 module.exports.parse = UserAgent.parse;
