@@ -39,9 +39,9 @@ var middleware = function (req, res, next) {
          *
          * See more: http://expressjs.com/2x/guide.html#res.locals().
          */
-        res.locals({ useragent: ua.Agent });
+        res.locals({ useragent: req.useragent });
     } else {
-        res.locals.useragent = ua.Agent;
+        res.locals.useragent = req.useragent;
     }
 
     next();
