@@ -1,7 +1,7 @@
 {
   "name": "express-useragent",
   "description": "ExpressJS/Connect/TrinteJS user-agent middleware exposing",
-  "version": "1.0.15",
+  "version": "1.0.16",
   "homepage": "https://github.com/biggora/express-useragent/",
   "repository": {
     "type": "git",
