@@ -17,16 +17,19 @@ module.exports = new UserAgent();
 module.exports.UserAgent = UserAgent;
 module.exports.express = function () {
     return function (req, res, next) {
+        // to detected windows 11 by header
+        res.header( 'Accept-CH','Sec-CH-UA-Platform-Version');
+
         var source = req.headers['user-agent'] || '';
         if (req.headers['x-ucbrowser-ua']) {  //special case of UC Browser
             source = req.headers['x-ucbrowser-ua'];
         }
         var ua = new UserAgent();
         if (typeof source === 'undefined') {
-            source = "unknown";
+            source = 'unknown';
         }
         ua.Agent.source = source.replace(/^\s*/, '').replace(/\s*$/, '');
-        ua.Agent.os = ua.getOS(ua.Agent.source);
+        ua.Agent.os = ua.detectOsByHeader(req.headers,ua.getOS(ua.Agent.source));
         ua.Agent.platform = ua.getPlatform(ua.Agent.source);
         ua.Agent.browser = ua.getBrowser(ua.Agent.source);
         ua.Agent.version = ua.getBrowserVersion(ua.Agent.source);
