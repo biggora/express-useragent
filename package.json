@@ -61,8 +61,8 @@
   "types": "./dist/index.d.ts",
   "scripts": {
     "test": "npm run test:vitest",
-    "test:vitest": "npm run build --silent && vitest run",
-    "test:watch": "npm run build --silent && vitest watch",
+    "test:vitest": "npm run build --silent && vitest run --config vitest.config.mjs",
+    "test:watch": "npm run build --silent && vitest watch --config vitest.config.mjs",
     "express": "tsx examples/server.ts",
     "http": "tsx examples/http.ts",
     "simple": "tsx examples/simple.ts",
@@ -72,7 +72,7 @@
     "clean": "rimraf dist",
     "lint": "eslint \"{src,tests,examples}/**/*.{ts,tsx}\"",
     "lint:fix": "npm run lint -- --fix",
-    "format": "prettier --write \"{src,tests,examples}/**/*.{ts,tsx,js,json,md}\"",
+    "format": "prettier --write \"{src,tests,examples}/**/*.{ts,tsx,js,cjs,mjs,json,md}\"",
     "typecheck": "tsc --noEmit",
     "prepublishOnly": "npm run build"
   },
