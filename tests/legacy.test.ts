@@ -1,3 +1,4 @@
+import './legacy-modules.d.ts';
 import { describe, it, expect } from 'vitest';
 import androidPhoneSuite from './legacy/android_phone.test.js';
 import androidTabletSuite from './legacy/android_tablet.test.js';
