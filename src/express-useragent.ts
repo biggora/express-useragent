@@ -314,7 +314,13 @@ export class UserAgent {
     MacOSSierra: /os x 10[._]12/i,
     MacOSHighSierra: /os x 10[._]13/i,
     MacOSMojave: /os x 10[._]14/i,
+    MacOSCatalina: /os x 10[._]15/i,
     MacOSBigSur: /(mac os x 10[._]16(?:[._]\d+)?|mac os (?:x )?11[._]\d+)/i,
+    MacOSMonterey: /mac os (?:x )?12[._]\d+/i,
+    MacOSVentura: /mac os (?:x )?13[._]\d+/i,
+    MacOSSonoma: /mac os (?:x )?14[._]\d+/i,
+    MacOSSequoia: /mac os (?:x )?15[._]\d+/i,
+    MacOSTahoe: /mac os (?:x )?26[._]\d+/i,
     Mac: /os x/i,
     Linux: /linux/i,
     Linux64: /linux x86_64/i,
@@ -886,9 +892,33 @@ export class UserAgent {
       this.Agent.isMac = true;
       return 'macOS Mojave';
     }
+    if (this.os.MacOSCatalina.test(string)) {
+      this.Agent.isMac = true;
+      return 'macOS Catalina';
+    }
     if (this.os.MacOSBigSur.test(string)) {
       this.Agent.isMac = true;
       return 'macOS Big Sur';
+    }
+    if (this.os.MacOSMonterey.test(string)) {
+      this.Agent.isMac = true;
+      return 'macOS Monterey';
+    }
+    if (this.os.MacOSVentura.test(string)) {
+      this.Agent.isMac = true;
+      return 'macOS Ventura';
+    }
+    if (this.os.MacOSSonoma.test(string)) {
+      this.Agent.isMac = true;
+      return 'macOS Sonoma';
+    }
+    if (this.os.MacOSSequoia.test(string)) {
+      this.Agent.isMac = true;
+      return 'macOS Sequoia';
+    }
+    if (this.os.MacOSTahoe.test(string)) {
+      this.Agent.isMac = true;
+      return 'macOS Tahoe';
     }
     if (this.os.Mac.test(string)) {
       this.Agent.isMac = true;
