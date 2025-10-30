@@ -238,23 +238,23 @@ function createDefaultAgent(): AgentDetails {
 
 export class UserAgent {
   private readonly versions: Record<string, RegExp> = {
-    Edge: /(?:edge|edga|edgios|edg)\/([\d\w.\-]+)/i,
-    Firefox: /(?:firefox|fxios)\/([\d\w.\-]+)/i,
+    Edge: /(?:edge|edga|edgios|edg)\/([\d\w.-]+)/i,
+    Firefox: /(?:firefox|fxios)\/([\d\w.-]+)/i,
     IE: /msie\s([\d.]+[\d])|trident\/\d+\.\d+;.*[rv:]+(\d+\.\d)/i,
-    Chrome: /(?:chrome|crios)\/([\d\w.\-]+)/i,
-    Chromium: /chromium\/([\d\w.\-]+)/i,
-    Safari: /(version|safari)\/([\d\w.\-]+)/i,
-    Opera: /version\/([\d\w.\-]+)|OPR\/([\d\w.\-]+)/i,
-    Ps3: /([\d\w.\-]+)\)\s*$/i,
-    Psp: /([\d\w.\-]+)\)?\s*$/i,
-    Amaya: /amaya\/([\d\w.\-]+)/i,
-    SeaMonkey: /seamonkey\/([\d\w.\-]+)/i,
-    OmniWeb: /omniweb\/v([\d\w.\-]+)/i,
-    Flock: /flock\/([\d\w.\-]+)/i,
-    Epiphany: /epiphany\/([\d\w.\-]+)/i,
-    WinJs: /msapphost\/([\d\w.\-]+)/i,
-    PhantomJS: /phantomjs\/([\d\w.\-]+)/i,
-    AlamoFire: /alamofire\/([\d\w.\-]+)/i,
+    Chrome: /(?:chrome|crios)\/([\d\w.-]+)/i,
+    Chromium: /chromium\/([\d\w.-]+)/i,
+    Safari: /(version|safari)\/([\d\w.-]+)/i,
+    Opera: /version\/([\d\w.-]+)|OPR\/([\d\w.-]+)/i,
+    Ps3: /([\d\w.-]+)\)\s*$/i,
+    Psp: /([\d\w.-]+)\)?\s*$/i,
+    Amaya: /amaya\/([\d\w.-]+)/i,
+    SeaMonkey: /seamonkey\/([\d\w.-]+)/i,
+    OmniWeb: /omniweb\/v([\d\w.-]+)/i,
+    Flock: /flock\/([\d\w.-]+)/i,
+    Epiphany: /epiphany\/([\d\w.-]+)/i,
+    WinJs: /msapphost\/([\d\w.-]+)/i,
+    PhantomJS: /phantomjs\/([\d\w.-]+)/i,
+    AlamoFire: /alamofire\/([\d\w.-]+)/i,
     UC: /ucbrowser\/([\d\w.]+)/i,
     Facebook: /FBAV\/([\d\w.]+)/i,
     WebKit: /applewebkit\/([\d\w.]+)/i,
@@ -345,7 +345,7 @@ export class UserAgent {
     Samsung: /samsung/i,
     Curl: /curl/i,
     Electron: /Electron/i,
-    iOS: /^ios\-/i,
+    iOS: /^ios-/i,
   };
 
   public Agent: AgentDetails;
@@ -658,7 +658,7 @@ export class UserAgent {
     }
 
     if (!string.startsWith('Mozilla')) {
-      const guess = /^([\d\w\-.]+)\/[\d\w.\-]+/i.exec(string);
+      const guess = /^([\d\w.-]+)\/[\d\w.-]+/i.exec(string);
       if (guess) {
         agent.isAuthoritative = false;
         return guess[1];
