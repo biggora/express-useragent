@@ -12,17 +12,17 @@ var geoip = require('./geoip.test.js');
 var tests = {};
 
 Object.assign(
-    tests,
-    androidPhone,
-    androidTablet,
-    mobileNative,
-    bots,
-    browsers,
-    smartTV,
-    silk,
-    electron,
-    geoip,
-    wechat
+  tests,
+  androidPhone,
+  androidTablet,
+  mobileNative,
+  bots,
+  browsers,
+  smartTV,
+  silk,
+  electron,
+  geoip,
+  wechat,
 );
 
 module.exports = tests;

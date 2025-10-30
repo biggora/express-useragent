@@ -1,3 +1,15 @@
+# Prevent accidental publishing of tooling and development content.
+.git/
+.github/
 .idea/
+.vscode/
+
 node_modules/
-Gruntfile.js
+coverage/
+
+examples/
+tests/
+specs/
+
+AGENTS.md
+QWEN.md
