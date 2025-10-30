@@ -11,7 +11,6 @@ export default defineConfig([
     skipNodeModulesBundle: true,
     target: 'node18',
     outDir: 'dist',
-    legacyOutput: true,
     outExtension({ format }) {
       return {
         js: format === 'esm' ? '.mjs' : '.cjs',

@@ -1,6 +1,6 @@
 const path = require('path');
 
-const distPath = path.resolve(__dirname, '..', 'dist');
+const distPath = path.resolve(__dirname, '..', 'dist', 'index.cjs');
 try {
   const dist = require(distPath);
   const runtime = dist && dist.default ? dist.default : dist;
