@@ -32,9 +32,31 @@ server.listen(3000);
 
 ### Express Middleware
 
+ESM usage (Node 18+):
+
 ```ts
 import express from 'express';
-import useragent from 'express-useragent';
+import { express as useragent } from 'express-useragent';
+
+const app = express();
+
+app.use(useragent());
+
+app.get('/', (req, res) => {
+  res.json({
+    browser: req.useragent?.browser,
+    os: req.useragent?.os,
+  });
+});
+
+app.listen(3000);
+```
+
+Alternatively, you can import the whole namespace:
+
+```ts
+import express from 'express';
+import * as useragent from 'express-useragent';
 
 const app = express();
 
@@ -49,6 +71,57 @@ app.get('/', (req, res) => {
 
 app.listen(3000);
 ```
+
+CommonJS (require) still supports the default export pattern used in older examples:
+
+```js
+const express = require('express');
+const useragent = require('express-useragent');
+
+const app = express();
+
+app.use(useragent.express());
+
+app.get('/', (req, res) => {
+  res.json({
+    browser: req.useragent?.browser,
+    os: req.useragent?.os,
+  });
+});
+
+app.listen(3000);
+```
+
+### ESM vs CJS at a glance
+
+- ESM (Node 18+):
+  - Named import of middleware:
+    ```ts
+    import { express as useragent } from 'express-useragent';
+    app.use(useragent());
+    ```
+  - Namespace import:
+    ```ts
+    import * as useragent from 'express-useragent';
+    app.use(useragent.express());
+    ```
+- CommonJS (require):
+  ```js
+  const useragent = require('express-useragent');
+  app.use(useragent.express());
+  ```
+
+### Migrating from v1.x to v2.x
+
+- In v1.x, `import useragent from 'express-useragent'` returned an object with an `.express()` method used as middleware.
+- In v2.x, the default export is a parser instance (for direct parsing). The Express middleware is provided as a named export `express` (and alias `useragentMiddleware`). Use one of:
+  - `import { express as useragent } from 'express-useragent'` → `app.use(useragent())`
+  - `import * as useragent from 'express-useragent'` → `app.use(useragent.express())`
+- CommonJS `require('express-useragent').express()` continues to work unchanged.
+
+See more end-to-end demos under `examples/`:
+- `examples/server.ts` — Express middleware demo
+- `examples/http.ts` — raw Node HTTP sample
 
 ## API Highlights
 
