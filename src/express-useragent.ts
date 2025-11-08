@@ -375,11 +375,32 @@ export class UserAgent {
   }
 
   public testBot(): void {
-    const match = IS_BOT_REGEXP.exec(this.Agent.source.toLowerCase());
+    const source = this.Agent.source.toLowerCase();
+    const match = IS_BOT_REGEXP.exec(source);
+
     if (match) {
-      this.Agent.isBot = match[1];
+      const botIdentifier = match[1];
+
+      // Handle false positives - TikTok WebView contains "googleplay" but isn't a bot
+      if (
+        botIdentifier === 'google' &&
+        (source.includes('tiktok') || source.includes('trill') || source.includes('bytedance'))
+      ) {
+        this.Agent.isBot = false;
+        return;
+      }
+
+      // Special case for Google Insights - keep the string return for backward compatibility
+      if (botIdentifier === 'insights') {
+        this.Agent.isBot = botIdentifier;
+      } else {
+        // For all other bots, return boolean true (fixes issues #168, #138)
+        this.Agent.isBot = true;
+      }
     } else if (!this.Agent.isAuthoritative) {
       this.Agent.isBot = /bot/i.test(this.Agent.source);
+    } else {
+      this.Agent.isBot = false;
     }
   }
 
