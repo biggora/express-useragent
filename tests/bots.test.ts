@@ -387,8 +387,72 @@ const cases: BotCase[] = [
   },
 ];
 
+const failingCases: BotCase[] = [
+  {
+    name: 'Postman User Agent',
+    source: 'PostmanRuntime/7.28.4',
+    expected: {
+      isAuthoritative: false,
+      isMobile: false,
+      isDesktop: false,
+    },
+    isBot: true, // Should return true, not a string
+  },
+  {
+    name: 'Facebook OG Parser',
+    source: 'facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)',
+    expected: {
+      isAuthoritative: false,
+      isMobile: false,
+      isDesktop: false,
+    },
+    isBot: true, // Should detect as bot
+  },
+  {
+    name: 'TikTok WebView UA',
+    source:
+      'Mozilla/5.0 (Linux; Android 8.1.0; CPH1901 Build/OPM1.171019.026; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/91.0.4472.120 Mobile Safari/537.36 trill_200005 JsSdk/1.0 NetType/WIFI Channel/googleplay AppName/trill app_version/20.0.5 ByteLocale/id-ID ByteFullLocale/id-ID Region/ID BytedanceWebview/d8a21c6',
+    expected: {
+      isAuthoritative: true,
+      isMobile: true,
+      isDesktop: false,
+    },
+    isBot: false, // Should not be detected as bot
+  },
+  {
+    name: 'Custom Bot Update',
+    source: 'CustomBot/1.0 (+http://example.com/bot)',
+    expected: {
+      isAuthoritative: false,
+      isMobile: false,
+      isDesktop: false,
+    },
+    isBot: true, // Should allow user-defined bots
+  },
+];
+
 describe('Bot detection', () => {
   cases.forEach((testCase) => {
+    const { name, source, expected, isBot: expectedIsBot } = testCase;
+    it(name, () => {
+      const agent = useragent.parse(source);
+      expectAgentFlags(agent, expected);
+      const actualIsBot = agent.isBot;
+      if (expectedIsBot === undefined) {
+        expect(Boolean(actualIsBot)).toBe(true);
+      } else if (expectedIsBot === true) {
+        expect(Boolean(actualIsBot)).toBe(true);
+      } else if (expectedIsBot === false) {
+        expect(Boolean(actualIsBot)).toBe(false);
+      } else {
+        expect(actualIsBot).toBe(expectedIsBot);
+      }
+    });
+  });
+});
+
+describe('Failing Bot detection cases', () => {
+  failingCases.forEach((testCase) => {
     const { name, source, expected, isBot: expectedIsBot } = testCase;
     it(name, () => {
       const agent = useragent.parse(source);
