@@ -1,9 +1,20 @@
 import type { NextFunction, Request, Response } from 'express';
 import type { IncomingHttpHeaders } from 'http';
 import { UserAgent } from './express-useragent';
+import type { AgentDetails } from './express-useragent';
 
 export type { AgentDetails, HeadersLike } from './express-useragent';
 export { UserAgent } from './express-useragent';
+
+// Declaration merging for Express Request
+// This allows TypeScript users to access req.useragent without type errors
+declare global {
+  namespace Express {
+    interface Request {
+      useragent?: AgentDetails;
+    }
+  }
+}
 
 export interface UserAgentAugmentedRequest extends Request {
   useragent?: ReturnType<UserAgent['parse']>;
