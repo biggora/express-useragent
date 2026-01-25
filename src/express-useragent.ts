@@ -98,6 +98,7 @@ const ANDROID_TABLET_REGEXP = /mobile/i;
 const MOBILE_REGEXP = /mobile|^ios-/i;
 const DALVIK_REGEXP = /dalvik/i;
 const IOS_SCALE_REGEXP = /scale/i;
+const OKHTTP_REGEXP = /okhttp/i;
 const WEBKIT_REGEXP = /applewebkit/i;
 const WECHAT_REGEXP = /micromessenger/i;
 
@@ -438,6 +439,14 @@ export class UserAgent {
     if (DALVIK_REGEXP.test(this.Agent.source)) {
       this.Agent.isAndroidNative = true;
       this.Agent.isMobileNative = true;
+    }
+
+    if (OKHTTP_REGEXP.test(this.Agent.source)) {
+      this.Agent.isAndroidNative = true;
+      this.Agent.isMobileNative = true;
+      this.Agent.isMobile = true;
+      this.Agent.isAndroid = true;
+      this.Agent.isDesktop = false;
     }
 
     if (IOS_SCALE_REGEXP.test(this.Agent.source)) {

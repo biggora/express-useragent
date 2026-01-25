@@ -194,6 +194,8 @@ Bug reports and PRs are welcome. When submitting changes, please include:
 - `npm test` and `npm run lint` output or reproduction steps.
 - Notes in the changelog for breaking updates.
 
+See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines, including how to update the bot list.
+
 ## License
 
 [MIT](LICENSE) © Aleksejs Gordejevs and contributors.
