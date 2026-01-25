@@ -45,7 +45,7 @@ describe('TypeScript type declarations (issue #182)', () => {
     const browser: string | undefined = req.useragent?.browser;
     const os: string | undefined = req.useragent?.os;
     const isMobile: boolean | undefined = req.useragent?.isMobile;
-    const isBot: boolean | string | undefined = req.useragent?.isBot;
+    const isBot: boolean | undefined = req.useragent?.isBot;
 
     expect(browser).toBe('Chrome');
     expect(os).toBe('Windows 10.0');

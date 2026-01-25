@@ -182,7 +182,7 @@ const cases: BotCase[] = [
       isRaspberry: false,
       isAndroidTablet: false,
     },
-    isBot: 'insights',
+    isBot: true,
   },
   {
     name: 'BLEX Bot',

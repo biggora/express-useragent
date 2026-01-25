@@ -138,7 +138,8 @@ export interface AgentDetails extends Record<string, unknown> {
   isBada: boolean;
   isSamsung: boolean;
   isRaspberry: boolean;
-  isBot: boolean | string;
+  isBot: boolean;
+  botName: string;
   isCurl: boolean;
   isAndroidTablet: boolean;
   isWinJs: boolean;
@@ -203,6 +204,7 @@ const DEFAULT_AGENT: AgentDetails = {
   isSamsung: false,
   isRaspberry: false,
   isBot: false,
+  botName: '',
   isCurl: false,
   isAndroidTablet: false,
   isWinJs: false,
@@ -233,6 +235,7 @@ function createDefaultAgent(): AgentDetails {
     geoIp: {},
     source: '',
     electronVersion: '',
+    botName: '',
   };
 }
 
@@ -387,20 +390,19 @@ export class UserAgent {
         (source.includes('tiktok') || source.includes('trill') || source.includes('bytedance'))
       ) {
         this.Agent.isBot = false;
+        this.Agent.botName = '';
         return;
       }
 
-      // Special case for Google Insights - keep the string return for backward compatibility
-      if (botIdentifier === 'insights') {
-        this.Agent.isBot = botIdentifier;
-      } else {
-        // For all other bots, return boolean true (fixes issues #168, #138)
-        this.Agent.isBot = true;
-      }
+      // For all bots, return boolean true and store bot name (fixes issues #168, #138)
+      this.Agent.isBot = true;
+      this.Agent.botName = botIdentifier;
     } else if (!this.Agent.isAuthoritative) {
       this.Agent.isBot = /bot/i.test(this.Agent.source);
+      this.Agent.botName = this.Agent.isBot ? 'bot' : '';
     } else {
       this.Agent.isBot = false;
+      this.Agent.botName = '';
     }
   }
 
