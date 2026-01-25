@@ -9,6 +9,7 @@ export { UserAgent } from './express-useragent';
 // Declaration merging for Express Request
 // This allows TypeScript users to access req.useragent without type errors
 declare global {
+  // eslint-disable-next-line @typescript-eslint/no-namespace
   namespace Express {
     interface Request {
       useragent?: AgentDetails;
