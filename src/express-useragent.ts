@@ -1,5 +1,29 @@
 import type { IncomingHttpHeaders } from 'http';
 
+/**
+ * Represents a single brand entry from User-Agent Client Hints
+ * @see https://wicg.github.io/ua-client-hints/
+ */
+export interface ClientHintBrand {
+  brand: string;
+  version: string;
+}
+
+/**
+ * Parsed User-Agent Client Hints data from HTTP headers
+ * Maps to the NavigatorUAData interface exposed by browsers
+ */
+export interface ClientHints {
+  brands: ClientHintBrand[];
+  mobile: boolean;
+  platform: string;
+  platformVersion: string;
+  architecture: string;
+  bitness: string;
+  model: string;
+  fullVersionList: ClientHintBrand[];
+}
+
 const BOTS = [
   '\\+https:\\/\\/developers.google.com\\/\\+\\/web\\/snippet\\/',
   'ad\\smonitoring',
@@ -163,6 +187,10 @@ export interface AgentDetails extends Record<string, unknown> {
   isWindowsPhone: boolean;
   electronVersion: string;
   SilkAccelerated?: boolean;
+  /** DuckDuckGo browser detected via Client Hints brand or WebKit UA pattern */
+  isDuckDuckGo: boolean;
+  /** Parsed User-Agent Client Hints when available */
+  clientHints: ClientHints | null;
 }
 
 export type HeadersLike = Partial<Record<string, string | string[] | undefined>>;
@@ -228,6 +256,8 @@ const DEFAULT_AGENT: AgentDetails = {
   geoIp: {},
   source: '',
   electronVersion: '',
+  isDuckDuckGo: false,
+  clientHints: null,
 };
 
 function createDefaultAgent(): AgentDetails {
@@ -237,8 +267,12 @@ function createDefaultAgent(): AgentDetails {
     source: '',
     electronVersion: '',
     botName: '',
+    clientHints: null,
   };
 }
+
+/** WebKit DuckDuckGo pattern: " Ddg/X.Y.Z" at end of UA string */
+const DUCKDUCKGO_WEBKIT_REGEXP = /\sDdg\/[\d.]+$/;
 
 export class UserAgent {
   private readonly versions: Record<string, RegExp> = {
@@ -264,6 +298,7 @@ export class UserAgent {
     WebKit: /applewebkit\/([\d\w.]+)/i,
     Wechat: /micromessenger\/([\d\w.]+)/i,
     Electron: /Electron\/([\d\w.]+)/i,
+    DuckDuckGo: /\sDdg\/([\d.]+)$/i,
   };
 
   private readonly browsers: Record<string, RegExp> = {
@@ -376,6 +411,108 @@ export class UserAgent {
       }
     });
     return this;
+  }
+
+  /**
+   * Parse User-Agent Client Hints from HTTP headers
+   * @see https://wicg.github.io/ua-client-hints/
+   */
+  public parseClientHints(headers: HeadersLike | IncomingHttpHeaders): ClientHints | null {
+    const resolveHeader = (value: string | string[] | undefined): string => {
+      if (Array.isArray(value)) {
+        return value[0] ?? '';
+      }
+      return value ?? '';
+    };
+
+    // Normalize header keys to lowercase for case-insensitive lookup
+    const normalizedHeaders: Record<string, string> = {};
+    for (const [key, value] of Object.entries(headers ?? {})) {
+      normalizedHeaders[key.toLowerCase()] = resolveHeader(value);
+    }
+
+    const secChUa = normalizedHeaders['sec-ch-ua'];
+    // Return null if no client hints are present
+    if (!secChUa) {
+      return null;
+    }
+
+    const parseBrandList = (header: string): ClientHintBrand[] => {
+      if (!header) return [];
+      const brands: ClientHintBrand[] = [];
+      // Match patterns like: "Brand";v="version" or "Brand"; v="version"
+      const brandRegex = /"([^"]+)";\s*v="([^"]+)"/g;
+      let match;
+      while ((match = brandRegex.exec(header)) !== null) {
+        brands.push({ brand: match[1], version: match[2] });
+      }
+      return brands;
+    };
+
+    const parseMobile = (header: string): boolean => {
+      // ?1 = true, ?0 or empty = false
+      return header === '?1';
+    };
+
+    const parseQuotedString = (header: string): string => {
+      // Remove surrounding quotes if present
+      const match = /^"([^"]*)"$/.exec(header);
+      return match ? match[1] : header;
+    };
+
+    const clientHints: ClientHints = {
+      brands: parseBrandList(secChUa),
+      mobile: parseMobile(normalizedHeaders['sec-ch-ua-mobile'] ?? ''),
+      platform: parseQuotedString(normalizedHeaders['sec-ch-ua-platform'] ?? ''),
+      platformVersion: parseQuotedString(normalizedHeaders['sec-ch-ua-platform-version'] ?? ''),
+      architecture: parseQuotedString(normalizedHeaders['sec-ch-ua-arch'] ?? ''),
+      bitness: parseQuotedString(normalizedHeaders['sec-ch-ua-bitness'] ?? ''),
+      model: parseQuotedString(normalizedHeaders['sec-ch-ua-model'] ?? ''),
+      fullVersionList: parseBrandList(normalizedHeaders['sec-ch-ua-full-version-list'] ?? ''),
+    };
+
+    this.Agent.clientHints = clientHints;
+    return clientHints;
+  }
+
+  /**
+   * Test for DuckDuckGo browser using both Client Hints and UA string patterns
+   * - Chromium platforms (Android, Windows): Sec-CH-UA brand "DuckDuckGo"
+   * - WebKit platforms (iOS, macOS): UA string ends with " Ddg/X.Y.Z"
+   */
+  public testDuckDuckGo(): void {
+    // Check client hints brands first (Chromium-based DDG)
+    if (this.Agent.clientHints?.brands) {
+      const hasDdgBrand = this.Agent.clientHints.brands.some(
+        (brand) => brand.brand === 'DuckDuckGo',
+      );
+      if (hasDdgBrand) {
+        this.Agent.isDuckDuckGo = true;
+        this.Agent.browser = 'DuckDuckGo';
+        this.Agent.version = this.getDuckDuckGoVersion() ?? 'unknown';
+        return;
+      }
+    }
+
+    // Check full version list as well
+    if (this.Agent.clientHints?.fullVersionList) {
+      const hasDdgBrand = this.Agent.clientHints.fullVersionList.some(
+        (brand) => brand.brand === 'DuckDuckGo',
+      );
+      if (hasDdgBrand) {
+        this.Agent.isDuckDuckGo = true;
+        this.Agent.browser = 'DuckDuckGo';
+        this.Agent.version = this.getDuckDuckGoVersion() ?? 'unknown';
+        return;
+      }
+    }
+
+    // Fallback: check WebKit UA string pattern (iOS/macOS DDG)
+    if (DUCKDUCKGO_WEBKIT_REGEXP.test(this.Agent.source)) {
+      this.Agent.isDuckDuckGo = true;
+      this.Agent.browser = 'DuckDuckGo';
+      this.Agent.version = this.getDuckDuckGoVersion() ?? 'unknown';
+    }
   }
 
   public testBot(): void {
@@ -584,6 +721,18 @@ export class UserAgent {
     return new UserAgent().hydrate(source).Agent;
   }
 
+  /**
+   * Hydrate agent from UA string and HTTP headers (including Client Hints)
+   * This method should be preferred when headers are available as it enables
+   * detection of browsers that use Client Hints (e.g., DuckDuckGo on Chromium)
+   */
+  public hydrateFromHeaders(source: string, headers: HeadersLike | IncomingHttpHeaders): this {
+    this.hydrate(source);
+    this.parseClientHints(headers);
+    this.testDuckDuckGo();
+    return this;
+  }
+
   public hydrate(source: string): this {
     this.Agent = createDefaultAgent();
     this.Agent.source = source.trim();
@@ -762,6 +911,8 @@ export class UserAgent {
         return match(this.versions.UC) ?? 'unknown';
       case 'Facebook':
         return match(this.versions.Facebook) ?? 'unknown';
+      case 'DuckDuckGo':
+        return this.getDuckDuckGoVersion() ?? 'unknown';
       default:
         if (browser !== 'unknown') {
           const regex = new RegExp(`${browser}[\\/ ]([\\d\\w.\\-]+)`, 'i');
@@ -786,6 +937,26 @@ export class UserAgent {
   private getWechatVersion(string: string): string {
     const match = string.match(this.versions.Wechat);
     return match ? match[1] : 'unknown';
+  }
+
+  private getDuckDuckGoVersion(): string | null {
+    // Try client hints first
+    const hints = this.Agent.clientHints;
+    if (hints) {
+      // Check fullVersionList first for more precise version
+      const fullBrand = hints.fullVersionList.find((b) => b.brand === 'DuckDuckGo');
+      if (fullBrand) {
+        return fullBrand.version;
+      }
+      // Fall back to brands
+      const brand = hints.brands.find((b) => b.brand === 'DuckDuckGo');
+      if (brand) {
+        return brand.version;
+      }
+    }
+    // Fall back to UA string pattern
+    const match = this.Agent.source.match(this.versions.DuckDuckGo);
+    return match ? match[1] : null;
   }
 
   private getElectronVersion(string: string): string {
