@@ -53,6 +53,30 @@ describe('DuckDuckGo Browser Detection', () => {
       expect(ua.Agent.isDuckDuckGo).toBe(true);
       expect(ua.Agent.version).toBe('1.2.3.456');
     });
+
+    it('detects DuckDuckGo when present only in fullVersionList', () => {
+      const ua = new UserAgent();
+      const source =
+        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36';
+      // DuckDuckGo only in fullVersionList, not in sec-ch-ua brands
+      const headers = {
+        'sec-ch-ua': '"Chromium";v="120", "Not_A Brand";v="8"',
+        'sec-ch-ua-full-version-list':
+          '"DuckDuckGo";v="5.207.0", "Chromium";v="120.0.6099.199", "Not_A Brand";v="8.0.0.0"',
+        'sec-ch-ua-mobile': '?0',
+        'sec-ch-ua-platform': '"Windows"',
+      };
+
+      ua.hydrateFromHeaders(source, headers);
+
+      expect(ua.Agent.isDuckDuckGo).toBe(true);
+      expect(ua.Agent.browser).toBe('DuckDuckGo');
+      expect(ua.Agent.version).toBe('5.207.0');
+      expect(ua.Agent.clientHints?.fullVersionList).toContainEqual({
+        brand: 'DuckDuckGo',
+        version: '5.207.0',
+      });
+    });
   });
 
   describe('WebKit UA string detection (iOS/macOS)', () => {
@@ -199,6 +223,109 @@ describe('DuckDuckGo Browser Detection', () => {
       expect(hints?.brands[0].brand).toBe('DuckDuckGo');
       expect(hints?.mobile).toBe(false);
       expect(hints?.platform).toBe('Windows');
+    });
+  });
+
+  describe('Client Hints error handling', () => {
+    it('returns null for null headers', () => {
+      const ua = new UserAgent();
+      const hints = ua.parseClientHints(null as unknown as Record<string, string>);
+      expect(hints).toBeNull();
+    });
+
+    it('returns null for undefined headers', () => {
+      const ua = new UserAgent();
+      const hints = ua.parseClientHints(undefined as unknown as Record<string, string>);
+      expect(hints).toBeNull();
+    });
+
+    it('handles non-string header values gracefully', () => {
+      const ua = new UserAgent();
+      const headers = {
+        'sec-ch-ua': '"Brand";v="1"',
+        'sec-ch-ua-mobile': 123 as unknown as string, // Invalid type
+        'sec-ch-ua-platform': { nested: 'object' } as unknown as string, // Invalid type
+      };
+
+      const hints = ua.parseClientHints(headers);
+
+      expect(hints).not.toBeNull();
+      expect(hints?.brands).toHaveLength(1);
+      expect(hints?.mobile).toBe(false); // Falls back to false
+      expect(hints?.platform).toBe(''); // Falls back to empty string
+    });
+
+    it('handles array header values', () => {
+      const ua = new UserAgent();
+      const headers = {
+        'sec-ch-ua': ['"Brand";v="1"', '"Second";v="2"'] as unknown as string,
+        'sec-ch-ua-platform': ['"Windows"'] as unknown as string,
+      };
+
+      const hints = ua.parseClientHints(headers);
+
+      expect(hints).not.toBeNull();
+      expect(hints?.brands).toHaveLength(1);
+      expect(hints?.platform).toBe('Windows');
+    });
+
+    it('truncates oversized brand names and versions', () => {
+      const ua = new UserAgent();
+      const longBrand = 'A'.repeat(200);
+      const longVersion = 'B'.repeat(100);
+      const headers = {
+        'sec-ch-ua': `"${longBrand}";v="${longVersion}"`,
+      };
+
+      const hints = ua.parseClientHints(headers);
+
+      // Regex limits brand to 128 chars, version to 64 chars - so no match
+      expect(hints).not.toBeNull();
+      expect(hints?.brands).toHaveLength(0);
+    });
+
+    it('limits number of parsed brands', () => {
+      const ua = new UserAgent();
+      // Create header with more than MAX_BRAND_COUNT (20) brands
+      const brands = Array.from({ length: 30 }, (_, i) => `"Brand${i}";v="${i}"`).join(', ');
+      const headers = {
+        'sec-ch-ua': brands,
+      };
+
+      const hints = ua.parseClientHints(headers);
+
+      expect(hints).not.toBeNull();
+      expect(hints?.brands.length).toBeLessThanOrEqual(20);
+    });
+
+    it('handles malformed brand list gracefully', () => {
+      const ua = new UserAgent();
+      const headers = {
+        'sec-ch-ua': 'not a valid brand list {{{{',
+        'sec-ch-ua-mobile': '?1',
+      };
+
+      const hints = ua.parseClientHints(headers);
+
+      expect(hints).not.toBeNull();
+      expect(hints?.brands).toHaveLength(0);
+      expect(hints?.mobile).toBe(true);
+    });
+
+    it('handles empty string values', () => {
+      const ua = new UserAgent();
+      const headers = {
+        'sec-ch-ua': '""',
+        'sec-ch-ua-mobile': '',
+        'sec-ch-ua-platform': '""',
+      };
+
+      const hints = ua.parseClientHints(headers);
+
+      expect(hints).not.toBeNull();
+      expect(hints?.brands).toHaveLength(0);
+      expect(hints?.mobile).toBe(false);
+      expect(hints?.platform).toBe('');
     });
   });
 });

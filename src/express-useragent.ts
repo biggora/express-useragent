@@ -323,6 +323,7 @@ export class UserAgent {
     AlamoFire: /alamofire/i,
     UC: /UCBrowser/i,
     Facebook: /FBA[NV]/,
+    DuckDuckGo: /\sDdg\/[\d.]+$/i,
   };
 
   private readonly os: Record<string, RegExp> = {
@@ -413,22 +414,54 @@ export class UserAgent {
     return this;
   }
 
+  /** Maximum header length to process (prevents DoS from oversized headers) */
+  private static readonly MAX_HEADER_LENGTH = 2048;
+  /** Maximum number of brands to parse from a brand list */
+  private static readonly MAX_BRAND_COUNT = 20;
+
   /**
    * Parse User-Agent Client Hints from HTTP headers
    * @see https://wicg.github.io/ua-client-hints/
    */
   public parseClientHints(headers: HeadersLike | IncomingHttpHeaders): ClientHints | null {
     const resolveHeader = (value: string | string[] | undefined): string => {
-      if (Array.isArray(value)) {
-        return value[0] ?? '';
+      try {
+        if (value === null || value === undefined) {
+          return '';
+        }
+        if (Array.isArray(value)) {
+          const first = value[0];
+          if (typeof first !== 'string') {
+            return '';
+          }
+          return first.slice(0, UserAgent.MAX_HEADER_LENGTH);
+        }
+        if (typeof value !== 'string') {
+          return '';
+        }
+        return value.slice(0, UserAgent.MAX_HEADER_LENGTH);
+      } catch {
+        return '';
       }
-      return value ?? '';
     };
+
+    // Validate headers input
+    if (headers === null || headers === undefined || typeof headers !== 'object') {
+      return null;
+    }
 
     // Normalize header keys to lowercase for case-insensitive lookup
     const normalizedHeaders: Record<string, string> = {};
-    for (const [key, value] of Object.entries(headers ?? {})) {
-      normalizedHeaders[key.toLowerCase()] = resolveHeader(value);
+    try {
+      let headerCount = 0;
+      const maxHeaders = 50; // Limit iterations over headers object
+      for (const [key, value] of Object.entries(headers)) {
+        if (++headerCount > maxHeaders) break;
+        if (typeof key !== 'string') continue;
+        normalizedHeaders[key.toLowerCase()] = resolveHeader(value);
+      }
+    } catch {
+      return null;
     }
 
     const secChUa = normalizedHeaders['sec-ch-ua'];
@@ -438,41 +471,63 @@ export class UserAgent {
     }
 
     const parseBrandList = (header: string): ClientHintBrand[] => {
-      if (!header) return [];
-      const brands: ClientHintBrand[] = [];
-      // Match patterns like: "Brand";v="version" or "Brand"; v="version"
-      const brandRegex = /"([^"]+)";\s*v="([^"]+)"/g;
-      let match;
-      while ((match = brandRegex.exec(header)) !== null) {
-        brands.push({ brand: match[1], version: match[2] });
+      try {
+        if (!header || typeof header !== 'string') return [];
+        const brands: ClientHintBrand[] = [];
+        // Match patterns like: "Brand";v="version" or "Brand"; v="version"
+        const brandRegex = /"([^"]{1,128})";\s*v="([^"]{1,64})"/g;
+        let match;
+        let iterations = 0;
+        while ((match = brandRegex.exec(header)) !== null) {
+          if (++iterations > UserAgent.MAX_BRAND_COUNT) break;
+          brands.push({ brand: match[1], version: match[2] });
+        }
+        return brands;
+      } catch {
+        return [];
       }
-      return brands;
     };
 
     const parseMobile = (header: string): boolean => {
-      // ?1 = true, ?0 or empty = false
-      return header === '?1';
+      try {
+        // ?1 = true, ?0 or empty = false
+        if (typeof header !== 'string') return false;
+        return header === '?1';
+      } catch {
+        return false;
+      }
     };
 
     const parseQuotedString = (header: string): string => {
-      // Remove surrounding quotes if present
-      const match = /^"([^"]*)"$/.exec(header);
-      return match ? match[1] : header;
+      try {
+        if (typeof header !== 'string') return '';
+        // Limit input length before regex
+        const truncated = header.slice(0, 256);
+        // Remove surrounding quotes if present
+        const match = /^"([^"]*)"$/.exec(truncated);
+        return match ? match[1] : truncated;
+      } catch {
+        return '';
+      }
     };
 
-    const clientHints: ClientHints = {
-      brands: parseBrandList(secChUa),
-      mobile: parseMobile(normalizedHeaders['sec-ch-ua-mobile'] ?? ''),
-      platform: parseQuotedString(normalizedHeaders['sec-ch-ua-platform'] ?? ''),
-      platformVersion: parseQuotedString(normalizedHeaders['sec-ch-ua-platform-version'] ?? ''),
-      architecture: parseQuotedString(normalizedHeaders['sec-ch-ua-arch'] ?? ''),
-      bitness: parseQuotedString(normalizedHeaders['sec-ch-ua-bitness'] ?? ''),
-      model: parseQuotedString(normalizedHeaders['sec-ch-ua-model'] ?? ''),
-      fullVersionList: parseBrandList(normalizedHeaders['sec-ch-ua-full-version-list'] ?? ''),
-    };
+    try {
+      const clientHints: ClientHints = {
+        brands: parseBrandList(secChUa),
+        mobile: parseMobile(normalizedHeaders['sec-ch-ua-mobile'] ?? ''),
+        platform: parseQuotedString(normalizedHeaders['sec-ch-ua-platform'] ?? ''),
+        platformVersion: parseQuotedString(normalizedHeaders['sec-ch-ua-platform-version'] ?? ''),
+        architecture: parseQuotedString(normalizedHeaders['sec-ch-ua-arch'] ?? ''),
+        bitness: parseQuotedString(normalizedHeaders['sec-ch-ua-bitness'] ?? ''),
+        model: parseQuotedString(normalizedHeaders['sec-ch-ua-model'] ?? ''),
+        fullVersionList: parseBrandList(normalizedHeaders['sec-ch-ua-full-version-list'] ?? ''),
+      };
 
-    this.Agent.clientHints = clientHints;
-    return clientHints;
+      this.Agent.clientHints = clientHints;
+      return clientHints;
+    } catch {
+      return null;
+    }
   }
 
   /**
