@@ -5,6 +5,8 @@
 
 Fast user-agent parser with first-class Express middleware and TypeScript typings. Works server-side in Node.js and in the browser via a lightweight IIFE bundle.
 
+[Express UserAgent Demo](https://gordejev.lv/en/express-useragent-demo/)
+
 > Requires Node.js 18 or newer.
 
 ## Install
