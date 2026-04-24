@@ -161,6 +161,8 @@ export interface AgentDetails extends Record<string, unknown> {
   source: string;
   isWechat: boolean;
   isWindowsPhone: boolean;
+  isArc: boolean;
+  isVivaldi: boolean;
   electronVersion: string;
   SilkAccelerated?: boolean;
 }
@@ -224,6 +226,8 @@ const DEFAULT_AGENT: AgentDetails = {
   platform: 'unknown',
   isWechat: false,
   isWindowsPhone: false,
+  isArc: false,
+  isVivaldi: false,
   SilkAccelerated: false,
   geoIp: {},
   source: '',
@@ -263,6 +267,8 @@ export class UserAgent {
     Facebook: /FBAV\/([\d\w.]+)/i,
     WebKit: /applewebkit\/([\d\w.]+)/i,
     Wechat: /micromessenger\/([\d\w.]+)/i,
+    Arc: /Arc\/([\d\w.-]+)/i,
+    Vivaldi: /Vivaldi\/([\d\w.-]+)/i,
     Electron: /Electron\/([\d\w.]+)/i,
   };
 
@@ -288,6 +294,8 @@ export class UserAgent {
     AlamoFire: /alamofire/i,
     UC: /UCBrowser/i,
     Facebook: /FBA[NV]/,
+    Arc: /Arc/i,
+    Vivaldi: /Vivaldi/i,
   };
 
   private readonly os: Record<string, RegExp> = {
@@ -615,6 +623,14 @@ export class UserAgent {
     if (this.browsers.AlamoFire.test(string)) {
       agent.isAlamoFire = true;
       return 'AlamoFire';
+    }
+    if (this.browsers.Arc.test(string)) {
+      agent.isArc = true;
+      return 'Arc';
+    }
+    if (this.browsers.Vivaldi.test(string)) {
+      agent.isVivaldi = true;
+      return 'Vivaldi';
     }
     if (this.browsers.Edge.test(string)) {
       agent.isEdge = true;
