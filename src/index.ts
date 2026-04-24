@@ -60,4 +60,12 @@ export const express = (): UserAgentMiddleware => {
 };
 export const useragentMiddleware = express;
 
-export default useragent;
+// Export a default instance for easier usage
+// Also attach the express middleware and UserAgent class to the default export
+// to maintain compatibility with documented ESM usage (issue #177)
+const defaultExport = Object.assign(useragent, {
+  express,
+  UserAgent,
+});
+
+export default defaultExport;
