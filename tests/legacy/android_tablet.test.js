@@ -38,7 +38,7 @@ exports['Android Tablet'] = function (test) {
   test.ok(userAgent.isLinux, 'Linux');
   test.ok(!userAgent.isMac, 'Mac');
   test.ok(!userAgent.isBada, 'Bada');
-  test.ok(!userAgent.isSamsung, 'Samsung');
+  test.ok(userAgent.isSamsung, 'Samsung');
   test.ok(!userAgent.isRaspberry, 'Raspberry');
   test.ok(!userAgent.isBot, 'Bot');
   test.ok(userAgent.isAndroidTablet, 'AndroidTablet');
