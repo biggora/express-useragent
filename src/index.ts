@@ -3,7 +3,7 @@ import type { IncomingHttpHeaders } from 'http';
 import { UserAgent } from './express-useragent';
 import type { AgentDetails } from './express-useragent';
 
-export type { AgentDetails, HeadersLike } from './express-useragent';
+export type { AgentDetails, HeadersLike, ClientHints, ClientHintBrand } from './express-useragent';
 export { UserAgent } from './express-useragent';
 
 // Declaration merging for Express Request
@@ -40,7 +40,7 @@ export const express = (): UserAgentMiddleware => {
     const ucHeader = resolveHeader(headers['x-ucbrowser-ua']);
     const source = (ucHeader || uaHeader || 'unknown').trim() || 'unknown';
 
-    const parser = new UserAgent().hydrate(source);
+    const parser = new UserAgent().hydrateFromHeaders(source, headers);
     parser.testNginxGeoIP(headers);
     // middleware duplicates tests to match legacy behaviour
     parser.testBot();
