@@ -267,7 +267,7 @@ export class UserAgent {
   };
 
   private readonly browsers: Record<string, RegExp> = {
-    YaBrowser: /yabrowser/i,
+    YaBrowser: /yabrowser|yowser/i,
     Edge: /edge|edga|edgios|edg/i,
     Amaya: /amaya/i,
     Konqueror: /konqueror/i,
@@ -676,6 +676,17 @@ export class UserAgent {
       agent.isFirefox = true;
       return 'Firefox';
     }
+    // Android Browser: stock AOSP browser - has Android + Version/ + Mobile Safari/ but no Chrome or other browser tokens (Bug #80)
+    if (
+      /android/i.test(string) &&
+      /version\//i.test(string) &&
+      /mobile safari\//i.test(string) &&
+      !/chrome/i.test(string) &&
+      !/silk/i.test(string)
+    ) {
+      agent.isAndroid = true;
+      return 'Android Browser';
+    }
     if (this.browsers.Safari.test(string)) {
       agent.isSafari = true;
       return 'Safari';
@@ -762,6 +773,9 @@ export class UserAgent {
         return match(this.versions.UC) ?? 'unknown';
       case 'Facebook':
         return match(this.versions.Facebook) ?? 'unknown';
+      case 'Android Browser':
+        // Android Browser reports version via Version/X.X token (Bug #80)
+        return match(this.versions.Safari, 2) ?? 'unknown';
       default:
         if (browser !== 'unknown') {
           const regex = new RegExp(`${browser}[\\/ ]([\\d\\w.\\-]+)`, 'i');
@@ -1005,6 +1019,10 @@ export class UserAgent {
     }
     if (this.platform.Android.test(string)) {
       this.Agent.isAndroid = true;
+      // Also detect Samsung devices within Android platform (Bug #104)
+      if (this.platform.Samsung.test(string)) {
+        this.Agent.isSamsung = true;
+      }
       return 'Android';
     }
     if (this.platform.Blackberry.test(string)) {

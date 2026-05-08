@@ -19,7 +19,7 @@ describe('Android detection', () => {
       isBlackberry: false,
       isOpera: false,
       isIE: false,
-      isSafari: true,
+      isSafari: false,
       isFirefox: false,
       isWebkit: false,
       isChrome: false,
@@ -34,13 +34,13 @@ describe('Android detection', () => {
       isLinux: true,
       isMac: false,
       isBada: false,
-      isSamsung: false,
+      isSamsung: true,
       isRaspberry: false,
       isBot: false,
       isAndroidTablet: false,
     });
 
-    expect(agent.browser).toBe('Safari');
+    expect(agent.browser).toBe('Android Browser');
     expect(agent.os).toBe('Linux');
     expect(agent.platform).toBe('Android');
     expect(agent.version).toBe('4.0');
@@ -63,7 +63,7 @@ describe('Android detection', () => {
       isBlackberry: false,
       isOpera: false,
       isIE: false,
-      isSafari: true,
+      isSafari: false,
       isFirefox: false,
       isWebkit: false,
       isChrome: false,
@@ -108,7 +108,7 @@ describe('Android detection', () => {
       isLinux: true,
       isMac: false,
       isBada: false,
-      isSamsung: false,
+      isSamsung: true,
       isRaspberry: false,
       isBot: false,
       isAndroidTablet: true,
