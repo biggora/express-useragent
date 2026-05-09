@@ -1,0 +1,48 @@
+name: Publish
+
+on:
+  push:
+    tags:
+      - v*
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment: npm-publish
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          registry-url: https://registry.npmjs.org
+          package-manager-cache: false
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run unit tests
+        run: npm test
+
+      - name: Run high-severity audit
+        run: npm audit --audit-level=high
+
+      - name: Verify package contents
+        run: npm publish --dry-run
+
+      - name: Publish package
+        run: npm publish
+
+      # Fallback for token-based publishing if OIDC trusted publishing is unavailable.
+      # Keep this disabled for the trusted publisher path; OIDC does not require NODE_AUTH_TOKEN.
+      # - name: Publish package with npm token
+      #   run: npm publish
+      #   env:
+      #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
