@@ -1,5 +1,6 @@
 [![npm version](https://img.shields.io/npm/v/express-useragent.svg)](https://www.npmjs.com/package/express-useragent)
 [![CI](https://img.shields.io/github/actions/workflow/status/biggora/express-useragent/ci.yml?branch=master)](https://github.com/biggora/express-useragent/actions)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 # express-useragent
 
