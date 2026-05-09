@@ -33,11 +33,18 @@ jobs:
       - name: Run high-severity audit
         run: npm audit --audit-level=high
 
+      - name: Build package
+        run: npm run build
+
       - name: Verify package contents
-        run: npm publish --dry-run
+        run: |
+          TAG_ARG=$(node -p "require('./package.json').version.includes('-') ? '--tag oidc-test' : ''")
+          npm publish --dry-run $TAG_ARG
 
       - name: Publish package
-        run: npm publish
+        run: |
+          TAG_ARG=$(node -p "require('./package.json').version.includes('-') ? '--tag oidc-test' : ''")
+          npm publish $TAG_ARG
 
       # Fallback for token-based publishing if OIDC trusted publishing is unavailable.
       # Keep this disabled for the trusted publisher path; OIDC does not require NODE_AUTH_TOKEN.
