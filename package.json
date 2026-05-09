@@ -8,6 +8,10 @@
     "url": "git://github.com/biggora/express-useragent.git"
   },
   "license": "MIT",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://npmjs.org"
+  },
   "author": {
     "name": "Aleksejs Gordejevs",
     "email": "aleksej@gordejev.lv",
