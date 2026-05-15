@@ -279,6 +279,7 @@ export class UserAgent {
     Edge: /(?:edge|edga|edgios|edg)\/([\d\w.-]+)/i,
     Firefox: /(?:firefox|fxios)\/([\d\w.-]+)/i,
     IE: /msie\s([\d.]+[\d])|trident\/\d+\.\d+;.*[rv:]+(\d+\.\d)/i,
+    YaBrowser: /(?:yabrowser|yowser)\/([\d\w.-]+)/i,
     Chrome: /(?:chrome|crios)\/([\d\w.-]+)/i,
     Chromium: /chromium\/([\d\w.-]+)/i,
     Safari: /(version|safari)\/([\d\w.-]+)/i,
@@ -935,6 +936,8 @@ export class UserAgent {
         return match(this.versions.Edge) ?? 'unknown';
       case 'PhantomJS':
         return match(this.versions.PhantomJS) ?? 'unknown';
+      case 'YaBrowser':
+        return match(this.versions.YaBrowser) ?? 'unknown';
       case 'Chrome':
         return match(this.versions.Chrome) ?? 'unknown';
       case 'Chromium':

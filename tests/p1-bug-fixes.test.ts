@@ -140,6 +140,7 @@ describe('Bug #99: Yandex Browser (YaBrowser / Yowser) not detected as Chrome', 
     const agent = useragent.parse(source);
 
     expect(agent.browser).toBe('YaBrowser');
+    expect(agent.version).toBe('13.12.1599.12785');
     expect(agent.isYaBrowser).toBe(true);
     expect(agent.isChrome).toBe(false);
   });
@@ -152,6 +153,7 @@ describe('Bug #99: Yandex Browser (YaBrowser / Yowser) not detected as Chrome', 
     const agent = useragent.parse(source);
 
     expect(agent.browser).toBe('YaBrowser');
+    expect(agent.version).toBe('2.5');
     expect(agent.isYaBrowser).toBe(true);
     expect(agent.isChrome).toBe(false);
   });
