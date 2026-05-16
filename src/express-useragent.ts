@@ -114,7 +114,7 @@ const BOTS = [
   'springbot',
 ] as const;
 
-const IS_BOT_REGEXP = new RegExp(`^.*(${BOTS.join('|')}).*$`, 'i');
+const IS_BOT_REGEXP = new RegExp(`(${BOTS.join('|')})`, 'i');
 const SILK_REGEXP = /silk/i;
 const SILK_ACCELERATED_REGEXP = /Silk-Accelerated=true/i;
 const SMART_TV_REGEXP = /smart-tv|smarttv|googletv|appletv|hbbtv|pov_tv|netcast.tv/i;
@@ -318,6 +318,110 @@ const readVersionAfterProduct = (source: string, productName: string): string | 
   return token?.name.toLowerCase() === productName.toLowerCase() ? token.version : null;
 };
 
+const readVersionAfterKnownPrefix = (
+  source: string,
+  prefixes: readonly string[],
+): string | null => {
+  const lowerSource = source.toLowerCase();
+  let bestStart = -1;
+  let bestPrefix = '';
+
+  for (const prefix of prefixes) {
+    const prefixStart = lowerSource.indexOf(prefix.toLowerCase());
+    if (prefixStart !== -1 && (bestStart === -1 || prefixStart < bestStart)) {
+      bestStart = prefixStart;
+      bestPrefix = prefix;
+    }
+  }
+
+  if (bestStart === -1) {
+    return null;
+  }
+
+  const versionStart = bestStart + bestPrefix.length;
+  let versionEnd = versionStart;
+  while (versionEnd < source.length && isProductTokenChar(source.charCodeAt(versionEnd))) {
+    versionEnd += 1;
+  }
+
+  return versionEnd > versionStart ? source.slice(versionStart, versionEnd) : null;
+};
+
+const readVersionAfterKnownProduct = (
+  source: string,
+  productNames: readonly string[],
+): string | null =>
+  readVersionAfterKnownPrefix(
+    source,
+    productNames.map((productName) => `${productName}/`),
+  );
+
+const readInternetExplorerVersion = (source: string): string | null => {
+  const lowerSource = source.toLowerCase();
+  const msieIndex = lowerSource.indexOf('msie');
+  if (msieIndex !== -1) {
+    let versionStart = msieIndex + 4;
+    while (source[versionStart] === ' ') {
+      versionStart += 1;
+    }
+
+    let versionEnd = versionStart;
+    while (versionEnd < source.length) {
+      const charCode = source.charCodeAt(versionEnd);
+      if (!isDigit(charCode) && charCode !== 46) {
+        break;
+      }
+      versionEnd += 1;
+    }
+
+    if (versionEnd > versionStart) {
+      return source.slice(versionStart, versionEnd);
+    }
+  }
+
+  const tridentIndex = lowerSource.indexOf('trident/');
+  if (tridentIndex === -1) {
+    return null;
+  }
+
+  const rvIndex = lowerSource.indexOf('rv:', tridentIndex + 8);
+  if (rvIndex === -1) {
+    return null;
+  }
+
+  const versionStart = rvIndex + 3;
+  let versionEnd = versionStart;
+  while (versionEnd < source.length) {
+    const charCode = source.charCodeAt(versionEnd);
+    if (!isDigit(charCode) && charCode !== 46) {
+      break;
+    }
+    versionEnd += 1;
+  }
+
+  return versionEnd > versionStart ? source.slice(versionStart, versionEnd) : null;
+};
+
+const readTrailingProductToken = (source: string, requireClosingParen: boolean): string | null => {
+  let endIndex = source.length;
+  while (endIndex > 0 && source.charCodeAt(endIndex - 1) === 32) {
+    endIndex -= 1;
+  }
+
+  if (source[endIndex - 1] === ')') {
+    endIndex -= 1;
+  } else if (requireClosingParen) {
+    return null;
+  }
+
+  let startIndex = endIndex;
+  while (startIndex > 0 && isProductTokenChar(source.charCodeAt(startIndex - 1))) {
+    startIndex -= 1;
+  }
+
+  return startIndex < endIndex ? source.slice(startIndex, endIndex) : null;
+};
+
 const readIOSDeviceOSMatch = (source: string, device: 'iPad' | 'iPhone'): string | null => {
   const deviceLower = device.toLowerCase();
   let searchFrom = 0;
@@ -374,34 +478,32 @@ const readIOSDeviceOSMatch = (source: string, device: 'iPad' | 'iPhone'): string
 };
 
 /** WebKit DuckDuckGo pattern: " Ddg/X.Y.Z" at end of UA string */
-const DUCKDUCKGO_WEBKIT_REGEXP = /\sDdg\/[\d.]+$/;
+const DUCKDUCKGO_WEBKIT_REGEXP = /\sDdg\/\d+(?:\.\d+)*$/;
 
 export class UserAgent {
   private readonly versions: Record<string, RegExp> = {
-    Edge: /(?:edge|edga|edgios|edg)\/([\d\w.-]+)/i,
-    Firefox: /(?:firefox|fxios)\/([\d\w.-]+)/i,
+    Edge: /(?:edge|edga|edgios|edg)\/([A-Za-z0-9_.-]+)/i,
+    Firefox: /(?:firefox|fxios)\/([A-Za-z0-9_.-]+)/i,
     IE: /msie\s(\d+(?:\.\d+)?)|trident\/\d+(?:\.\d+)?;[^)]*\brv:(\d+(?:\.\d+)?)/i,
-    YaBrowser: /(?:yabrowser|yowser)\/([\d\w.-]+)/i,
-    Chrome: /(?:chrome|crios)\/([\d\w.-]+)/i,
-    Chromium: /chromium\/([\d\w.-]+)/i,
-    Safari: /(version|safari)\/([\d\w.-]+)/i,
-    Opera: /version\/([\d\w.-]+)|OPR\/([\d\w.-]+)/i,
-    Ps3: /([\d\w.-]+)\)\s*$/i,
-    Psp: /([\d\w.-]+)\)?\s*$/i,
-    Amaya: /amaya\/([\d\w.-]+)/i,
-    SeaMonkey: /seamonkey\/([\d\w.-]+)/i,
-    OmniWeb: /omniweb\/v([\d\w.-]+)/i,
-    Flock: /flock\/([\d\w.-]+)/i,
-    Epiphany: /epiphany\/([\d\w.-]+)/i,
-    WinJs: /msapphost\/([\d\w.-]+)/i,
-    PhantomJS: /phantomjs\/([\d\w.-]+)/i,
-    AlamoFire: /alamofire\/([\d\w.-]+)/i,
-    UC: /ucbrowser\/([\d\w.]+)/i,
-    Facebook: /FBAV\/([\d\w.]+)/i,
-    WebKit: /applewebkit\/([\d\w.]+)/i,
-    Wechat: /micromessenger\/([\d\w.]+)/i,
-    Electron: /Electron\/([\d\w.]+)/i,
-    DuckDuckGo: /\sDdg\/([\d.]+)$/i,
+    YaBrowser: /(?:yabrowser|yowser)\/([A-Za-z0-9_.-]+)/i,
+    Chrome: /(?:chrome|crios)\/([A-Za-z0-9_.-]+)/i,
+    Chromium: /chromium\/([A-Za-z0-9_.-]+)/i,
+    Safari: /(version|safari)\/([A-Za-z0-9_.-]+)/i,
+    Opera: /version\/([A-Za-z0-9_.-]+)|OPR\/([A-Za-z0-9_.-]+)/i,
+    Amaya: /amaya\/([A-Za-z0-9_.-]+)/i,
+    SeaMonkey: /seamonkey\/([A-Za-z0-9_.-]+)/i,
+    OmniWeb: /omniweb\/v([A-Za-z0-9_.-]+)/i,
+    Flock: /flock\/([A-Za-z0-9_.-]+)/i,
+    Epiphany: /epiphany\/([A-Za-z0-9_.-]+)/i,
+    WinJs: /msapphost\/([A-Za-z0-9_.-]+)/i,
+    PhantomJS: /phantomjs\/([A-Za-z0-9_.-]+)/i,
+    AlamoFire: /alamofire\/([A-Za-z0-9_.-]+)/i,
+    UC: /ucbrowser\/([A-Za-z0-9_.]+)/i,
+    Facebook: /FBAV\/([A-Za-z0-9_.]+)/i,
+    WebKit: /applewebkit\/([A-Za-z0-9_.]+)/i,
+    Wechat: /micromessenger\/([A-Za-z0-9_.]+)/i,
+    Electron: /Electron\/([A-Za-z0-9_.]+)/i,
+    DuckDuckGo: /\sDdg\/(\d+(?:\.\d+)*)$/i,
   };
 
   private readonly browsers: Record<string, RegExp> = {
@@ -1026,63 +1128,48 @@ export class UserAgent {
     const agent = this.Agent;
     const browser = agent.browser;
 
-    const match = (exp: RegExp, index = 1) => {
-      const result = string.match(exp);
-      return result ? (result[index] ?? result[1] ?? 'unknown') : null;
-    };
-
     switch (browser) {
       case 'Edge':
-        return match(this.versions.Edge) ?? 'unknown';
+        return readVersionAfterKnownProduct(string, ['edge', 'edga', 'edgios', 'edg']) ?? 'unknown';
       case 'PhantomJS':
-        return match(this.versions.PhantomJS) ?? 'unknown';
+        return readVersionAfterKnownProduct(string, ['phantomjs']) ?? 'unknown';
       case 'YaBrowser':
-        return match(this.versions.YaBrowser) ?? 'unknown';
+        return readVersionAfterKnownProduct(string, ['yabrowser', 'yowser']) ?? 'unknown';
       case 'Chrome':
-        return match(this.versions.Chrome) ?? 'unknown';
+        return readVersionAfterKnownProduct(string, ['chrome', 'crios']) ?? 'unknown';
       case 'Chromium':
-        return match(this.versions.Chromium) ?? 'unknown';
+        return readVersionAfterKnownProduct(string, ['chromium']) ?? 'unknown';
       case 'Safari':
-        return match(this.versions.Safari, 2) ?? 'unknown';
-      case 'Opera': {
-        const operaMatch = string.match(this.versions.Opera);
-        if (operaMatch) {
-          return operaMatch[1] || operaMatch[2] || 'unknown';
-        }
-        return 'unknown';
-      }
+        return readVersionAfterKnownProduct(string, ['version', 'safari']) ?? 'unknown';
+      case 'Opera':
+        return readVersionAfterKnownProduct(string, ['version', 'OPR']) ?? 'unknown';
       case 'Firefox':
-        return match(this.versions.Firefox) ?? 'unknown';
+        return readVersionAfterKnownProduct(string, ['firefox', 'fxios']) ?? 'unknown';
       case 'WinJs':
-        return match(this.versions.WinJs) ?? 'unknown';
-      case 'IE': {
-        const ieMatch = string.match(this.versions.IE);
-        if (ieMatch) {
-          return ieMatch[2] ?? ieMatch[1] ?? 'unknown';
-        }
-        return 'unknown';
-      }
+        return readVersionAfterKnownProduct(string, ['msapphost']) ?? 'unknown';
+      case 'IE':
+        return readInternetExplorerVersion(string) ?? 'unknown';
       case 'ps3':
-        return match(this.versions.Ps3) ?? 'unknown';
+        return readTrailingProductToken(string, true) ?? 'unknown';
       case 'psp':
-        return match(this.versions.Psp) ?? 'unknown';
+        return readTrailingProductToken(string, false) ?? 'unknown';
       case 'Amaya':
-        return match(this.versions.Amaya) ?? 'unknown';
+        return readVersionAfterKnownProduct(string, ['amaya']) ?? 'unknown';
       case 'Epiphany':
-        return match(this.versions.Epiphany) ?? 'unknown';
+        return readVersionAfterKnownProduct(string, ['epiphany']) ?? 'unknown';
       case 'SeaMonkey':
-        return match(this.versions.SeaMonkey) ?? 'unknown';
+        return readVersionAfterKnownProduct(string, ['seamonkey']) ?? 'unknown';
       case 'Flock':
-        return match(this.versions.Flock) ?? 'unknown';
+        return readVersionAfterKnownProduct(string, ['flock']) ?? 'unknown';
       case 'OmniWeb':
-        return match(this.versions.OmniWeb) ?? 'unknown';
+        return readVersionAfterKnownPrefix(string, ['omniweb/v']) ?? 'unknown';
       case 'UCBrowser':
-        return match(this.versions.UC) ?? 'unknown';
+        return readVersionAfterKnownProduct(string, ['ucbrowser']) ?? 'unknown';
       case 'Facebook':
-        return match(this.versions.Facebook) ?? 'unknown';
+        return readVersionAfterKnownProduct(string, ['FBAV']) ?? 'unknown';
       case 'Android Browser':
         // Android Browser reports version via Version/X.X token (Bug #80)
-        return match(this.versions.Safari, 2) ?? 'unknown';
+        return readVersionAfterKnownProduct(string, ['version', 'safari']) ?? 'unknown';
       case 'DuckDuckGo':
         return this.getDuckDuckGoVersion() ?? 'unknown';
       default:
@@ -1091,10 +1178,7 @@ export class UserAgent {
         } else {
           this.testWebkit();
           if (this.Agent.isWebkit) {
-            const webkitMatch = string.match(this.versions.WebKit);
-            if (webkitMatch) {
-              return webkitMatch[1];
-            }
+            return readVersionAfterKnownProduct(string, ['applewebkit']) ?? 'unknown';
           }
         }
     }

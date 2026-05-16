@@ -24,6 +24,15 @@ describe('CodeQL ReDoS and regex injection hardening', () => {
     expect(agent.version).toBe('unknown');
   });
 
+  it('handles long known-browser version fragments without regex backtracking', () => {
+    const agent = useragent.parse(
+      `Mozilla/5.0 AppleWebKit/537.36 Chrome/${'-'.repeat(5000)} Safari/537.36`,
+    );
+
+    expect(agent.browser).toBe('Chrome');
+    expect(agent.version).toBe('-'.repeat(5000));
+  });
+
   it('keeps IE compatibility mode detection after replacing the Trident version regex', () => {
     const source = 'Mozilla/5.0 (Windows NT 6.1; Trident/7.0; rv:11.0) like Gecko';
 
