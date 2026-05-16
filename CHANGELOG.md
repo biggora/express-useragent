@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.2.0 - 2026-05-16
+
+- Added Yandex Browser version matching for YaBrowser user-agent strings.
+- Fixed SSR browser entry loading when `window` is unavailable.
+- Hardened parser and workflow checks with additional security coverage.
+
 ## 2.1.1 - 2026-05-10
 
 - Fixed user-agent detection for Samsung Internet typos, TikTok bot requests,
