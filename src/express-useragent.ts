@@ -271,6 +271,108 @@ function createDefaultAgent(): AgentDetails {
   };
 }
 
+interface ProductToken {
+  name: string;
+  version: string;
+}
+
+const isProductTokenChar = (charCode: number): boolean =>
+  (charCode >= 48 && charCode <= 57) ||
+  (charCode >= 65 && charCode <= 90) ||
+  (charCode >= 97 && charCode <= 122) ||
+  charCode === 45 ||
+  charCode === 46 ||
+  charCode === 95;
+
+const isDigit = (charCode: number): boolean => charCode >= 48 && charCode <= 57;
+
+const readProductToken = (source: string, startIndex = 0): ProductToken | null => {
+  const slashIndex = source.indexOf('/', startIndex);
+  if (slashIndex <= startIndex) {
+    return null;
+  }
+
+  for (let index = startIndex; index < slashIndex; index += 1) {
+    if (!isProductTokenChar(source.charCodeAt(index))) {
+      return null;
+    }
+  }
+
+  let endIndex = slashIndex + 1;
+  while (endIndex < source.length && isProductTokenChar(source.charCodeAt(endIndex))) {
+    endIndex += 1;
+  }
+
+  if (endIndex === slashIndex + 1) {
+    return null;
+  }
+
+  return {
+    name: source.slice(startIndex, slashIndex),
+    version: source.slice(slashIndex + 1, endIndex),
+  };
+};
+
+const readVersionAfterProduct = (source: string, productName: string): string | null => {
+  const token = readProductToken(source);
+  return token?.name.toLowerCase() === productName.toLowerCase() ? token.version : null;
+};
+
+const readIOSDeviceOSMatch = (source: string, device: 'iPad' | 'iPhone'): string | null => {
+  const deviceLower = device.toLowerCase();
+  let searchFrom = 0;
+
+  while (searchFrom < source.length) {
+    const openIndex = source.indexOf('(', searchFrom);
+    if (openIndex === -1) {
+      return null;
+    }
+
+    const closeIndex = source.indexOf(')', openIndex + 1);
+    const segmentEnd = closeIndex === -1 ? source.length : closeIndex;
+    const segment = source.slice(openIndex + 1, segmentEnd);
+    const segmentLower = segment.toLowerCase();
+
+    if (segmentLower.startsWith(deviceLower)) {
+      let osSearchFrom = 0;
+      while (osSearchFrom < segmentLower.length) {
+        const osIndex = segmentLower.indexOf('os ', osSearchFrom);
+        if (osIndex === -1) {
+          break;
+        }
+
+        let versionStart = osIndex + 3;
+        while (segment[versionStart] === ' ') {
+          versionStart += 1;
+        }
+
+        let majorEnd = versionStart;
+        while (majorEnd < segment.length && isDigit(segment.charCodeAt(majorEnd))) {
+          majorEnd += 1;
+        }
+
+        const separator = segment[majorEnd];
+        if (majorEnd > versionStart && (separator === '.' || separator === '_')) {
+          let minorEnd = majorEnd + 1;
+          while (minorEnd < segment.length && isDigit(segment.charCodeAt(minorEnd))) {
+            minorEnd += 1;
+          }
+
+          if (minorEnd > majorEnd + 1) {
+            return `(${segment.slice(0, minorEnd)}`.replace('_', '.');
+          }
+        }
+
+        osSearchFrom = osIndex + 3;
+      }
+    }
+
+    searchFrom = segmentEnd + 1;
+  }
+
+  return null;
+};
+
 /** WebKit DuckDuckGo pattern: " Ddg/X.Y.Z" at end of UA string */
 const DUCKDUCKGO_WEBKIT_REGEXP = /\sDdg\/[\d.]+$/;
 
@@ -278,7 +380,7 @@ export class UserAgent {
   private readonly versions: Record<string, RegExp> = {
     Edge: /(?:edge|edga|edgios|edg)\/([\d\w.-]+)/i,
     Firefox: /(?:firefox|fxios)\/([\d\w.-]+)/i,
-    IE: /msie\s([\d.]+[\d])|trident\/\d+\.\d+;.*[rv:]+(\d+\.\d)/i,
+    IE: /msie\s(\d+(?:\.\d+)?)|trident\/\d+(?:\.\d+)?;[^)]*\brv:(\d+(?:\.\d+)?)/i,
     YaBrowser: /(?:yabrowser|yowser)\/([\d\w.-]+)/i,
     Chrome: /(?:chrome|crios)\/([\d\w.-]+)/i,
     Chromium: /chromium\/([\d\w.-]+)/i,
@@ -369,8 +471,6 @@ export class UserAgent {
     Wii: /wii/i,
     PS3: /playstation 3/i,
     PSP: /playstation portable/i,
-    iPad: /\(iPad.*os (\d+)[._](\d+)/i,
-    iPhone: /\(iPhone.*os (\d+)[._](\d+)/i,
     iOS: /ios/i,
     Bada: /Bada\/(\d+)\.(\d+)/i,
     Curl: /curl\/(\d+)\.(\d+)\.(\d+)/i,
@@ -912,10 +1012,10 @@ export class UserAgent {
     }
 
     if (!string.startsWith('Mozilla')) {
-      const guess = /^([\d\w.-]+)\/[\d\w.-]+/i.exec(string);
+      const guess = readProductToken(string);
       if (guess) {
         agent.isAuthoritative = false;
-        return guess[1];
+        return guess.name;
       }
     }
 
@@ -987,11 +1087,7 @@ export class UserAgent {
         return this.getDuckDuckGoVersion() ?? 'unknown';
       default:
         if (browser !== 'unknown') {
-          const regex = new RegExp(`${browser}[\\/ ]([\\d\\w.\\-]+)`, 'i');
-          const genericMatch = string.match(regex);
-          if (genericMatch) {
-            return genericMatch[1];
-          }
+          return readVersionAfterProduct(string, browser) ?? 'unknown';
         } else {
           this.testWebkit();
           if (this.Agent.isWebkit) {
@@ -1199,15 +1295,15 @@ export class UserAgent {
       this.Agent.isMac = true;
       return 'OS X';
     }
-    const iPadMatch = string.match(this.os.iPad);
+    const iPadMatch = readIOSDeviceOSMatch(string, 'iPad');
     if (iPadMatch) {
       this.Agent.isiPad = true;
-      return iPadMatch[0].replace('_', '.');
+      return iPadMatch;
     }
-    const iPhoneMatch = string.match(this.os.iPhone);
+    const iPhoneMatch = readIOSDeviceOSMatch(string, 'iPhone');
     if (iPhoneMatch) {
       this.Agent.isiPhone = true;
-      return iPhoneMatch[0].replace('_', '.');
+      return iPhoneMatch;
     }
     if (this.os.Bada.test(string)) {
       this.Agent.isBada = true;
