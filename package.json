@@ -67,6 +67,7 @@
     "http": "tsx examples/http.ts",
     "simple": "tsx examples/simple.ts",
     "build": "npm run clean && npm run build:ts",
+    "build:pages": "npm run build && node scripts/build-pages.mjs",
     "build:ts": "tsup --config tsup.config.ts",
     "build:watch": "npm run build:ts -- --watch",
     "clean": "rimraf dist",
