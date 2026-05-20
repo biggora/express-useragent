@@ -10,6 +10,7 @@
 /dist/
 /lib/
 /specs/
+/_site/
 
 # Test and coverage artifacts
 /coverage/
@@ -32,3 +33,4 @@ Desktop.ini
 *~
 AGENTS.md
 QWEN.md
+/.codex/

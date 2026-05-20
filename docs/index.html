@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>express-useragent Demo - Parse Browser, OS, and Device from User-Agent Strings</title>
+    <meta
+      name="description"
+      content="Try express-useragent in the browser to parse user-agent strings into browser, OS, platform, device, and bot fields."
+    >
+    <meta name="robots" content="index,follow">
+    <meta name="theme-color" content="#111814">
+    <link rel="canonical" href="https://biggora.github.io/express-useragent/">
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://biggora.github.io/express-useragent/">
+    <meta property="og:title" content="express-useragent Demo">
+    <meta
+      property="og:description"
+      content="Parse user-agent strings with the express-useragent browser bundle."
+    >
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="express-useragent Demo">
+    <meta
+      name="twitter:description"
+      content="Parse browser, OS, device, and bot fields from user-agent strings."
+    >
+    <link rel="stylesheet" href="assets/styles.css">
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "express-useragent",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Node.js 18 or newer",
+        "url": "https://biggora.github.io/express-useragent/",
+        "softwareVersion": "2.1.0",
+        "license": "https://github.com/biggora/express-useragent/blob/master/LICENSE",
+        "codeRepository": "https://github.com/biggora/express-useragent",
+        "description": "Fast user-agent parser with Express middleware, TypeScript typings, and a browser bundle."
+      }
+    </script>
+  </head>
+  <body>
+    <main class="shell">
+      <section class="workbench" aria-labelledby="page-title">
+        <div class="masthead">
+          <div>
+            <p class="eyebrow">Static parser workbench</p>
+            <h1 id="page-title">express-useragent Demo</h1>
+          </div>
+          <div class="status" id="parser-status" aria-live="polite">Waiting for input</div>
+        </div>
+
+        <div class="workspace">
+          <section class="input-pane" aria-labelledby="input-title">
+            <div class="pane-heading">
+              <h2 id="input-title">User-Agent source</h2>
+              <button class="ghost-button" type="button" id="use-current">Current browser</button>
+            </div>
+
+            <label class="field-label" for="ua-input">User-Agent string</label>
+            <textarea id="ua-input" spellcheck="false" rows="8"></textarea>
+
+            <div class="preset-grid" role="group" aria-label="User-agent presets">
+              <button type="button" data-preset="chromeWindows">Chrome Windows</button>
+              <button type="button" data-preset="safariIphone">Safari iPhone</button>
+              <button type="button" data-preset="androidChrome">Android Chrome</button>
+              <button type="button" data-preset="ipadSafari">iPad Safari</button>
+              <button type="button" data-preset="googlebot">Googlebot</button>
+              <button type="button" data-preset="duckDuckGoBot">DuckDuckGo bot</button>
+              <button type="button" data-preset="curl">curl</button>
+            </div>
+
+            <details class="advanced">
+              <summary>Client Hints / headers JSON</summary>
+              <label class="field-label" for="headers-input">Headers JSON</label>
+              <textarea id="headers-input" spellcheck="false" rows="7" placeholder="{ }"></textarea>
+              <div class="field-note" id="headers-status" aria-live="polite">
+                No advanced headers applied.
+              </div>
+            </details>
+          </section>
+
+          <section class="output-pane" aria-labelledby="output-title">
+            <div class="pane-heading">
+              <h2 id="output-title">Parsed output</h2>
+              <button class="ghost-button" type="button" id="copy-json">Copy JSON</button>
+            </div>
+
+            <div class="summary-grid" id="summary-grid" aria-live="polite"></div>
+
+            <div class="flags-panel">
+              <h3>Notable flags</h3>
+              <div class="flag-list" id="flag-list"></div>
+            </div>
+
+            <label class="field-label" for="json-output">Raw JSON</label>
+            <pre class="json-wrap" tabindex="0"><code id="json-output"></code></pre>
+            <div class="field-note" id="copy-status" aria-live="polite">JSON is ready.</div>
+          </section>
+        </div>
+      </section>
+
+      <section class="usage" aria-labelledby="usage-title">
+        <div class="section-heading">
+          <p class="eyebrow">Usage</p>
+          <h2 id="usage-title">Drop it into the runtime you already use</h2>
+        </div>
+        <div class="snippet-grid">
+          <article class="snippet">
+            <h3>Browser bundle</h3>
+            <pre><code>&lt;script src="/vendor/express-useragent.global.min.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+  const agent = window.useragent.parse(navigator.userAgent);
+  console.log(agent.browser, agent.version);
+&lt;/script&gt;</code></pre>
+          </article>
+          <article class="snippet">
+            <h3>Node parser</h3>
+            <pre><code>import { UserAgent } from 'express-useragent';
+
+const agent = new UserAgent().parse(request.headers['user-agent'] ?? 'unknown');</code></pre>
+          </article>
+          <article class="snippet">
+            <h3>Express middleware</h3>
+            <pre><code>import express from 'express';
+import { express as useragent } from 'express-useragent';
+
+const app = express();
+app.use(useragent());</code></pre>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <a href="https://www.npmjs.com/package/express-useragent">npm</a>
+      <a href="https://github.com/biggora/express-useragent">GitHub</a>
+      <a href="https://github.com/biggora/express-useragent#readme">README</a>
+      <a href="https://github.com/biggora/express-useragent/blob/master/LICENSE">MIT license</a>
+    </footer>
+
+    <script src="assets/express-useragent.global.min.js"></script>
+    <script src="assets/demo.js" defer></script>
+  </body>
+</html>
