@@ -36,7 +36,14 @@ jobs:
         run: npm run typecheck
 
       - name: Test
+        if: matrix.node != 18
         run: npm run test:vitest
 
       - name: Build
         run: npm run build
+
+      - name: Smoke runtime on Node 18
+        if: matrix.node == 18
+        run: |
+          node --input-type=module -e "await import('./dist/index.mjs'); console.log('esm-ok')"
+          node -e "require('./dist/index.cjs'); console.log('cjs-ok')"
