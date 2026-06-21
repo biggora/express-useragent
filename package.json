@@ -5,7 +5,7 @@
   "homepage": "https://github.com/biggora/express-useragent/",
   "repository": {
     "type": "git",
-    "url": "git://github.com/biggora/express-useragent.git"
+    "url": "git+https://github.com/biggora/express-useragent.git"
   },
   "license": "MIT",
   "publishConfig": {
