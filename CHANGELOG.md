@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.2.1 - 2026-06-30
+
+- Updated dependency metadata and lockfile entries for recent transitive security advisories.
+- Added GitHub Pages demo assets and public repository metadata updates.
+
 ## 2.2.0 - 2026-05-16
 
 - Added Yandex Browser version matching for YaBrowser user-agent strings.
