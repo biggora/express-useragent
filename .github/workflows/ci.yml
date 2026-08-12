@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node: [18, 20, 22, 24]
+        node: [20.19, 22, 24]
     steps:
       - name: Checkout
         uses: actions/checkout@v6
@@ -36,14 +36,38 @@ jobs:
         run: npm run typecheck
 
       - name: Test
-        if: matrix.node != 18
         run: npm run test:vitest
 
       - name: Build
         run: npm run build
 
+      - name: Upload Node 18 runtime artifact
+        if: matrix.node == 20.19
+        uses: actions/upload-artifact@v4
+        with:
+          name: node18-runtime-dist
+          path: dist
+          if-no-files-found: error
+
+  node18-runtime-smoke:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Download runtime artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: node18-runtime-dist
+          path: dist
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 18
+
       - name: Smoke runtime on Node 18
-        if: matrix.node == 18
         run: |
           node --input-type=module -e "await import('./dist/index.mjs'); console.log('esm-ok')"
           node -e "require('./dist/index.cjs'); console.log('cjs-ok')"
