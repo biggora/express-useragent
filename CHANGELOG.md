@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 2.2.3 - 2026-08-22
 
 - Detect headless Chrome. The list carried `chromeheadless`, which is the Karma
   launcher label; Chrome itself reports `HeadlessChrome/<version>`.
