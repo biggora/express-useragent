@@ -34,6 +34,7 @@ const BOTS = [
   'baiduspider',
   'bingbot',
   'chromeheadless',
+  'headlesschrome',
   'cloudflare',
   'cloudinary',
   'crawler',
@@ -45,7 +46,16 @@ const BOTS = [
   'facebookexternalhit',
   'facebot',
   'flipboard',
-  'google',
+  'apis-google',
+  'feedfetcher-google',
+  'google\\spage\\sspeed',
+  'google\\sweb\\spreview',
+  'google-inspectiontool',
+  'google-read-aloud',
+  'google-site-verification',
+  'googleother',
+  'googleweblight',
+  'storebot-google',
   'googlebot',
   'gsa-crawler',
   'gurujibot',
@@ -61,9 +71,11 @@ const BOTS = [
   'phantom\\.js',
   'phantomjs',
   'pingdom',
-  'pinterest',
+  'pinterest(?=\\/\\d)',
+  'pinterestbot',
   'python',
   'rtlnieuws',
+  'scrapy',
   'skypeuripreview',
   'slackbot',
   'slurp',
@@ -779,16 +791,6 @@ export class UserAgent {
 
     if (match) {
       const botIdentifier = match[1];
-
-      // Handle false positives - TikTok WebView contains "googleplay" but isn't a bot
-      if (
-        botIdentifier === 'google' &&
-        (source.includes('tiktok') || source.includes('trill') || source.includes('bytedance'))
-      ) {
-        this.Agent.isBot = false;
-        this.Agent.botName = '';
-        return;
-      }
 
       // For all bots, return boolean true and store bot name (fixes issues #168, #138)
       this.Agent.isBot = true;

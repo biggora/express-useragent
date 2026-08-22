@@ -23,7 +23,11 @@ const BOTS = [
 
 Add the new bot pattern to the `BOTS` array. Follow these best practices:
 
-- **Use regex patterns**, not exact matches (e.g., use `'google'` instead of `'Googlebot'`)
+- **Match the crawler, not the vendor.** A pattern must not match a browser that merely
+  mentions the vendor. `'google'` once matched every Play Store WebView carrying
+  `Channel/googleplay`, and `'pinterest'` matched the Pinterest in-app browser. Prefer the
+  crawler token (`'googleother'`, `'pinterestbot'`), or a lookahead that pins the shape the
+  crawler uses (`'pinterest(?=\\/\\d)'` matches `Pinterest/0.2` but not `[Pinterest/iOS]`)
 - **Handle variations** - include common variations (e.g., both `'phantom\\.js'` and `'phantomjs'`)
 - **Escape special characters** properly (dots, spaces, etc.)
 - **Keep patterns simple** - avoid overly complex regex that might miss variations
