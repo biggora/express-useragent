@@ -1,5 +1,17 @@
 # Changelog
 
+## Unreleased
+
+- Detect headless Chrome. The list carried `chromeheadless`, which is the Karma
+  launcher label; Chrome itself reports `HeadlessChrome/<version>`.
+- Detect Scrapy.
+- Stop flagging Play Store WebViews as bots. The bare `google` pattern matched any
+  user-agent carrying `Channel/googleplay`, which is why TikTok needed a hard-coded
+  exemption; the pattern is now the documented Google crawler tokens and the
+  exemption is gone. `botName` for Googlebot is now `googlebot` rather than `google`.
+- Distinguish the Pinterest crawler (`Pinterest/0.2`) from the Pinterest in-app
+  browser (`[Pinterest/iOS]`), which was reported as a bot.
+
 ## 2.2.1 - 2026-06-30
 
 - Updated dependency metadata and lockfile entries for recent transitive security advisories.
